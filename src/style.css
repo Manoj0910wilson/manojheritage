@@ -24,7 +24,7 @@ button, input { font: inherit; }
 .site-header.is-scrolled { background: rgba(246,241,231,.9); box-shadow: 0 10px 35px rgba(24,49,34,.07); backdrop-filter: blur(16px); }
 .brand { display: inline-flex; width: 164px; align-items: center; }
 .brand img { width: 100%; height: auto; display: block; }
-.site-header .brand img { mix-blend-mode: multiply; }
+.site-header .brand img { mix-blend-mode: darken; }
 .desktop-nav { display: flex; gap: clamp(22px, 3vw, 48px); margin-left: auto; margin-right: clamp(22px, 4vw, 62px); }
 .desktop-nav a, .mobile-menu a { color: var(--leaf); font-size: 13px; font-weight: 500; letter-spacing: .02em; transition: color .2s ease; }
 .desktop-nav a:hover, .mobile-menu a:hover { color: var(--gold); }

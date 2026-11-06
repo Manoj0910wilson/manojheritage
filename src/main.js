@@ -1,7 +1,7 @@
 import './style.css';
 
-const logoPath = '/manus-storage/HeritageSpicesCardamomEmblem_59a65003.png';
-const podPath = '/manus-storage/heritage-cardamom-pod_c09e249e.png';
+const logoPath = './assets/heritage-spices-logo.png';
+const podPath = './assets/heritage-cardamom-pod.png';
 
 const navItems = [
   ['Our Story', '#story'],

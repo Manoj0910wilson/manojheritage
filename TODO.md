@@ -23,4 +23,6 @@
 - [x] Serve the required /manus-routes.json route manifest.
 - [x] Configure a production build that outputs static files with index.html.
 - [x] Validate the running preview and save the first checkpoint.
-- [ ] Connect the canonical repository to the user's GitHub after owner confirmation, then publish through the chosen free hosting route.
+- [x] Connect the canonical repository to the user's GitHub after owner confirmation.
+- [x] Produce a self-contained static `docs` build with repository-local assets for GitHub Pages-style hosting.
+- [ ] Enable GitHub Pages from the repository settings when the user is ready to make the site public.
