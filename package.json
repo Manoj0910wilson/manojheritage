@@ -4,11 +4,13 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && vite preview --outDir docs --host 0.0.0.0 --port 3000",
+    "preview": "vite preview --outDir docs --host 0.0.0.0",
+    "check": "node scripts/check.mjs"
   },
   "devDependencies": {
+    "sharp": "^0.35.5",
     "vite": "5.4.14"
   }
 }

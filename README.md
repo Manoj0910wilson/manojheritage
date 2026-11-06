@@ -1,43 +1,36 @@
 # Heritage Spices
 
-Responsive cardamom export homepage for Heritage Spices, with a scroll-driven product story, Idukki provenance messaging, buyer CTAs, and a click-to-call contact action.
+Multi-page, search-engine-friendly website for Heritage Spices (premium green cardamom from Idukki, Kerala), built for importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. English and Arabic.
 
-## Run locally
+## How it works
+
+`npm run build` renders every page to plain HTML in `docs/`, which GitHub Pages serves (Settings → Pages → `main` branch, `/docs` folder).
+
+| What | Where |
+| --- | --- |
+| Contact details, site URL, analytics ID, Search Console token, social links | `content/site.mjs` |
+| Gulf market pages (one per country) | `content/markets.mjs` |
+| Journal articles | `content/articles.mjs` |
+| Page layouts and copy for English / Arabic pages | `scripts/pages-en.mjs`, `scripts/pages-ar.mjs` |
+| Header, footer, SEO tags, structured data | `scripts/templates.mjs` |
+| Styles / browser script | `src/*.css`, `src/main.js` |
+| Images, favicon, share image | `public/` |
+
+## Everyday tasks
 
 ```bash
 npm install
-npm run dev
+npm run build      # rebuild docs/
+npm run check      # broken links, titles, descriptions, headings, JSON-LD
+npm run dev        # build and preview at http://localhost:3000
 ```
 
-## Build the static site
+After any change: `npm run build && npm run check`, commit, push to `main`. The live site updates in a minute or two.
 
-```bash
-npm run build
-```
+## SEO set-up checklist
 
-The production output is written to `docs/` so it can be served directly by GitHub Pages.
-
-## Publish for free with GitHub Pages
-
-1. Open the `manojheritage` repository on GitHub.
-2. Go to **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select the `main` branch and the `/docs` folder, then press **Save**.
-5. GitHub will provide the live Pages URL after the first deployment finishes.
-
-## Editing contact details and journal articles
-
-All contact details and journal articles live in `src/site-data.js`:
-
-- **Phone / WhatsApp:** `contact.phoneTel`, `contact.phoneDisplay`, `contact.whatsapp` (currently +91 89395 35151).
-- **Email:** set `contact.email`. The Contact section, footer and the form's "Send by email" button appear automatically once it is filled in.
-- **Social links:** add entries to `contact.social`, for example `{ label: 'Instagram', url: 'https://instagram.com/your-handle' }`.
-- **Journal articles:** edit or add items in the `articles` list. Each one gets its own page at `#/journal/<slug>`, and is included in site search.
-
-After any change run `npm run build`, then commit and push to `main`. GitHub Pages updates the live site within a minute or two.
-
-## Features
-
-- Journal index and article pages (`#/journal`, `#/journal/<slug>`).
-- Working site search (header magnifier).
-- Quote enquiry form that opens a pre-filled WhatsApp message, plus a floating WhatsApp button.
+- [ ] Google Search Console: add the site, paste the HTML-tag token into `searchConsoleVerification`, submit `sitemap.xml`.
+- [ ] Google Analytics 4: paste the measurement ID into `analyticsId`.
+- [ ] Custom domain (later): build with `SITE_URL=https://yourdomain.com npm run build`, add a `CNAME` file to `public/`, and set the domain in Settings → Pages.
+- [ ] Add credentials (IEC, Spices Board, lab reports) to the About and Export pages once obtained.
+- [ ] Replace placeholder visuals with real farm and product photos in `public/assets/`.

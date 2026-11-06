@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manoj0910wilson.github.io/manojheritage/sitemap.xml
