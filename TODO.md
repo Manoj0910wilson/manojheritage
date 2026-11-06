@@ -19,7 +19,8 @@
 
 ## Contact and delivery
 - [x] Make +91 89395 35151 a clickable tel link.
-- [ ] Add the final email address and social media links when supplied by the user.
+- [ ] Add the final email address and social media links when supplied by the user (set `contact.email` / `contact.social` in `src/site-data.js`; they appear automatically).
+- [x] Working journal pages, site search, WhatsApp enquiry form and floating WhatsApp button.
 - [x] Serve the required /manus-routes.json route manifest.
 - [x] Configure a production build that outputs static files with index.html.
 - [x] Validate the running preview and save the first checkpoint.

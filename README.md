@@ -25,4 +25,19 @@ The production output is written to `docs/` so it can be served directly by GitH
 4. Select the `main` branch and the `/docs` folder, then press **Save**.
 5. GitHub will provide the live Pages URL after the first deployment finishes.
 
-The current contact number is linked as `tel:+918939535151`. Add the final email address and social URLs in `src/main.js` when those details are ready, then run `npm run build`, commit, and push to `main`.
+## Editing contact details and journal articles
+
+All contact details and journal articles live in `src/site-data.js`:
+
+- **Phone / WhatsApp:** `contact.phoneTel`, `contact.phoneDisplay`, `contact.whatsapp` (currently +91 89395 35151).
+- **Email:** set `contact.email`. The Contact section, footer and the form's "Send by email" button appear automatically once it is filled in.
+- **Social links:** add entries to `contact.social`, for example `{ label: 'Instagram', url: 'https://instagram.com/your-handle' }`.
+- **Journal articles:** edit or add items in the `articles` list. Each one gets its own page at `#/journal/<slug>`, and is included in site search.
+
+After any change run `npm run build`, then commit and push to `main`. GitHub Pages updates the live site within a minute or two.
+
+## Features
+
+- Journal index and article pages (`#/journal`, `#/journal/<slug>`).
+- Working site search (header magnifier).
+- Quote enquiry form that opens a pre-filled WhatsApp message, plus a floating WhatsApp button.
