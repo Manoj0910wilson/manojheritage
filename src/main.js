@@ -1,5 +1,6 @@
 import './style.css';
 import './extras.css';
+import { initFloatingPod, initExplode, initParallax } from './motion.js';
 
 const body = document.body;
 const root = body.dataset.root || './';
@@ -144,56 +145,15 @@ document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
   });
 });
 
-/* ---------- Scroll motion (home page only) ---------- */
-const pod = document.querySelector('[data-pod]');
-const journey = document.querySelector('[data-journey]');
-const journeyPod = document.querySelector('[data-journey-pod]');
-const progressBar = document.querySelector('[data-progress-bar]');
-const stateCaption = document.querySelector('[data-state-caption]');
-const seeds = document.querySelector('[data-seeds]');
-const stepLabels = [...document.querySelectorAll('[data-step-label]')];
-const captions = ['Freshly harvested whole pod', 'The aroma begins inside', 'Selected for a clean, expressive finish'];
-let reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-
-function updateMotion() {
-  header?.classList.toggle('is-scrolled', window.scrollY > 24);
-  if (!pod && !journey) return;
-  const heroHeight = window.innerHeight * 1.1;
-  const heroProgress = clamp(window.scrollY / heroHeight);
-  if (pod && !reducedMotion) {
-    const rotate = heroProgress * 420 - 18;
-    const translateY = heroProgress * 160;
-    const translateX = heroProgress * -80;
-    const scale = 1.05 + heroProgress * 0.22;
-    pod.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) rotate(${rotate}deg) scale(${scale})`;
-  }
-  if (journey) {
-    const rect = journey.getBoundingClientRect();
-    const range = Math.max(1, journey.offsetHeight - window.innerHeight);
-    const progress = clamp(-rect.top / range);
-    const stage = progress < 0.34 ? 0 : progress < 0.67 ? 1 : 2;
-    progressBar.style.transform = `scaleX(${Math.max(progress, 0.04)})`;
-    journeyPod.dataset.stage = String(stage);
-    journeyPod.className = `journey-pod pod-state-${stage}`;
-    stateCaption.textContent = captions[stage];
-    seeds.classList.toggle('is-visible', stage === 2);
-    stepLabels.forEach((label, index) => label.classList.toggle('is-active', index === stage));
-    if (!reducedMotion) {
-      const y = progress * 230 - 20;
-      const rotation = progress * -24;
-      journeyPod.style.transform = `translate3d(0, ${y}px, 0) rotate(${rotation}deg) scale(${1 + progress * 0.12})`;
-    }
-  }
+/* ---------- Header state + home-page scroll motion ---------- */
+const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+if (body.classList.contains('is-home')) {
+  initFloatingPod();
+  initExplode();
+  initParallax();
 }
-
-window.addEventListener('scroll', updateMotion, { passive: true });
-window.addEventListener('resize', () => {
-  reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  updateMotion();
-});
-updateMotion();
 
 /* ---------- Reveal on scroll ---------- */
 const revealTargets = document.querySelectorAll('.reveal, .range-card, .journal-grid article, .process-grid li');

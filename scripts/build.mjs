@@ -21,6 +21,7 @@ await esbuild({
   bundle: true, minify: true, target: ['es2019'],
   outdir: `${OUT}/assets`, entryNames: '[name]',
   loader: { '.png': 'file', '.webp': 'file' },
+  external: ['./img/*'],
   logLevel: 'warning',
 });
 const hash = createHash('sha1');
