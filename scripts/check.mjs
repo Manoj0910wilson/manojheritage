@@ -4,7 +4,7 @@ import { join } from 'node:path';
 
 const OUT = 'docs';
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
-const htmlFiles = walk(OUT).filter((f) => f.endsWith('.html'));
+const htmlFiles = walk(OUT).filter((f) => f.endsWith('.html') && !/google[0-9a-f]+\.html$/.test(f));
 const problems = [];
 const titles = new Map(); const descs = new Map();
 
