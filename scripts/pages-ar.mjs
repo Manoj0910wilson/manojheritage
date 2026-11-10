@@ -1,7 +1,11 @@
 import {
-  site, markets, href, pageHero, ctaBand, faqList, specTable, enquiryForm, contactDetails,
-  organizationLd, websiteLd, waHelloAr, tel, whatsappLink,
+  site, markets, href, breadcrumbs, ctaBand, faqList, specTable, enquiryForm, contactDetails,
+  organizationLd, websiteLd, waHelloAr, whatsappLink, inline,
 } from './templates.mjs';
+import { marketsAr } from '../content/markets-ar.mjs';
+
+const hasAr = (slug) => Boolean(marketsAr[slug]);
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 const arFaqHome = [
   { q: 'من أين يأتي الهيل الذي تقدمونه؟', a: 'يأتي الهيل الأخضر لدينا من منطقة إدوكي في ولاية كيرالا جنوب الهند، ونحصل عليه مباشرة من المزارعين.' },
@@ -13,6 +17,8 @@ const arFaqHome = [
 
 function homeMain(ctx) {
   const pod = href(ctx, 'assets/heritage-cardamom-pod.webp');
+  const img = (n) => href(ctx, `assets/img/${n}`);
+  const stage = (n) => href(ctx, `assets/stages/${n}`);
   return `
   <section class="inner-hero ar-hero">
     <p class="section-kicker">الهيل الأخضر من إدوكي، كيرالا</p>
@@ -23,6 +29,28 @@ function homeMain(ctx) {
       <a class="outline-button" href="${waHelloAr}" target="_blank" rel="noopener" data-track="whatsapp">تواصل عبر واتساب <span aria-hidden="true">↖</span></a>
     </div>
     <img class="ar-pod" src="${pod}" alt="حبة هيل أخضر طازجة من إدوكي" width="320" height="322" fetchpriority="high" />
+  </section>
+  <div class="content-wrap">
+    <div class="intro-photos">
+      <figure class="photo photo-tall">
+        <img src="${img('plant.webp')}" alt="نبتة هيل بعناقيد من الحبوب الخضراء قرب سطح الأرض" width="736" height="1104" loading="lazy" decoding="async" />
+        <figcaption>تنمو في ظلال التلال</figcaption>
+      </figure>
+      <figure class="photo photo-wide">
+        <img src="${img('farmers.webp')}" alt="عاملتان تحملان سلالاً من الحبوب الخضراء المقطوفة حديثاً في المزرعة" width="900" height="1158" loading="lazy" decoding="async" />
+        <figcaption>قطاف يدوي، موسماً بعد موسم</figcaption>
+      </figure>
+    </div>
+  </div>
+  <section class="ar-stages">
+    <div class="content-wrap">
+      <h2 class="h2-small">من الحبة الكاملة إلى البذور</h2>
+      <div class="card-grid three">
+        <article class="info-card"><img class="stage-img" src="${stage('whole.webp')}" alt="حبة هيل أخضر كاملة" width="690" height="310" loading="lazy" decoding="async" /><span class="card-index">١ · الحبة الكاملة</span><h3>أول ما ينظر إليه المشتري</h3><p>اللون والحجم والرائحة والنظافة هي ما ننتقيه، وما ندعوك إلى مقارنته بمواصفاتك في العيّنة.</p></article>
+        <article class="info-card"><img class="stage-img" src="${stage('open.webp')}" alt="حبة هيل مفتوحة تُظهر البذور" width="900" height="527" loading="lazy" decoding="async" /><span class="card-index">٢ · داخل الحبة</span><h3>حيث تسكن الرائحة</h3><p>يحمي القشر بذوراً صغيرة داكنة إلى أن تُفتح الحبة، ولهذا تحتفظ الحبوب الكاملة بعطرها جيداً في التخزين والنقل.</p></article>
+        <article class="info-card"><img class="stage-img" src="${stage('seeds.webp')}" alt="بذور الهيل" width="380" height="237" loading="lazy" decoding="async" /><span class="card-index">٣ · البذور</span><h3>أين تُستخدم</h3><p>القهوة العربية، والشاي والكرك، والحلويات، وأطباق الأرز، وخلطات البهارات.</p></article>
+      </div>
+    </div>
   </section>
   <div class="content-wrap">
     <section class="prose">
@@ -46,8 +74,10 @@ function homeMain(ctx) {
     </section>
     <section>
       <h2 class="h2-small">الأسواق التي نخدمها</h2>
-      <div class="chip-row">${markets.map((m) => `<a href="${href(ctx, `markets/${m.slug}/`)}" hreflang="en" lang="en">${m.name}</a>`).join('')}</div>
-      <p class="related-line">صفحات الأسواق متوفرة حالياً بالإنجليزية.</p>
+      <div class="chip-row">${markets.map((m) => (hasAr(m.slug)
+        ? `<a href="${href(ctx, `ar/markets/${m.slug}/`)}">${m.ar}</a>`
+        : `<a href="${href(ctx, `markets/${m.slug}/`)}" hreflang="en" lang="en">${m.name}</a>`)).join('')}</div>
+      <p class="related-line">صفحتا الإمارات والسعودية متوفرتان بالعربية، وبقية الأسواق بالإنجليزية حالياً.</p>
     </section>
     <section class="prose">
       <h2>كيف نعمل</h2>
@@ -129,6 +159,51 @@ function greenMain(ctx) {
   ${ctaBand(ctx, { kicker: 'الخطوة التالية', title: 'انظر إليه وشمّه، ثم قرّر.', text: 'اطلب عيّنة وقارنها بمواصفاتك.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'تواصل عبر واتساب', path: whatsappLink('Hello Heritage Spices, I would like a cardamom sample. / مرحباً، أود طلب عيّنة هيل.'), external: true } })}`;
 }
 
+function marketMain(ctx, m) {
+  const a = marketsAr[m.slug];
+  const others = markets.filter((x) => x.slug !== m.slug);
+  return `
+  <section class="inner-hero ar-hero">
+    ${breadcrumbs(ctx, [{ name: m.ar }])}
+    <p class="section-kicker">السوق · ${m.ar}</p>
+    <h1 class="page-title">${a.h1}</h1>
+    <p class="page-lede">${a.lede}</p>
+  </section>
+  <div class="content-wrap two-col">
+    <div>
+      <section class="prose">
+        ${a.sections.map((s) => `<h2>${esc(s.h)}</h2>${s.p.map((p) => `<p>${inline(p, ctx)}</p>`).join('')}`).join('')}
+      </section>
+      <section>
+        <h2 class="h2-small">أسئلة من مشترين في ${esc(m.ar)}</h2>
+        ${faqList(a.faq, ctx)}
+      </section>
+    </div>
+    <aside class="side-card">
+      <p class="eyebrow">نظرة سريعة</p>
+      ${specTable([
+        ['السوق', m.ar],
+        ['أهم المناطق', a.focus],
+        ['الموانئ الرئيسية', a.ports],
+        ['المنتج', 'هيل أخضر كامل من إدوكي، كيرالا'],
+        ['شروط التسليم', 'FOB أو CFR أو CIF بالاتفاق'],
+      ])}
+      <a class="solid-button full" href="${href(ctx, 'ar/#enquiry')}">اطلب عيّنة <span aria-hidden="true">↖</span></a>
+      <a class="outline-button full" href="${waHelloAr}" target="_blank" rel="noopener" data-track="whatsapp">تواصل عبر واتساب <span aria-hidden="true">↖</span></a>
+    </aside>
+  </div>
+  <div class="content-wrap">
+    <section>
+      <h2 class="h2-small">أسواق أخرى</h2>
+      <div class="chip-row">${others.map((x) => (hasAr(x.slug)
+        ? `<a href="${href(ctx, `ar/markets/${x.slug}/`)}">${x.ar}</a>`
+        : `<a href="${href(ctx, `markets/${x.slug}/`)}" hreflang="en" lang="en">${x.name}</a>`)).join('')}</div>
+      <p class="related-line">اقرأ أيضاً: <a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر الكامل</a></p>
+    </section>
+  </div>
+  ${ctaBand(ctx, { kicker: m.ar, title: `تورّد إلى ${m.ar}؟ لنتحدث.`, text: 'أرسل متطلباتك وسنرد عليك بالخطوات التالية وعيّنة.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'تواصل عبر واتساب', path: waHelloAr, external: true } })}`;
+}
+
 export function arabicPages() {
   const pages = [];
   pages.push({
@@ -150,5 +225,16 @@ export function arabicPages() {
     crumbs: [{ name: 'الهيل الأخضر' }], faq: arGreenFaq,
     render: greenMain,
   });
+  for (const m of markets.filter((x) => hasAr(x.slug))) {
+    const a = marketsAr[m.slug];
+    pages.push({
+      lang: 'ar', path: `ar/markets/${m.slug}/`,
+      title: a.metaTitle, description: a.metaDescription,
+      bodyClass: 'on-page is-ar',
+      alternates: { en: `markets/${m.slug}/`, ar: `ar/markets/${m.slug}/` }, alt: `markets/${m.slug}/`,
+      crumbs: [{ name: m.ar }], faq: a.faq,
+      render: (ctx) => marketMain(ctx, m),
+    });
+  }
   return pages;
 }

@@ -24,7 +24,7 @@ function homeMain(ctx) {
   return `
     <div id="top"></div>
     <canvas class="float-pod" data-float-pod data-frames="${href(ctx, 'assets/pod/f')}" data-count="62" width="560" height="273" aria-hidden="true"></canvas>
-    <section class="hero" aria-labelledby="hero-title" data-pod="0.76,0.5,540,-4,1" data-pod-m="0.72,0.86,400,-4,1">
+    <section class="hero" aria-labelledby="hero-title" data-pod="0.78,0.52,340,-4,1" data-pod-m="0.74,0.87,300,-4,1">
       <div class="hero-bg" aria-hidden="true">
         <img src="${img('hills-1600.webp')}" srcset="${img('hills-900.webp')} 900w, ${img('hills-1600.webp')} 1600w" sizes="100vw" alt="" width="1600" height="907" fetchpriority="high" decoding="async" />
       </div>
@@ -591,6 +591,7 @@ export function englishPages() {
     add({
       path: `markets/${m.slug}/`, title: m.metaTitle, description: m.metaDescription,
       crumbs: [{ name: 'Markets', path: 'markets/' }, { name: m.name }], faq: m.faq,
+      ...(['uae', 'saudi-arabia'].includes(m.slug) ? { alternates: { en: `markets/${m.slug}/`, ar: `ar/markets/${m.slug}/` }, alt: `ar/markets/${m.slug}/` } : {}),
       render: (ctx) => marketMain(ctx, m),
     });
   }

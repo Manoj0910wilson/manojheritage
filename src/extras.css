@@ -373,3 +373,10 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
   .detail-strip { padding-bottom: 70px; }
 }
 @media (prefers-reduced-motion: reduce) { .ex:not(.ex-seed) img { animation: none; } .photo img { transform: scale(1.05); } }
+
+/* Arabic: gallery, stage cards, mirrored hero veil */
+.is-ar .inner-hero::after { background: linear-gradient(270deg, rgba(246,241,231,.96) 0%, rgba(246,241,231,.88) 45%, rgba(246,241,231,.4) 100%), linear-gradient(180deg, transparent 70%, rgba(246,241,231,.95)); }
+.stage-img { width: 70%; max-width: 260px; height: 130px; object-fit: contain; margin: 4px auto 14px; display: block; filter: drop-shadow(0 16px 12px rgba(45,56,25,.25)); }
+.ar-stages { background: radial-gradient(ellipse at 50% 40%, #fffdf7, var(--ivory) 70%); }
+.is-ar .info-card h3 { font-size: 26px; }
+.is-ar .photo figcaption { font-family: 'Noto Naskh Arabic', serif; font-size: 20px; }
