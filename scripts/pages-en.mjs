@@ -1,3 +1,4 @@
+import { indiaPages } from '../content/india.mjs';
 import {
   site, articles, markets, href, inline, plainText, esc, pageHero, ctaBand, faqList, stepsList, specTable,
   articleBody, enquiryForm, contactDetails, breadcrumbs, organizationLd, websiteLd, breadcrumbLd, faqLd,
@@ -33,7 +34,7 @@ function homeMain(ctx) {
         <p class="eyebrow">Premium cardamom · Idukki, Kerala</p>
         <h1 id="hero-title">Pure Cardamom.<br /><em>Rooted in Heritage.</em></h1>
         <p class="hero-lede">A bright, aromatic harvest sourced directly from the hills of Idukki and prepared for discerning kitchens around the world.</p>
-        <p class="hero-markets">Welcoming importers in the <a href="${href(ctx, 'markets/uae/')}">UAE</a>, <a href="${href(ctx, 'markets/saudi-arabia/')}">Saudi Arabia</a>, <a href="${href(ctx, 'markets/qatar/')}">Qatar</a> and across the <a href="${href(ctx, 'markets/')}">Gulf</a>.</p>
+        <p class="hero-markets">Supplying buyers across <a href="${href(ctx, 'india/')}">India</a> and importers in the <a href="${href(ctx, 'markets/uae/')}">UAE</a>, <a href="${href(ctx, 'markets/saudi-arabia/')}">Saudi Arabia</a>, <a href="${href(ctx, 'markets/qatar/')}">Qatar</a> and the <a href="${href(ctx, 'markets/')}">Gulf</a>.</p>
         <div class="hero-actions">
           <a class="solid-button" href="${href(ctx, 'products/green-cardamom/')}">Explore our cardamom <span aria-hidden="true">↗</span></a>
           <a class="text-button" href="${href(ctx, 'request-a-sample/')}"><span class="phone-dot">✦</span> Request a sample</a>
@@ -246,7 +247,7 @@ function greenMain(ctx) {
         <h2>Common uses</h2>
         <p>Arabic coffee, tea and karak, sweets and halwa, bakery and pastry, rice dishes, spice blends and beverage mixes. Read more about {link:journal/cardamom-in-arabic-coffee/|cardamom in Arabic coffee}.</p>
         <h2>Who it is for</h2>
-        <p>Importers, wholesalers, coffee and tea blenders, packers and food manufacturers, especially in the {link:markets/|Gulf}.</p>
+        <p>Wholesalers, coffee and tea blenders, packers and food manufacturers, across {link:india/|India} and in the {link:markets/|Gulf}.</p>
       </section>
     </div>
     <aside class="side-card">
@@ -346,6 +347,24 @@ function marketsIndexMain(ctx) {
     .replace(/\{link:([^|}]+)\|([^}]+)\}/g, (_, p, l) => `<a href="${href(ctx, p)}">${l}</a>`);
 }
 
+function indiaMain(ctx, d) {
+  return `
+  ${pageHero(ctx, { kicker: d.kicker, h1: d.h1, lede: d.lede, crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }] })}
+  <div class="content-wrap two-col">
+    <div>
+      <section class="prose">${d.sections.map((x) => `<h2>${esc(x.h)}</h2>${x.p.map((t) => `<p>${inline(t, ctx)}</p>`).join('')}`).join('')}</section>
+      <section><h2 class="h2-small">Questions from Indian buyers</h2>${faqList(d.faq, ctx)}</section>
+    </div>
+    <aside class="side-card">
+      <p class="eyebrow">At a glance</p>
+      ${specTable(d.glance)}
+      <a class="solid-button full" href="${href(ctx, 'request-a-sample/')}">Request a sample <span aria-hidden="true">↗</span></a>
+      <a class="outline-button full" href="${waHello}" target="_blank" rel="noopener" data-track="whatsapp">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+    </aside>
+  </div>
+  ${ctaBand(ctx, { kicker: 'India', title: 'Buying cardamom in India? Let’s talk.', text: 'Send your requirements and we will reply with options and a sample.', primary: { label: 'Request a sample', path: 'request-a-sample/' }, secondary: { label: 'Contact us', path: 'contact/' } })}`;
+}
+
 function marketMain(ctx, m) {
   const others = markets.filter((x) => x.slug !== m.slug);
   return `
@@ -430,7 +449,7 @@ function exportMain(ctx) {
 export const generalFaq = [
   { q: 'Where does your cardamom come from?', a: 'Our green cardamom comes from Idukki, Kerala, in the Western Ghats of southern India, and is sourced directly from farmers.' },
   { q: 'Which products do you supply?', a: 'Our main product is whole green cardamom. Cardamom seeds are available on enquiry. See the {link:products/|products page}.' },
-  { q: 'Which countries do you supply?', a: 'Our focus is the Gulf: the {link:markets/uae/|UAE}, {link:markets/saudi-arabia/|Saudi Arabia}, {link:markets/qatar/|Qatar}, {link:markets/kuwait/|Kuwait}, {link:markets/oman/|Oman} and {link:markets/bahrain/|Bahrain}. Buyers from other countries are welcome to enquire.' },
+  { q: 'Which countries do you supply?', a: 'India is one of our main markets (see {link:india/|buying cardamom in India}). We also supply importers in the Gulf: the {link:markets/uae/|UAE}, {link:markets/saudi-arabia/|Saudi Arabia}, {link:markets/qatar/|Qatar}, {link:markets/kuwait/|Kuwait}, {link:markets/oman/|Oman} and {link:markets/bahrain/|Bahrain}. Buyers from other countries are welcome to enquire.' },
   { q: 'Can I get a sample before ordering?', a: 'Yes. Samples are available on request. Use the {link:request-a-sample/|sample request page} and tell us your requirements and destination.' },
   { q: 'What is your minimum order quantity?', a: 'Minimum quantities depend on size, packing and shipping method and are shared on enquiry. Tell us the volume you are considering and we will respond with options.' },
   { q: 'Do you publish prices?', a: 'No. Prices depend on size, quantity, packing, destination and delivery terms, so we quote on request.' },
@@ -569,7 +588,7 @@ export function englishPages() {
   add({
     path: '',
     title: 'Heritage Spices | Premium Green Cardamom, Idukki',
-    description: 'Premium whole green cardamom from Idukki, Kerala for importers in the UAE, Saudi Arabia, Qatar and the Gulf. Farmer-direct sourcing. Request a sample.',
+    description: 'Premium whole green cardamom from Idukki, Kerala for buyers across India and importers in the UAE, Saudi Arabia and the Gulf. Request a sample.',
     bodyClass: 'is-home',
     alternates: { en: '', ar: 'ar/' }, alt: 'ar/',
     jsonld: () => [organizationLd(), websiteLd()],
@@ -586,6 +605,7 @@ export function englishPages() {
     render: greenMain,
   });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
+  for (const d of indiaPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
   add({ path: 'markets/', title: 'Markets: Cardamom for the Gulf', description: 'Heritage Spices supplies whole green cardamom to importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. Choose your market to learn more.', crumbs: [{ name: 'Markets' }], render: marketsIndexMain });
   for (const m of markets) {
     add({

@@ -30,7 +30,8 @@ export const tel = `tel:${site.phoneTel}`;
 const nav = {
   en: [
     ['Products', 'products/'],
-    ['Markets', 'markets/'],
+    ['India', 'india/'],
+    ['Gulf', 'markets/'],
     ['Export', 'export/'],
     ['About', 'about/'],
     ['Journal', 'journal/'],
@@ -108,7 +109,7 @@ function footer(ctx) {
       <div class="footer-about">
         <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/heritage-spices-logo.png')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
         <p>Pure cardamom. Rooted in heritage.</p>
-        <p class="footer-small">Premium green cardamom from Idukki, Kerala, India, for importers and food businesses in the Gulf and beyond.</p>
+        <p class="footer-small">Premium green cardamom from Idukki, Kerala, India, for buyers in India and importers in the Gulf.</p>
       </div>
       <div><h4>Products</h4>
         <a href="${href(ctx, 'products/green-cardamom/')}">Whole green cardamom</a>
@@ -116,6 +117,7 @@ function footer(ctx) {
         <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a>
       </div>
       <div><h4>Markets</h4>
+        <a href="${href(ctx, 'india/')}">India</a>
         ${markets.map((m) => `<a href="${href(ctx, `markets/${m.slug}/`)}">${m.name}</a>`).join('')}
       </div>
       <div><h4>Company</h4>
@@ -270,7 +272,7 @@ export function organizationLd() {
     url: `${site.url}/`,
     logo: absUrl('assets/heritage-spices-logo.png'),
     image: absUrl('og-image.jpg'),
-    description: 'Heritage Spices sources premium green cardamom from Idukki, Kerala, India for importers and food businesses in the Gulf and beyond.',
+    description: 'Heritage Spices sources premium green cardamom from Idukki, Kerala, India for buyers in India and importers in the Gulf.',
     email: site.email,
     telephone: site.phoneTel,
     areaServed: markets.map((m) => ({ '@type': 'Country', name: m.name })),
