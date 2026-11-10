@@ -380,3 +380,9 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .ar-stages { background: radial-gradient(ellipse at 50% 40%, #fffdf7, var(--ivory) 70%); }
 .is-ar .info-card h3 { font-size: 26px; }
 .is-ar .photo figcaption { font-family: 'Noto Naskh Arabic', serif; font-size: 20px; }
+
+/* Journal cards use real photos */
+.journal-image.has-photo::before, .journal-image.has-photo::after { display: none; }
+.journal-image.has-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--ease); }
+.journal-grid article:hover .journal-image img { transform: scale(1.04); }
+.journal-grid .journal-meta { margin-top: 20px; }

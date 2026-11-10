@@ -17,7 +17,7 @@ function homeMain(ctx) {
   const stage = (name) => href(ctx, `assets/stages/${name}`);
   const journalCards = articles.slice(0, 3).map((a, i) => `
       <article>
-        <div class="journal-image journal-image-${journalClasses[i]}"><span>${a.tag}</span></div>
+        <div class="journal-image has-photo"><img src="${img(`journal-${i + 1}.webp`)}" alt="" width="630" height="302" loading="lazy" decoding="async" /></div>
         <p class="journal-meta">${a.meta}</p>
         <h3>${a.title}</h3>
         <a href="${href(ctx, `journal/${a.slug}/`)}">Read the note <span>↗</span></a>
