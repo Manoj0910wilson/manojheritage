@@ -297,22 +297,22 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .ex img, img.ex { display: block; width: 100%; height: auto; }
 .ex:not(.ex-seed) img { filter: drop-shadow(0 26px 22px rgba(45,56,25,.28)); animation: exBob 7s ease-in-out infinite alternate; }
 @keyframes exBob { from { transform: translateY(-6px) rotate(-.6deg); } to { transform: translateY(8px) rotate(.8deg); } }
-.ex-whole { width: min(38vw, 500px); z-index: 4;
-  transform: translate3d(calc(-50% + var(--p) * -27vw), calc(-50% + var(--p) * -2vh), calc(70px - var(--p) * 70px)) rotate(calc(-6deg - var(--p) * 7deg)) rotateY(calc(var(--p) * 16deg)); }
-.ex-open { width: min(34vw, 450px); z-index: 3;
+.ex-whole { width: min(17vw, 240px); z-index: 4;
+  transform: translate3d(calc(-50% + var(--p) * -29vw), calc(-50% + var(--p) * -2vh), calc(70px - var(--p) * 70px)) rotate(calc(-6deg - var(--p) * 7deg)) rotateY(calc(var(--p) * 16deg)); }
+.ex-open { width: min(16vw, 225px); z-index: 3;
   transform: translate3d(-50%, calc(-50% + (1 - var(--p)) * 2vh), calc(-60px + var(--p) * 60px)) scale(calc(.78 + var(--p) * .22)) rotate(calc(var(--p) * -3deg));
   opacity: clamp(0, calc(var(--p) * 3.5), 1); }
-.ex-seeds { width: min(21vw, 280px); z-index: 2;
-  transform: translate3d(calc(-50% + var(--p) * 27vw), calc(-50% + var(--p) * 1vh), calc(-120px + var(--p) * 120px)) scale(calc(.5 + var(--p) * .5)) rotate(calc(var(--p) * 6deg));
+.ex-seeds { width: min(10vw, 140px); z-index: 2;
+  transform: translate3d(calc(-50% + var(--p) * 29vw), calc(-50% + var(--p) * -2vh), calc(-120px + var(--p) * 120px)) scale(calc(.5 + var(--p) * .5)) rotate(calc(var(--p) * 6deg));
   opacity: clamp(0, calc(var(--p) * 2.4 - .5), 1); }
-.ex.ex-seed { width: min(6vw, 78px); z-index: 5; opacity: clamp(0, calc((var(--p) - .45) * 2.6), 1); filter: drop-shadow(0 10px 8px rgba(45,56,25,.3)); }
-.es1 { transform: translate3d(calc(-50% + var(--p) * 19vw), calc(-50% + var(--p) * -17vh), 0) rotate(calc(var(--p) * 160deg)); }
-.es2 { transform: translate3d(calc(-50% + var(--p) * 35vw), calc(-50% + var(--p) * 15vh), 0) rotate(calc(var(--p) * -120deg)) scale(.8); }
-.es3 { transform: translate3d(calc(-50% + var(--p) * 31vw), calc(-50% + var(--p) * 9vh), 0) rotate(calc(var(--p) * 80deg)) scale(.65); }
-.ex-label { position: absolute; top: calc(50% + min(15vw, 190px)); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--leaf); background: rgba(255,252,246,.85); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; white-space: nowrap; opacity: clamp(0, calc((var(--p) - .72) * 4), 1); transform: translate3d(-50%, calc((1 - var(--p)) * 12px), 0); }
-.ex-label-whole { left: calc(50% - 27vw); }
+.ex.ex-seed { width: min(2.6vw, 38px); z-index: 5; opacity: clamp(0, calc((var(--p) - .45) * 2.6), 1); filter: drop-shadow(0 10px 8px rgba(45,56,25,.3)); }
+.es1 { transform: translate3d(calc(-50% + var(--p) * 25.5vw), calc(-50% + var(--p) * 9vh), 0) rotate(calc(var(--p) * 160deg)); }
+.es2 { transform: translate3d(calc(-50% + var(--p) * 29vw), calc(-50% + var(--p) * 12vh), 0) rotate(calc(var(--p) * -120deg)) scale(.8); }
+.es3 { transform: translate3d(calc(-50% + var(--p) * 32.5vw), calc(-50% + var(--p) * 9vh), 0) rotate(calc(var(--p) * 80deg)) scale(.65); }
+.ex-label { position: absolute; top: calc(50% + min(10vw, 140px)); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--leaf); background: rgba(255,252,246,.85); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; white-space: nowrap; opacity: clamp(0, calc((var(--p) - .72) * 4), 1); transform: translate3d(-50%, calc((1 - var(--p)) * 12px), 0); }
+.ex-label-whole { left: calc(50% - 29vw); }
 .ex-label-open { left: 50%; }
-.ex-label-seeds { left: calc(50% + 27vw); }
+.ex-label-seeds { left: calc(50% + 29vw); }
 .stage-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 20px clamp(22px, 8vw, 130px) 40px; max-width: 1500px; margin: 0 auto; }
 .stage-cards .info-card h3 { font-size: 30px; }
 .stage-cards .info-card p { font-size: 14.5px; }
@@ -358,10 +358,10 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
   .explode { padding-top: 90px; }
   .explode-track { height: 250vh; }
   .explode-stage { height: 74vh; }
-  .ex-whole { width: min(76vw, 320px); transform: translate3d(-50%, calc(-50% + var(--p) * -27vh), calc(70px - var(--p) * 70px)) rotate(calc(-6deg - var(--p) * 5deg)); }
-  .ex-open { width: min(66vw, 280px); }
-  .ex-seeds { width: min(48vw, 190px); transform: translate3d(-50%, calc(-50% + var(--p) * 27vh), calc(-120px + var(--p) * 120px)) scale(calc(.5 + var(--p) * .5)); }
-  .ex.ex-seed { width: 46px; }
+  .ex-whole { width: min(54vw, 230px); transform: translate3d(-50%, calc(-50% + var(--p) * -27vh), calc(70px - var(--p) * 70px)) rotate(calc(-6deg - var(--p) * 5deg)); }
+  .ex-open { width: min(48vw, 205px); }
+  .ex-seeds { width: min(36vw, 145px); transform: translate3d(-50%, calc(-50% + var(--p) * 27vh), calc(-120px + var(--p) * 120px)) scale(calc(.5 + var(--p) * .5)); }
+  .ex.ex-seed { width: 34px; }
   .es1 { transform: translate3d(calc(-50% + var(--p) * 28vw), calc(-50% + var(--p) * 20vh), 0) rotate(calc(var(--p) * 160deg)); }
   .es2 { transform: translate3d(calc(-50% + var(--p) * -26vw), calc(-50% + var(--p) * 30vh), 0) rotate(calc(var(--p) * -120deg)) scale(.8); }
   .es3 { transform: translate3d(calc(-50% + var(--p) * 10vw), calc(-50% + var(--p) * 33vh), 0) rotate(calc(var(--p) * 80deg)) scale(.65); }
@@ -386,3 +386,13 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .journal-image.has-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s var(--ease); }
 .journal-grid article:hover .journal-image img { transform: scale(1.04); }
 .journal-grid .journal-meta { margin-top: 20px; }
+
+/* Header turns light while it sits over a dark section */
+.site-header .brand img { transition: filter .3s ease; }
+
+/* Header items turn light when they sit over a dark section */
+.site-header .brand img, .site-header a, .site-header .icon-button, .site-header .header-cta { transition: color .25s ease, filter .25s ease, border-color .25s ease; }
+.site-header .on-dark { color: #f6f1e7 !important; }
+.site-header .outline-button.on-dark { border-color: rgba(246,241,231,.7); }
+.site-header .brand.on-dark img { mix-blend-mode: normal; filter: brightness(0) invert(1); }
+.site-header .icon-button.on-dark .search-icon, .site-header .menu-button.on-dark span { filter: brightness(0) invert(1); }

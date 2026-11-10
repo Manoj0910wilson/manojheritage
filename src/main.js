@@ -146,7 +146,24 @@ document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
 });
 
 /* ---------- Header state + home-page scroll motion ---------- */
-const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+const DARK = '.photo, .range-card-photo, .contact-section, .cta-band, .site-footer, [data-dark]';
+const headerItems = header ? [...header.querySelectorAll('.brand, .desktop-nav a, .header-actions > a, .header-actions > button')] : [];
+let darkFrame = 0;
+const paintHeader = () => {
+  darkFrame = 0;
+  const menuOpen = Boolean(mobileMenu?.classList.contains('is-open'));
+  headerItems.forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (!r.width) return;
+    const hit = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2)
+      .find((n) => !header.contains(n) && !n.classList?.contains('float-pod') && n.closest(DARK));
+    el.classList.toggle('on-dark', Boolean(hit) && !menuOpen);
+  });
+};
+const onScroll = () => {
+  header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  if (!darkFrame) darkFrame = requestAnimationFrame(paintHeader);
+};
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 if (body.classList.contains('is-home')) {
