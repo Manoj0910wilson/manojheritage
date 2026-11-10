@@ -275,11 +275,11 @@ export function organizationLd() {
     description: 'Heritage Spices sources premium green cardamom from Idukki, Kerala, India for buyers in India and importers in the Gulf.',
     email: site.email,
     telephone: site.phoneTel,
-    areaServed: markets.map((m) => ({ '@type': 'Country', name: m.name })),
+    areaServed: [{ '@type': 'Country', name: 'India' }, ...markets.map((m) => ({ '@type': 'Country', name: m.name }))],
     knowsAbout: ['Green cardamom', 'Cardamom export', 'Idukki cardamom', 'Spices'],
     contactPoint: [{
       '@type': 'ContactPoint', contactType: 'sales', email: site.email, telephone: site.phoneTel,
-      availableLanguage: ['English', 'Arabic'], areaServed: ['AE', 'SA', 'QA', 'KW', 'OM', 'BH'],
+      availableLanguage: ['English', 'Arabic'], areaServed: ['IN', 'AE', 'SA', 'QA', 'KW', 'OM', 'BH'],
     }],
     ...(site.social.length ? { sameAs: site.social.map((s) => s.url) } : {}),
   };
@@ -303,6 +303,9 @@ export function layout(ctx, page, mainHtml) {
   const title = page.title.includes(site.name) ? page.title : `${page.title} | ${site.name}`;
   const canonical = absUrl(ctx.path);
   const desc = esc(page.description);
+  const keywords = page.keywords?.length ? `<meta name="keywords" content="${esc(page.keywords.join(', '))}" />` : '';
+  const region = page.geo?.region ? `<meta name="geo.region" content="${esc(page.geo.region)}" />` : '';
+  const placename = page.geo?.placename ? `<meta name="geo.placename" content="${esc(page.geo.placename)}" />` : '';
   const isAr = ctx.lang === 'ar';
   const fonts = isAr
     ? 'family=Noto+Naskh+Arabic:wght@500;600;700&family=Tajawal:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=DM+Sans:wght@400;500;600;700'
@@ -318,6 +321,8 @@ export function layout(ctx, page, mainHtml) {
     : '';
   const gsc = site.searchConsoleVerification ? `<meta name="google-site-verification" content="${esc(site.searchConsoleVerification)}" />` : '';
   const ogImage = absUrl('og-image.jpg');
+  const locale = page.locale || (isAr ? 'ar_AE' : 'en_IN');
+  const alternateLocales = page.alternateLocales || (isAr ? ['en_IN'] : []);
   return `<!doctype html>
 <html lang="${ctx.lang}" dir="${ctx.dir}">
   <head>
@@ -325,7 +330,10 @@ export function layout(ctx, page, mainHtml) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${esc(title)}</title>
     <meta name="description" content="${desc}" />
+    ${keywords}
+    <meta name="author" content="${site.name}" />
     <meta name="robots" content="${page.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
+    ${region}${placename}
     <link rel="canonical" href="${canonical}" />
     ${alternates}
     <meta name="theme-color" content="#f6f1e7" />
@@ -337,11 +345,14 @@ export function layout(ctx, page, mainHtml) {
     <meta property="og:image" content="${ogImage}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="${isAr ? 'ar_AE' : 'en_IN'}" />
+    <meta property="og:locale" content="${locale}" />
+    ${alternateLocales.map((value) => `<meta property="og:locale:alternate" content="${esc(value)}" />`).join('\n    ')}
+    <meta property="og:image:alt" content="${esc(page.imageAlt || 'Heritage Spices green cardamom from Idukki, Kerala')}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(title)}" />
     <meta name="twitter:description" content="${desc}" />
     <meta name="twitter:image" content="${ogImage}" />
+    <meta name="twitter:image:alt" content="${esc(page.imageAlt || 'Heritage Spices green cardamom from Idukki, Kerala')}" />
     ${gsc}
     <link rel="icon" type="image/png" href="${href(ctx, 'favicon.png')}" />
     <link rel="apple-touch-icon" href="${href(ctx, 'apple-touch-icon.png')}" />

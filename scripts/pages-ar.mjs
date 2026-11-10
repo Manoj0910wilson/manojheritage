@@ -229,7 +229,7 @@ export function arabicPages() {
     const a = marketsAr[m.slug];
     pages.push({
       lang: 'ar', path: `ar/markets/${m.slug}/`,
-      title: a.metaTitle, description: a.metaDescription,
+      title: a.metaTitle, description: a.metaDescription, keywords: a.keywords, geo: a.geo, locale: a.locale || 'ar_AE',
       bodyClass: 'on-page is-ar',
       alternates: { en: `markets/${m.slug}/`, ar: `ar/markets/${m.slug}/` }, alt: `markets/${m.slug}/`,
       crumbs: [{ name: m.ar }], faq: a.faq,

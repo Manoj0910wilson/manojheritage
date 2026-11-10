@@ -605,11 +605,11 @@ export function englishPages() {
     render: greenMain,
   });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
-  for (const d of indiaPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
+  for (const d of indiaPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, keywords: d.keywords, geo: d.geo, locale: 'en_IN', crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
   add({ path: 'markets/', title: 'Markets: Cardamom for the Gulf', description: 'Heritage Spices supplies whole green cardamom to importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. Choose your market to learn more.', crumbs: [{ name: 'Markets' }], render: marketsIndexMain });
   for (const m of markets) {
     add({
-      path: `markets/${m.slug}/`, title: m.metaTitle, description: m.metaDescription,
+      path: `markets/${m.slug}/`, title: m.metaTitle, description: m.metaDescription, keywords: m.keywords, geo: m.geo, locale: m.locale,
       crumbs: [{ name: 'Markets', path: 'markets/' }, { name: m.name }], faq: m.faq,
       ...(['uae', 'saudi-arabia'].includes(m.slug) ? { alternates: { en: `markets/${m.slug}/`, ar: `ar/markets/${m.slug}/` }, alt: `ar/markets/${m.slug}/` } : {}),
       render: (ctx) => marketMain(ctx, m),
