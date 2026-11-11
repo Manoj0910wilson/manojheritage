@@ -1,3 +1,4 @@
+import { marketsAr } from '../content/markets-ar.mjs';
 import { indiaPages } from '../content/india.mjs';
 import {
   site, articles, markets, href, inline, plainText, esc, pageHero, ctaBand, faqList, stepsList, specTable,
@@ -611,7 +612,7 @@ export function englishPages() {
     add({
       path: `markets/${m.slug}/`, title: m.metaTitle, description: m.metaDescription, keywords: m.keywords, geo: m.geo, locale: m.locale,
       crumbs: [{ name: 'Markets', path: 'markets/' }, { name: m.name }], faq: m.faq,
-      ...(['uae', 'saudi-arabia'].includes(m.slug) ? { alternates: { en: `markets/${m.slug}/`, ar: `ar/markets/${m.slug}/` }, alt: `ar/markets/${m.slug}/` } : {}),
+      ...(Object.hasOwn(marketsAr, m.slug) ? { alternates: { en: `markets/${m.slug}/`, ar: `ar/markets/${m.slug}/` }, alt: `ar/markets/${m.slug}/` } : {}),
       render: (ctx) => marketMain(ctx, m),
     });
   }
