@@ -20,7 +20,7 @@ export const indiaPages = [
         'Elaichi is part of daily life here: in chai, in biryani and pulao, in kheer, halwa and festival sweets. These uses reward a fresh, sweet and strongly aromatic pod, which is the character we select for.' ] },
       { h: 'How ordering works within India', p: [
         'Tell us the size or grade you need, your quantity and your city. We reply with options, a sample and a quotation. Goods move by road, rail or courier depending on the quantity and your location, and we confirm packing and billing details with you for each order.',
-        'Regular buyers can discuss repeat supply so that stock is planned ahead of festivals and wedding seasons, when demand rises. Read our {link:products/green-cardamom/|green cardamom specification page} for what to ask us.' ] },
+        'Regular buyers can discuss repeat supply so that stock is planned ahead of festivals and wedding seasons, when demand rises. Read our {link:products/green-cardamom/|green cardamom specification page} for what to ask us, and our guide on {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|how to buy green cardamom in bulk}.' ] },
       { h: 'Looking at export too?', p: [
         'The same cardamom is available to importers abroad. See our pages for the {link:markets/uae/|UAE}, {link:markets/saudi-arabia/|Saudi Arabia} and the wider {link:markets/|Gulf}.' ] },
     ],
@@ -46,7 +46,7 @@ export const indiaPages = [
     sections: [
       { h: 'What to tell us in your first message', p: [
         'The fastest route to a useful quotation is a short message covering the size or grade you want, the monthly or one-time quantity, your delivery city, and whether you pack under your own brand.',
-        'Send it through the {link:request-a-sample/|sample request page} or on WhatsApp and we will respond with options.' ] },
+        'Send it through the {link:request-a-sample/|sample request page} or on WhatsApp and we will respond with options. Our {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|bulk buying checklist} explains what to check before you order.' ] },
       { h: 'Grades, colour and size', p: [
         'Buyers usually judge cardamom on pod size, green colour, aroma and the share of broken or faded pods. We select for bright, aromatic pods and confirm the grade and size available on enquiry rather than promising what we cannot document.' ] },
       { h: 'Repeat supply and planning', p: [
