@@ -15,7 +15,7 @@ export const site = {
   whatsapp: '918939535151', // country code + number, no "+" or spaces
 
   // Add real profiles when you have them, e.g. { label: 'Instagram', url: 'https://instagram.com/yourhandle' }
-  social: [],
+  social: [{ label: 'Instagram', url: 'https://www.instagram.com/heri.tagespice/' }],
 
   // Paste your Google Analytics 4 measurement ID here (looks like G-XXXXXXXXXX) to start tracking visits.
   analyticsId: '',
