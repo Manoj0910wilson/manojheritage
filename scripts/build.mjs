@@ -42,11 +42,14 @@ const articleLd = (ctx, a) => ({
   author: { '@type': 'Organization', name: site.name, url: `${site.url}/` },
   publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: absUrl('assets/heritage-spices-logo.png') } },
 });
+// No Product markup on purpose: Google requires a price, review or rating for Product rich results,
+// and we do not publish prices or reviews. WebPage + about keeps the entity information without that claim.
+// Switch back to Product (with real offers) once prices and genuine reviews exist.
 const productLd = (ctx, p) => ({
-  '@context': 'https://schema.org', '@type': 'Product',
-  name: p.name, description: p.description, category: p.category,
-  image: absUrl('og-image.jpg'), brand: { '@type': 'Brand', name: site.name },
-  countryOfOrigin: { '@type': 'Country', name: 'India' },
+  '@context': 'https://schema.org', '@type': 'WebPage',
+  name: p.name, url: absUrl(ctx.path), image: absUrl('og-image.jpg'),
+  about: { '@type': 'Thing', name: p.name, description: p.description },
+  isPartOf: { '@type': 'WebSite', name: site.name, url: `${site.url}/` },
 });
 
 for (const page of pages) {
