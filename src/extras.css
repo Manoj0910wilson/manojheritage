@@ -405,3 +405,5 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .footer-social .social-icon { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid currentColor; border-radius: 50%; opacity: .85; transition: opacity .2s ease, transform .2s ease, color .2s ease; }
 .footer-social .social-icon svg { width: 18px; height: 18px; }
 .footer-social .social-icon:hover { opacity: 1; transform: translateY(-2px); color: var(--gold-light); }
+
+.site-footer.v2 .footer-sub { margin-top: 22px; }

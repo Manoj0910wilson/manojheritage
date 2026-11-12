@@ -124,6 +124,12 @@ function footer(ctx) {
         <a href="${href(ctx, 'products/green-cardamom/')}">Whole green cardamom</a>
         <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a>
         <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a>
+      
+        <h4 class="footer-sub">Buyer guides</h4>
+        <a href="${href(ctx, 'journal/how-to-buy-green-cardamom-in-bulk-in-india/')}">Buy cardamom in bulk</a>
+        <a href="${href(ctx, 'journal/indian-cardamom-grades-agb-ageb-explained/')}">Cardamom grades</a>
+        <a href="${href(ctx, 'journal/green-vs-black-cardamom-differences/')}">Green vs black</a>
+        <a href="${href(ctx, 'journal/how-to-store-green-cardamom-keep-aroma/')}">Storing cardamom</a>
       </div>
       <div><h4>Markets</h4>
         <a href="${href(ctx, 'india/')}">India</a>

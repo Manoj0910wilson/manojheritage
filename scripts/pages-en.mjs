@@ -547,7 +547,9 @@ function journalIndexMain(ctx) {
 }
 
 function articleMain(ctx, a) {
-  const related = articles.filter((x) => x.slug !== a.slug).slice(0, 3);
+  const related = articles.filter((x) => x.slug !== a.slug)
+    .map((x, i) => ({ x, score: (x.tag === a.tag ? 10 : 0) + i }))
+    .sort((m, n) => n.score - m.score).map((m) => m.x).slice(0, 3);
   return `
   <article>
   ${pageHero(ctx, {

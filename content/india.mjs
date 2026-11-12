@@ -21,6 +21,8 @@ export const indiaPages = [
       { h: 'How ordering works within India', p: [
         'Tell us the size or grade you need, your quantity and your city. We reply with options, a sample and a quotation. Goods move by road, rail or courier depending on the quantity and your location, and we confirm packing and billing details with you for each order.',
         'Regular buyers can discuss repeat supply so that stock is planned ahead of festivals and wedding seasons, when demand rises. Read our {link:products/green-cardamom/|green cardamom specification page} for what to ask us, and our guide on {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|how to buy green cardamom in bulk}.' ] },
+      { h: 'Buyer guides', p: [
+        'New to buying elaichi in bulk? Start with our guides on {link:journal/indian-cardamom-grades-agb-ageb-explained/|cardamom grades}, {link:journal/green-vs-black-cardamom-differences/|green vs black cardamom} and {link:journal/how-to-store-green-cardamom-keep-aroma/|storage}.' ] },
       { h: 'Looking at export too?', p: [
         'The same cardamom is available to importers abroad. See our pages for the {link:markets/uae/|UAE}, {link:markets/saudi-arabia/|Saudi Arabia} and the wider {link:markets/|Gulf}.' ] },
     ],
@@ -49,6 +51,8 @@ export const indiaPages = [
         'Send it through the {link:request-a-sample/|sample request page} or on WhatsApp and we will respond with options. Our {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|bulk buying checklist} explains what to check before you order.' ] },
       { h: 'Grades, colour and size', p: [
         'Buyers usually judge cardamom on pod size, green colour, aroma and the share of broken or faded pods. We select for bright, aromatic pods and confirm the grade and size available on enquiry rather than promising what we cannot document.' ] },
+      { h: 'Guides for buyers', p: [
+        'Before you order, read how to {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|buy green cardamom in bulk}, how {link:journal/indian-cardamom-grades-agb-ageb-explained/|Indian cardamom grades (AGEB, AGB, AGS)} work, and how to {link:journal/how-to-store-green-cardamom-keep-aroma/|store cardamom} so it keeps its aroma.' ] },
       { h: 'Repeat supply and planning', p: [
         'If you buy every month, tell us. Agreeing quantities in advance helps us plan sourcing from Idukki, especially ahead of the festival and wedding seasons.' ] },
     ],
