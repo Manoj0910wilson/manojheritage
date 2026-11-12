@@ -396,3 +396,12 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .site-header .outline-button.on-dark { border-color: rgba(246,241,231,.7); }
 .site-header .brand.on-dark img { mix-blend-mode: normal; filter: brightness(0) invert(1); }
 .site-header .icon-button.on-dark .search-icon, .site-header .menu-button.on-dark span { filter: brightness(0) invert(1); }
+
+/* Footer social icons */
+.footer-social { align-items: center; flex-wrap: wrap; gap: 14px 18px; }
+.footer-social-title { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; opacity: .75; }
+.is-ar .footer-social-title { letter-spacing: 0; text-transform: none; font-size: 13px; }
+.footer-social-links { display: inline-flex; gap: 10px; }
+.footer-social .social-icon { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid currentColor; border-radius: 50%; opacity: .85; transition: opacity .2s ease, transform .2s ease, color .2s ease; }
+.footer-social .social-icon svg { width: 18px; height: 18px; }
+.footer-social .social-icon:hover { opacity: 1; transform: translateY(-2px); color: var(--gold-light); }
