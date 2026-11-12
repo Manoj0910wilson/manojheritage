@@ -18,7 +18,7 @@ export const site = {
   social: [{ label: 'Instagram', url: 'https://www.instagram.com/heri.tagespice/' }],
 
   // Paste your Google Analytics 4 measurement ID here (looks like G-XXXXXXXXXX) to start tracking visits.
-  analyticsId: 'G-7X6CN8SRDV',
+  analyticsId: 'G-WEL55YYFTG',
   // Paste the token from Google Search Console's "HTML tag" verification method (just the content value).
   searchConsoleVerification: '',
 
