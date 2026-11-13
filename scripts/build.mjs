@@ -92,6 +92,9 @@ const urlEntry = (p) => {
   return `<url><loc>${absUrl(p.path)}</loc><lastmod>${site.published}</lastmod><priority>${priority}</priority>${alts}</url>`;
 };
 await writeFile(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${sitemap.map(urlEntry).join('\n')}\n</urlset>\n`);
+// Backup sitemaps: no hreflang extensions (some crawlers fetch the plain format more reliably)
+await writeFile(`${OUT}/sitemap-simple.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map((p) => `<url><loc>${absUrl(p.path)}</loc><lastmod>${site.published}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+await writeFile(`${OUT}/sitemap.txt`, `${sitemap.map((p) => absUrl(p.path)).join('\n')}\n`);
 await writeFile(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 await writeFile(`${OUT}/search-index.json`, JSON.stringify(searchIndex));
 if (!existsSync(`${OUT}/.nojekyll`)) await writeFile(`${OUT}/.nojekyll`, '');
