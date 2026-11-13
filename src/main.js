@@ -51,12 +51,14 @@ if (searchPanel) {
     return indexPromise;
   };
   const open = () => {
+    searchPanel.removeAttribute('inert');
     searchPanel.classList.add('is-open');
     searchPanel.setAttribute('aria-hidden', 'false');
     loadIndex();
     setTimeout(() => searchInput.focus(), 100);
   };
   const close = () => {
+    searchPanel.setAttribute('inert', '');
     searchPanel.classList.remove('is-open');
     searchPanel.setAttribute('aria-hidden', 'true');
   };

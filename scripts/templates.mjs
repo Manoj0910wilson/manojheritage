@@ -65,7 +65,7 @@ function header(ctx, page) {
   <a class="skip-link" href="#main">${isAr ? 'تخطَّ إلى المحتوى' : 'Skip to content'}</a>
   <header class="site-header" data-header>
     <a class="brand" href="${href(ctx, isAr ? 'ar/' : '')}" aria-label="Heritage Spices home">
-      <img src="${href(ctx, 'assets/heritage-spices-logo.png')}" alt="Heritage Spices" width="164" height="109" />
+      <img src="${href(ctx, 'assets/heritage-spices-logo.webp')}" alt="Heritage Spices" width="164" height="109" />
     </a>
     <nav class="desktop-nav" aria-label="${isAr ? 'التنقل الرئيسي' : 'Primary navigation'}">${links}</nav>
     <div class="header-actions">
@@ -102,11 +102,11 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/heritage-spices-logo.png')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/heritage-spices-logo.webp')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
         <p>هيل نقي. جذوره في التراث.</p>
       </div>
-      <div><h4>روابط</h4><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
-      <div><h4>تواصل معنا</h4><a href="mailto:${site.email}">${site.email}</a><a href="${tel}" dir="ltr">${site.phoneDisplay}</a><a href="${waHelloAr}" target="_blank" rel="noopener">واتساب</a></div>
+      <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
+      <div><h3>تواصل معنا</h3><a href="mailto:${site.email}">${site.email}</a><a href="${tel}" dir="ltr">${site.phoneDisplay}</a><a href="${waHelloAr}" target="_blank" rel="noopener">واتساب</a></div>
     </div>
     ${social}
     <div class="footer-bottom"><span>© ${year} Heritage Spices</span></div>
@@ -116,26 +116,26 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/heritage-spices-logo.png')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/heritage-spices-logo.webp')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
         <p>Pure cardamom. Rooted in heritage.</p>
         <p class="footer-small">Premium green cardamom from Idukki, Kerala, India, for buyers in India and importers in the Gulf.</p>
       </div>
-      <div><h4>Products</h4>
+      <div><h3>Products</h3>
         <a href="${href(ctx, 'products/green-cardamom/')}">Whole green cardamom</a>
         <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a>
         <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a>
       
-        <h4 class="footer-sub">Buyer guides</h4>
+        <h3 class="footer-sub">Buyer guides</h3>
         <a href="${href(ctx, 'journal/how-to-buy-green-cardamom-in-bulk-in-india/')}">Buy cardamom in bulk</a>
         <a href="${href(ctx, 'journal/indian-cardamom-grades-agb-ageb-explained/')}">Cardamom grades</a>
         <a href="${href(ctx, 'journal/green-vs-black-cardamom-differences/')}">Green vs black</a>
         <a href="${href(ctx, 'journal/how-to-store-green-cardamom-keep-aroma/')}">Storing cardamom</a>
       </div>
-      <div><h4>Markets</h4>
+      <div><h3>Markets</h3>
         <a href="${href(ctx, 'india/')}">India</a>
         ${markets.map((m) => `<a href="${href(ctx, `markets/${m.slug}/`)}">${m.name}</a>`).join('')}
       </div>
-      <div><h4>Company</h4>
+      <div><h3>Company</h3>
         <a href="${href(ctx, 'about/')}">About us</a>
         <a href="${href(ctx, 'export/')}">Export process</a>
         <a href="${href(ctx, 'faq/')}">FAQ</a>
@@ -143,7 +143,7 @@ function footer(ctx) {
         <a href="${href(ctx, 'contact/')}">Contact</a>
         <a href="${href(ctx, 'ar/')}" hreflang="ar" lang="ar">العربية</a>
       </div>
-      <div><h4>Get in touch</h4>
+      <div><h3>Get in touch</h3>
         <a href="mailto:${site.email}">${site.email}</a>
         <a href="${tel}">${site.phoneDisplay}</a>
         <a href="${waHello}" target="_blank" rel="noopener">WhatsApp</a>
@@ -165,7 +165,7 @@ function floatingWhatsApp(ctx) {
 
 function searchPanel() {
   return `
-  <div class="search-panel" data-search-panel aria-hidden="true">
+  <div class="search-panel" data-search-panel aria-hidden="true" inert>
     <button data-close-search aria-label="Close search">×</button>
     <p class="eyebrow">Search Heritage Spices</p>
     <input type="search" placeholder="Try “Dubai”, “sizes”, or “export”" data-search-input autocomplete="off" aria-label="Search the site" />
@@ -373,8 +373,11 @@ export function layout(ctx, page, mainHtml) {
     <link rel="apple-touch-icon" href="${href(ctx, 'apple-touch-icon.png')}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?${fonts}&display=swap" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?${fonts}&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><style>.hero-stage .pod-image{opacity:1!important}</style></noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?${fonts}&display=swap" /></noscript>
     ${page.preload ? `<link rel="preload" as="image" href="${href(ctx, page.preload)}" type="image/webp" />` : ''}
+    ${page.bodyClass && page.bodyClass.includes('is-home') ? '' : `<link rel="preload" as="image" href="${href(ctx, 'assets/img/hills-900.webp')}" media="(max-width: 900px)" fetchpriority="high" />\n    <link rel="preload" as="image" href="${href(ctx, 'assets/img/hills-1600.webp')}" media="(min-width: 901px)" fetchpriority="high" />`}
     <link rel="stylesheet" href="${href(ctx, 'assets/site.css')}?v=${ctx.version}" />
     ${ld}
     ${analytics}

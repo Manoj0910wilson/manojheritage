@@ -11,7 +11,7 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
 /* ---------------- Floating pod ---------------- */
 export function initFloatingPod() {
   const canvas = document.querySelector('[data-float-pod]');
-  if (!canvas || reduced()) return;
+  if (!canvas || reduced()) { document.body.classList.add('static-pod'); return; }
   const ctx2d = canvas.getContext('2d');
   const base = canvas.dataset.frames;
   const count = Number(canvas.dataset.count) || 1;

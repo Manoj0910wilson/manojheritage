@@ -8,6 +8,8 @@
   --sage: #dbe4d2;
   --gold: #ba8c2b;
   --gold-light: #d6b85b;
+  --gold-text: #7f5d0e;
+  --gold-em: #a1781a;
   --ink: #132119;
   --muted: #667067;
   --line: rgba(23, 60, 43, .16);
@@ -49,7 +51,7 @@ button, input { font: inherit; }
 .eyebrow, .section-kicker, .journal-meta { text-transform: uppercase; letter-spacing: .24em; font-size: 10px; color: var(--gold); font-weight: 600; margin: 0; }
 .hero h1, h2 { margin: 14px 0 20px; font-family: var(--serif); font-weight: 500; line-height: .92; letter-spacing: -.035em; }
 .hero h1 { font-size: clamp(62px, 8vw, 122px); color: var(--leaf); }
-h1 em, h2 em { color: var(--gold); font-style: italic; font-weight: 400; }
+h1 em, h2 em { color: var(--gold-em); font-style: italic; font-weight: 400; }
 .hero-lede { max-width: 520px; font-size: 17px; color: #59645b; line-height: 1.7; margin: 24px 0 30px; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; }
 .text-button { color: var(--leaf); font-size: 12px; display: inline-flex; gap: 9px; align-items: center; }
