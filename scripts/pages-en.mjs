@@ -228,6 +228,9 @@ export const greenFaq = [
   { q: 'What size is your green cardamom?', a: 'Size is specified in millimetres to suit your requirement, for example 6 mm, 7 mm or 8 mm and above, subject to availability. Tell us the size you need and we will confirm what is currently available and send a sample.' },
   { q: 'What is the minimum order quantity?', a: 'Minimum quantities are shared on enquiry because they depend on size, packing and shipping method. Send us your expected volume and we will respond with options.' },
   { q: 'How should whole green cardamom be stored?', a: 'Keep it sealed, in a cool, dry place away from direct sunlight and strong odours. Stored this way, whole pods keep their aroma far better than ground cardamom.' },
+  { q: 'Is green cardamom the same as black cardamom?', a: 'No. They are different spices. Green cardamom is small, sweet and floral and is used in tea, coffee and sweets. Black cardamom is larger, smoky and used mainly in savoury cooking.' },
+  { q: 'Which countries do you supply?', a: 'We supply buyers across India and importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.' },
+  { q: 'Can I get a sample before ordering?', a: 'Yes. Send your requirements on the sample request page and we will explain how a sample can reach you.' },
   { q: 'Do you quote prices on the website?', a: 'No. Prices depend on size, quantity, packing, destination and delivery terms, so we quote on request.' },
 ];
 
@@ -247,6 +250,10 @@ function greenMain(ctx) {
         <p>Buying whole pods keeps the aroma protected until you are ready to use it, and it lets you inspect size, colour and cleanliness yourself, which is why many Gulf importers and coffee blenders prefer them.</p>
         <h2>Common uses</h2>
         <p>Arabic coffee, tea and karak, sweets and halwa, bakery and pastry, rice dishes, spice blends and beverage mixes. Read more about {link:journal/cardamom-in-arabic-coffee/|cardamom in Arabic coffee}.</p>
+        <h2>Also known as</h2>
+        <p>Green cardamom is called elaichi in Hindi, elakkai in Tamil, elakka in Malayalam and هيل (hayl) in Arabic. It is sometimes called the “queen of spices”.</p>
+        <h2>How to choose and buy</h2>
+        <p>Pod size, colour and aroma decide quality. Read how {link:journal/indian-cardamom-grades-agb-ageb-explained/|Indian cardamom grades (AGEB, AGB, AGS)} work, the differences between {link:journal/green-vs-black-cardamom-differences/|green and black cardamom}, our {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|bulk buying checklist}, and how to {link:journal/how-to-store-green-cardamom-keep-aroma/|store cardamom} so it keeps its aroma.</p>
         <h2>Who it is for</h2>
         <p>Wholesalers, coffee and tea blenders, packers and food manufacturers, across {link:india/|India} and in the {link:markets/|Gulf}.</p>
       </section>
@@ -590,7 +597,7 @@ export function englishPages() {
 
   add({
     path: '',
-    title: 'Heritage Spices | Premium Green Cardamom, Idukki',
+    title: 'Heritage Spices | Green Cardamom (Elaichi) Supplier, Idukki',
     description: 'Premium whole green cardamom from Idukki, Kerala for buyers across India and importers in the UAE, Saudi Arabia and the Gulf. Request a sample.',
     bodyClass: 'is-home',
     alternates: { en: '', ar: 'ar/' }, alt: 'ar/',
@@ -600,8 +607,8 @@ export function englishPages() {
   add({ path: 'about/', title: 'About Us', description: 'Heritage Spices sources premium green cardamom directly from farmers in Idukki, Kerala. Learn about our story, our values and how we work with importers.', crumbs: [{ name: 'About' }], render: aboutMain });
   add({ path: 'products/', title: 'Products', description: 'Whole green cardamom and cardamom seeds from Idukki, Kerala, selected for a clean aroma and prepared for export. View specifications and request a sample.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
   add({
-    path: 'products/green-cardamom/', title: 'Whole Green Cardamom from Idukki, Kerala',
-    description: 'Whole green cardamom from Idukki, Kerala: specification, uses, packing and FAQs for importers and food businesses. Request a sample from Heritage Spices.',
+    path: 'products/green-cardamom/', title: 'Green Cardamom (Elaichi) from Idukki, Kerala',
+    description: 'Whole green cardamom (elaichi) from Idukki, Kerala for buyers in India and the Gulf: specification, uses, packing and FAQs. Request a sample.',
     alternates: { en: 'products/green-cardamom/', ar: 'ar/green-cardamom/' }, alt: 'ar/green-cardamom/',
     crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Whole green cardamom' }], faq: greenFaq,
     product: { name: 'Whole green cardamom', description: 'Whole dried green cardamom pods (Elettaria cardamomum) from Idukki, Kerala, India, selected for colour and aroma and prepared for export.', category: 'Spices' },
