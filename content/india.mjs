@@ -22,7 +22,7 @@ export const indiaPages = [
         'Tell us the size or grade you need, your quantity and your city. We reply with options, a sample and a quotation. Goods move by road, rail or courier depending on the quantity and your location, and we confirm packing and billing details with you for each order.',
         'Regular buyers can discuss repeat supply so that stock is planned ahead of festivals and wedding seasons, when demand rises. Read our {link:products/green-cardamom/|green cardamom specification page} for what to ask us, and our guide on {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|how to buy green cardamom in bulk}.' ] },
       { h: 'Buyer guides', p: [
-        'New to buying elaichi in bulk? Start with our guides on {link:journal/indian-cardamom-grades-agb-ageb-explained/|cardamom grades}, {link:journal/green-vs-black-cardamom-differences/|green vs black cardamom} and {link:journal/how-to-store-green-cardamom-keep-aroma/|storage}.' ] },
+        'New to buying elaichi in bulk? Start with our {link:green-cardamom-guide/|complete green cardamom guide}, then read about {link:journal/indian-cardamom-grades-agb-ageb-explained/|cardamom grades}, {link:journal/green-vs-black-cardamom-differences/|green vs black cardamom} and {link:journal/how-to-store-green-cardamom-keep-aroma/|storage}.' ] },
       { h: 'Looking at export too?', p: [
         'The same cardamom is available to importers abroad. See our pages for the {link:markets/uae/|UAE}, {link:markets/saudi-arabia/|Saudi Arabia} and the wider {link:markets/|Gulf}.' ] },
     ],

@@ -1,4 +1,5 @@
 import { marketsAr } from '../content/markets-ar.mjs';
+import { guidePage } from '../content/guide.mjs';
 import { indiaPages } from '../content/india.mjs';
 import {
   site, articles, markets, href, inline, plainText, esc, pageHero, ctaBand, faqList, stepsList, specTable,
@@ -253,7 +254,7 @@ function greenMain(ctx) {
         <h2>Also known as</h2>
         <p>Green cardamom is called elaichi in Hindi, elakkai in Tamil, elakka in Malayalam and هيل (hayl) in Arabic. It is sometimes called the “queen of spices”.</p>
         <h2>How to choose and buy</h2>
-        <p>Pod size, colour and aroma decide quality. Read how {link:journal/indian-cardamom-grades-agb-ageb-explained/|Indian cardamom grades (AGEB, AGB, AGS)} work, the differences between {link:journal/green-vs-black-cardamom-differences/|green and black cardamom}, our {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|bulk buying checklist}, and how to {link:journal/how-to-store-green-cardamom-keep-aroma/|store cardamom} so it keeps its aroma.</p>
+        <p>Pod size, colour and aroma decide quality. Start with our {link:green-cardamom-guide/|complete green cardamom guide}, then read how {link:journal/indian-cardamom-grades-agb-ageb-explained/|Indian cardamom grades (AGEB, AGB, AGS)} work, the differences between {link:journal/green-vs-black-cardamom-differences/|green and black cardamom}, our {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|bulk buying checklist}, and how to {link:journal/how-to-store-green-cardamom-keep-aroma/|store cardamom} so it keeps its aroma.</p>
         <h2>Who it is for</h2>
         <p>Wholesalers, coffee and tea blenders, packers and food manufacturers, across {link:india/|India} and in the {link:markets/|Gulf}.</p>
       </section>
@@ -357,11 +358,11 @@ function marketsIndexMain(ctx) {
 
 function indiaMain(ctx, d) {
   return `
-  ${pageHero(ctx, { kicker: d.kicker, h1: d.h1, lede: d.lede, crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }] })}
+  ${pageHero(ctx, { kicker: d.kicker, h1: d.h1, lede: d.lede, crumbs: d.crumbs || (d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }]) })}
   <div class="content-wrap two-col">
     <div>
       <section class="prose">${d.sections.map((x) => `<h2>${esc(x.h)}</h2>${x.p.map((t) => `<p>${inline(t, ctx)}</p>`).join('')}`).join('')}</section>
-      <section><h2 class="h2-small">Questions from Indian buyers</h2>${faqList(d.faq, ctx)}</section>
+      <section><h2 class="h2-small">${esc(d.faqTitle || 'Questions from Indian buyers')}</h2>${faqList(d.faq, ctx)}</section>
     </div>
     <aside class="side-card">
       <p class="eyebrow">At a glance</p>
@@ -370,7 +371,7 @@ function indiaMain(ctx, d) {
       <a class="outline-button full" href="${waHello}" target="_blank" rel="noopener" data-track="whatsapp">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
     </aside>
   </div>
-  ${ctaBand(ctx, { kicker: 'India', title: 'Buying cardamom in India? Let’s talk.', text: 'Send your requirements and we will reply with options and a sample.', primary: { label: 'Request a sample', path: 'request-a-sample/' }, secondary: { label: 'Contact us', path: 'contact/' } })}`;
+  ${ctaBand(ctx, { kicker: d.cta?.kicker || 'India', title: d.cta?.title || 'Buying cardamom in India? Let’s talk.', text: d.cta?.text || 'Send your requirements and we will reply with options and a sample.', primary: { label: 'Request a sample', path: 'request-a-sample/' }, secondary: { label: 'Contact us', path: 'contact/' } })}`;
 }
 
 function marketMain(ctx, m) {
@@ -615,6 +616,7 @@ export function englishPages() {
     render: greenMain,
   });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
+  { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }
   for (const d of indiaPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, keywords: d.keywords, geo: d.geo, locale: 'en_IN', crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
   add({ path: 'markets/', title: 'Markets: Cardamom for the Gulf', description: 'Heritage Spices supplies whole green cardamom to importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. Choose your market to learn more.', crumbs: [{ name: 'Markets' }], render: marketsIndexMain });
   for (const m of markets) {

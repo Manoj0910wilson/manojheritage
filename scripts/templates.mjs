@@ -126,6 +126,7 @@ function footer(ctx) {
         <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a>
       
         <h3 class="footer-sub">Buyer guides</h3>
+        <a href="${href(ctx, 'green-cardamom-guide/')}">Complete cardamom guide</a>
         <a href="${href(ctx, 'journal/how-to-buy-green-cardamom-in-bulk-in-india/')}">Buy cardamom in bulk</a>
         <a href="${href(ctx, 'journal/indian-cardamom-grades-agb-ageb-explained/')}">Cardamom grades</a>
         <a href="${href(ctx, 'journal/green-vs-black-cardamom-differences/')}">Green vs black</a>
