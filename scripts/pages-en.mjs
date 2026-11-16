@@ -465,6 +465,12 @@ export const generalFaq = [
   { q: 'Which delivery terms do you offer?', a: 'We are happy to discuss FOB, CFR and CIF. Read more on the {link:export/|export process page}.' },
   { q: 'Which documents come with a shipment?', a: 'Typically a commercial invoice, packing list, bill of lading or airway bill and certificate of origin, plus any certificates your destination requires. We confirm the exact list with you for each order.' },
   { q: 'How should I store green cardamom?', a: 'Keep it sealed, in a cool, dry place, away from direct sunlight and strong odours.' },
+  { q: 'Why is cardamom expensive?', a: 'It is grown in shaded hills and picked by hand in several rounds, then carefully dried and sorted. Prices also move with crop size, grade and demand. Read {link:journal/why-is-cardamom-so-expensive/|why cardamom is so expensive}.' },
+  { q: 'What is the difference between green and black cardamom?', a: 'Green cardamom is small, light and sweetly aromatic, and is used in coffee, tea, sweets and rice. Black cardamom is larger, dried over smoke and has a smoky flavour. See {link:journal/green-vs-black-cardamom-differences/|green vs black cardamom}.' },
+  { q: 'Are cardamom pods, seeds and powder the same?', a: 'They come from the same spice, but whole pods keep aroma longest while seeds and powder fade faster. See {link:journal/cardamom-pods-vs-seeds-vs-powder/|pods vs seeds vs powder}.' },
+  { q: 'How long does green cardamom last?', a: 'Whole pods stored sealed in a cool, dry place keep their aroma for many months. See {link:journal/how-long-does-green-cardamom-last/|how long green cardamom lasts}.' },
+  { q: 'When is cardamom harvested in Kerala?', a: 'Pods are picked by hand in rounds over several months, mainly in the later part of the year. See {link:journal/cardamom-harvest-season-kerala/|the Kerala harvest season}.' },
+  { q: 'What is elaichi?', a: 'Elaichi is the Hindi and Urdu name for cardamom. Heritage Spices supplies whole green elaichi from Idukki, Kerala. Read the {link:green-cardamom-guide/|complete guide}.' },
   { q: 'How do I place an order?', a: 'Send us your requirements, approve a sample, receive a quotation and confirm the order. The full process is on the {link:export/|export process page}.' },
 ];
 
