@@ -17,13 +17,6 @@ function homeMain(ctx) {
   const pod = href(ctx, 'assets/heritage-cardamom-pod.webp');
   const img = (name) => href(ctx, `assets/img/${name}`);
   const stage = (name) => href(ctx, `assets/stages/${name}`);
-  const journalCards = articles.slice(0, 3).map((a, i) => `
-      <article>
-        <div class="journal-image has-photo"><img src="${img(`journal-${i + 1}.webp`)}" alt="" width="630" height="302" loading="lazy" decoding="async" /></div>
-        <p class="journal-meta">${a.meta}</p>
-        <h3>${a.title}</h3>
-        <a href="${href(ctx, `journal/${a.slug}/`)}">Read the note <span>↗</span></a>
-      </article>`).join('');
   return `
     <div id="top"></div>
     <canvas class="float-pod" data-float-pod data-frames="${href(ctx, 'assets/pod/f')}" data-count="62" width="560" height="273" aria-hidden="true"></canvas>
@@ -137,14 +130,8 @@ function homeMain(ctx) {
       </ol>
     </section>
 
-    <section class="journal-section" id="journal" aria-labelledby="journal-title" data-pod="0.94,0.4,160,10,1">
-      <div class="section-kicker">06 / The journal</div>
-      <div class="section-heading-row"><h2 id="journal-title">Notes from<br /><em>the spice trail.</em></h2><a class="arrow-link" href="${href(ctx, 'journal/')}">View all stories <span>↗</span></a></div>
-      <div class="journal-grid">${journalCards}</div>
-    </section>
-
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="contact-pattern" aria-hidden="true"></div><div class="section-kicker">07 / Let’s talk</div>
+      <div class="contact-pattern" aria-hidden="true"></div><div class="section-kicker">06 / Let’s talk</div>
       <div class="contact-grid" data-pod="0.86,0.42,250,-10,1" data-pod-m="0.84,0.12,300,-10,1">
         <div><h2 id="contact-title">A better conversation<br /><em>starts with one pod.</em></h2><p>Tell us what you are looking for, where you are sourcing from, and how we can help you bring Kerala cardamom to your market.</p></div>
         <div class="contact-actions">

@@ -187,3 +187,15 @@ if ('IntersectionObserver' in window) {
 } else {
   revealTargets.forEach((element) => element.classList.add('is-visible'));
 }
+
+
+// Social follow dial: tap to pop out the profile icons
+(() => {
+  const dial = document.querySelector('[data-social-dial]');
+  if (!dial) return;
+  const toggle = dial.querySelector('.dial-toggle');
+  const set = (open) => { dial.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); };
+  toggle.addEventListener('click', (e) => { e.stopPropagation(); set(!dial.classList.contains('open')); });
+  document.addEventListener('click', (e) => { if (!dial.contains(e.target)) set(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+})();

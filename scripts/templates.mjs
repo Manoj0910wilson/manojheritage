@@ -82,14 +82,16 @@ function header(ctx, page) {
   </header>`;
 }
 
-function footer(ctx) {
-  const isAr = ctx.lang === 'ar';
-  const year = new Date().getFullYear();
-  const icons = {
+const SOCIAL_ICONS = {
     instagram: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="3" y="9" width="3.6" height="12"/><circle cx="4.8" cy="4.8" r="2.1"/><path d="M10 9h3.4v1.7c.6-1.1 1.9-2 3.7-2 3.3 0 3.9 2.1 3.9 5V21h-3.5v-5.6c0-1.4 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H10z"/></svg>',
     facebook: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg>',
   };
+
+function footer(ctx) {
+  const isAr = ctx.lang === 'ar';
+  const year = new Date().getFullYear();
+  const icons = SOCIAL_ICONS;
   const socialLink = (s) => {
     const icon = icons[String(s.label).toLowerCase()];
     return `<a class="${icon ? 'social-icon' : ''}" href="${esc(s.url)}" target="_blank" rel="noopener me" aria-label="Heritage Spices on ${esc(s.label)}" title="${esc(s.label)}">${icon || esc(s.label)}</a>`;
@@ -153,6 +155,23 @@ function footer(ctx) {
     ${social}
     <div class="footer-bottom"><span>© ${year} Heritage Spices. All rights reserved.</span><span>Idukki, Kerala, India</span></div>
   </footer>`;
+}
+
+function socialDial(ctx) {
+  const isAr = ctx.lang === 'ar';
+  if (!site.social.length) return '';
+  const items = site.social.map((s, i) => {
+    const icon = SOCIAL_ICONS[String(s.label).toLowerCase()];
+    return `<a class="dial-item" style="--i:${i}" href="${esc(s.url)}" target="_blank" rel="noopener me" aria-label="Heritage Spices on ${esc(s.label)}" title="${esc(s.label)}">${icon || esc(s.label)}</a>`;
+  }).join('');
+  return `
+  <div class="social-dial" data-social-dial>
+    <div class="dial-items" id="social-dial-items">${items}</div>
+    <button class="dial-toggle" type="button" aria-expanded="false" aria-controls="social-dial-items" aria-label="${isAr ? 'تابعنا على وسائل التواصل' : 'Follow Heritage Spices on social media'}">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>
+      <span class="dial-label">${isAr ? 'تابعنا' : 'Follow'}</span>
+    </button>
+  </div>`;
 }
 
 function floatingWhatsApp(ctx) {
@@ -390,6 +409,7 @@ export function layout(ctx, page, mainHtml) {
     ${header(ctx, page)}
     <main id="main">${mainHtml}</main>
     ${footer(ctx)}
+    ${socialDial(ctx)}
     ${floatingWhatsApp(ctx)}
     ${isAr ? '' : searchPanel()}
     <script defer src="${href(ctx, 'assets/site.js')}?v=${ctx.version}"></script>
