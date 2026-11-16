@@ -306,8 +306,16 @@ function seedsMain(ctx) {
         <h2>Overview</h2>
         <p>Cardamom seeds are the small, dark seeds found inside the pod. They carry most of the aroma and are used where whole pods are not practical, for example in some spice blends, bakery recipes and beverage mixes.</p>
         <p>If you are not sure which form suits you, we are glad to talk it through. Many buyers who make coffee blends choose {link:products/green-cardamom/|whole green cardamom} instead, because the pod helps protect the aroma.</p>
+        <h2>Seeds or whole pods?</h2>
+        <p>Whole pods protect the seeds, so aroma lasts longer in storage, and size and colour are easy to check by eye. Seeds save the step of removing the husk, which suits blenders who want only the kernel. Because seeds lose fragrance faster once out of the pod, they are best bought in quantities you can use within a reasonable time. Our note on {link:journal/cardamom-pods-vs-seeds-vs-powder/|pods vs seeds vs powder} compares the forms in more detail.</p>
+        <h2>Where cardamom seeds are used</h2>
+        <p>Seeds are used in spice and masala blends, bakery and sweet recipes, beverage mixes, rice and meat dishes, and in coffee and tea preparations where the husk is not wanted. Aroma, cleanliness and dryness matter most, so tell us how you will use them and we can advise on the right form.</p>
+        <h2>Origin: Idukki, Kerala</h2>
+        <p>Our cardamom comes from Idukki in the Western Ghats, a cool, humid, shaded region long known for green cardamom. You can read more in our {link:green-cardamom-guide/|complete green cardamom guide} and in why {link:journal/why-idukki-cardamom-has-a-character-of-its-own/|Idukki cardamom has a character of its own}.</p>
+        <h2>Storage and handling</h2>
+        <p>Keep seeds in a sealed, airtight container in a cool, dry place away from sunlight and strong odours. See {link:journal/how-to-store-green-cardamom-keep-aroma/|how to store green cardamom} and {link:journal/how-long-does-green-cardamom-last/|how long it lasts}.</p>
         <h2>Specifying seeds</h2>
-        <p>Tell us your application, expected quantity and packing needs, and we will confirm availability and specification.</p>
+        <p>Tell us your application, expected quantity and packing needs, and we will confirm availability and specification. We quote on request because price depends on quantity, packing and destination, and samples are available before you order.</p>
       </section>
     </div>
     <aside class="side-card">
