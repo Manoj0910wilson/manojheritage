@@ -2,6 +2,7 @@ import {
   site, markets, href, breadcrumbs, ctaBand, faqList, specTable, enquiryForm, contactDetails,
   organizationLd, websiteLd, waHelloAr, whatsappLink, inline,
 } from './templates.mjs';
+import { guideAr } from '../content/guide-ar.mjs';
 import { marketsAr } from '../content/markets-ar.mjs';
 
 const hasAr = (slug) => Boolean(marketsAr[slug]);
@@ -159,6 +160,34 @@ function greenMain(ctx) {
   ${ctaBand(ctx, { kicker: 'الخطوة التالية', title: 'انظر إليه وشمّه، ثم قرّر.', text: 'اطلب عيّنة وقارنها بمواصفاتك.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'تواصل عبر واتساب', path: whatsappLink('Hello Heritage Spices, I would like a cardamom sample. / مرحباً، أود طلب عيّنة هيل.'), external: true } })}`;
 }
 
+function guideMain(ctx) {
+  const g = guideAr;
+  return `
+  <section class="inner-hero ar-hero">
+    ${breadcrumbs(ctx, [{ name: 'دليل الهيل الأخضر' }])}
+    <p class="section-kicker">دليل · الهيل الأخضر</p>
+    <h1 class="page-title">${g.h1}</h1>
+    <p class="page-lede">${g.lede}</p>
+  </section>
+  <div class="content-wrap two-col">
+    <div>
+      <section class="prose">
+        ${g.sections.map((x) => `<h2>${esc(x.h)}</h2>${x.p.map((t) => `<p>${inline(t, ctx)}</p>`).join('')}`).join('')}
+      </section>
+      <section>
+        <h2 class="h2-small">أسئلة شائعة عن الهيل الأخضر</h2>
+        ${faqList(g.faq, ctx)}
+      </section>
+    </div>
+    <aside class="side-card">
+      <p class="eyebrow">نظرة سريعة</p>
+      ${specTable(g.glance)}
+      <a class="solid-button full" href="${href(ctx, 'ar/#enquiry')}">اطلب عيّنة <span aria-hidden="true">↖</span></a>
+      <a class="outline-button full" href="${waHelloAr}" target="_blank" rel="noopener" data-track="whatsapp">تواصل عبر واتساب <span aria-hidden="true">↖</span></a>
+    </aside>
+  </div>`;
+}
+
 function marketMain(ctx, m) {
   const a = marketsAr[m.slug];
   const others = markets.filter((x) => x.slug !== m.slug);
@@ -198,7 +227,7 @@ function marketMain(ctx, m) {
       <div class="chip-row">${others.map((x) => (hasAr(x.slug)
         ? `<a href="${href(ctx, `ar/markets/${x.slug}/`)}">${x.ar}</a>`
         : `<a href="${href(ctx, `markets/${x.slug}/`)}" hreflang="en" lang="en">${x.name}</a>`)).join('')}</div>
-      <p class="related-line">اقرأ أيضاً: <a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر الكامل</a></p>
+      <p class="related-line">اقرأ أيضاً: <a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر الكامل</a> · <a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a></p>
     </section>
   </div>
   ${ctaBand(ctx, { kicker: m.ar, title: `تورّد إلى ${m.ar}؟ لنتحدث.`, text: 'أرسل متطلباتك وسنرد عليك بالخطوات التالية وعيّنة.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'تواصل عبر واتساب', path: waHelloAr, external: true } })}`;
@@ -224,6 +253,14 @@ export function arabicPages() {
     alternates: { en: 'products/green-cardamom/', ar: 'ar/green-cardamom/' }, alt: 'products/green-cardamom/',
     crumbs: [{ name: 'الهيل الأخضر' }], faq: arGreenFaq,
     render: greenMain,
+  });
+  pages.push({
+    lang: 'ar', path: 'ar/green-cardamom-guide/',
+    title: guideAr.metaTitle, description: guideAr.metaDescription, keywords: guideAr.keywords, locale: 'ar_AE',
+    bodyClass: 'on-page is-ar',
+    alternates: { en: 'green-cardamom-guide/', ar: 'ar/green-cardamom-guide/' }, alt: 'green-cardamom-guide/',
+    crumbs: [{ name: 'دليل الهيل الأخضر' }], faq: guideAr.faq,
+    render: guideMain,
   });
   for (const m of markets.filter((x) => hasAr(x.slug))) {
     const a = marketsAr[m.slug];
