@@ -95,7 +95,7 @@ await writeFile(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<
 // Backup sitemaps: no hreflang extensions (some crawlers fetch the plain format more reliably)
 await writeFile(`${OUT}/sitemap-simple.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map((p) => `<url><loc>${absUrl(p.path)}</loc><lastmod>${site.published}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 await writeFile(`${OUT}/sitemap.txt`, `${sitemap.map((p) => absUrl(p.path)).join('\n')}\n`);
-await writeFile(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
+await writeFile(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Claude-User\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Perplexity-User\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Applebot-Extended\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 await writeFile(`${OUT}/search-index.json`, JSON.stringify(searchIndex));
 if (!existsSync(`${OUT}/.nojekyll`)) await writeFile(`${OUT}/.nojekyll`, '');
 
