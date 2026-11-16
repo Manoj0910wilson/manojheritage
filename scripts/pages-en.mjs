@@ -138,15 +138,8 @@ function homeMain(ctx) {
           <a class="solid-button" href="${tel}">Call ${site.phoneDisplay} <span>↗</span></a>
           <a class="outline-button dark-outline" href="${waHello}" target="_blank" rel="noopener" data-track="whatsapp">Chat on WhatsApp <span>↗</span></a>
           <a class="outline-button dark-outline" href="mailto:${site.email}">${site.email} <span>↗</span></a>
+          <a class="outline-button dark-outline" href="${href(ctx, 'request-a-sample/')}">Request a sample <span>↗</span></a>
         </div>
-      </div>
-      <div class="enquiry" id="enquiry">
-        <div class="enquiry-intro">
-          <p class="eyebrow">Request a quote</p>
-          <h3>Send us your requirements</h3>
-          <p>Share a few details about what you need. You can send them to us on WhatsApp or by email.</p>
-        </div>
-        ${enquiryForm(ctx)}
       </div>
     </section>`;
 }

@@ -168,8 +168,8 @@ function socialDial(ctx) {
   <div class="social-dial" data-social-dial>
     <div class="dial-items" id="social-dial-items">${items}</div>
     <button class="dial-toggle" type="button" aria-expanded="false" aria-controls="social-dial-items" aria-label="${isAr ? 'تابعنا على وسائل التواصل' : 'Follow Heritage Spices on social media'}">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>
-      <span class="dial-label">${isAr ? 'تابعنا' : 'Follow'}</span>
+      <span class="dial-pulse" aria-hidden="true"></span>
+      <span class="dial-core"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 21.2l-1.4-1.3C5.4 15.2 2 12.1 2 8.3 2 5.2 4.4 3 7.4 3c1.7 0 3.4.8 4.6 2.1C13.2 3.8 14.9 3 16.6 3 19.6 3 22 5.2 22 8.3c0 3.8-3.4 6.9-8.6 11.6z"/></svg><span class="dial-label">${isAr ? 'تابعنا' : 'Follow'}</span></span>
     </button>
   </div>`;
 }

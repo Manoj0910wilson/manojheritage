@@ -195,7 +195,8 @@ if ('IntersectionObserver' in window) {
   if (!dial) return;
   const toggle = dial.querySelector('.dial-toggle');
   const set = (open) => { dial.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); };
-  toggle.addEventListener('click', (e) => { e.stopPropagation(); set(!dial.classList.contains('open')); });
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  toggle.addEventListener('click', (e) => { e.stopPropagation(); if (canHover) return; set(!dial.classList.contains('open')); });
   document.addEventListener('click', (e) => { if (!dial.contains(e.target)) set(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
 })();

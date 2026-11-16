@@ -416,19 +416,26 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .site-footer.v2 .footer-sub { margin-top: 22px; }
 .contact-section h2 em, .cta-band h2 em, .cta-band .page-title em, .site-footer em { color: var(--gold); }
 
-/* Social follow dial, sits above the WhatsApp button */
-.social-dial { position: fixed; right: clamp(16px, 3vw, 32px); bottom: calc(clamp(16px, 3vw, 28px) + 64px); z-index: 41; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-.dial-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 999px; background: var(--gold); color: #fff; border: 1px solid rgba(255,255,255,.55); font: 500 12px/1 inherit; letter-spacing: .04em; cursor: pointer; box-shadow: 0 14px 34px rgba(15,45,32,.28); transition: transform .25s ease, background .25s ease; }
-.dial-toggle:hover { transform: translateY(-3px); background: var(--leaf); }
-.dial-toggle svg { transition: transform .35s ease; }
-.social-dial.open .dial-toggle svg { transform: rotate(135deg) scale(.9); }
-.dial-items { display: flex; flex-direction: column; gap: 10px; align-items: center; margin-right: 6px; pointer-events: none; }
-.dial-item { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: var(--leaf); color: var(--ivory); border: 1px solid rgba(214,184,91,.6); box-shadow: 0 10px 24px rgba(15,45,32,.3); opacity: 0; transform: translateY(26px) scale(.3); transition: opacity .25s ease, transform .4s cubic-bezier(.34,1.56,.64,1), background .2s ease; transition-delay: calc((2 - var(--i)) * 0s); }
+/* Social follow dial: glass orb with a spinning gold ring; opens on hover (tap on touch) */
+.social-dial { position: fixed; right: clamp(16px, 3vw, 32px); bottom: calc(clamp(16px, 3vw, 28px) + 66px); z-index: 41; display: flex; flex-direction: column; align-items: flex-end; padding-top: 8px; }
+.dial-items { display: flex; flex-direction: column-reverse; gap: 12px; align-items: center; width: 62px; padding-bottom: 14px; pointer-events: none; }
+.dial-toggle { position: relative; width: 62px; height: 62px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; color: #fff; background: transparent; display: grid; place-items: center; isolation: isolate; font: inherit; }
+.dial-toggle::before { content: ""; position: absolute; inset: 0; border-radius: 50%; z-index: -2; background: conic-gradient(from 0deg, #f1d98a, #b8892b, #2f6b4a, #f1d98a); animation: dial-spin 5s linear infinite; }
+.dial-toggle::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; z-index: -1; background: radial-gradient(circle at 30% 25%, #2c5a43, #0f2d20 75%); box-shadow: inset 0 0 14px rgba(255,255,255,.12); }
+.dial-pulse { position: absolute; inset: 0; border-radius: 50%; z-index: -3; background: rgba(214,168,60,.55); animation: dial-pulse 2.4s ease-out infinite; }
+.dial-core { display: grid; place-items: center; gap: 1px; line-height: 1; }
+.dial-core svg { width: 20px; height: 20px; color: #f1d98a; transition: transform .45s cubic-bezier(.34,1.56,.64,1); }
+.dial-label { font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #f6efdc; }
+.dial-toggle:hover .dial-core svg, .social-dial.open .dial-core svg { transform: scale(1.18) rotate(-12deg); }
+.dial-item { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: #f6efdc; background: linear-gradient(145deg, rgba(31,74,54,.94), rgba(12,38,26,.96)); border: 1px solid rgba(241,217,138,.7); box-shadow: 0 10px 26px rgba(10,30,20,.38), 0 0 0 4px rgba(241,217,138,.12); opacity: 0; transform: translateY(34px) scale(.2) rotate(-90deg); transition: opacity .2s ease, transform .45s cubic-bezier(.34,1.56,.64,1), background .2s ease, color .2s ease; }
 .dial-item svg { width: 21px; height: 21px; }
-.dial-item:hover { background: var(--gold); }
+.dial-item:hover, .dial-item:focus-visible { background: linear-gradient(145deg, #e3b74b, #b8892b); color: #10291c; transform: scale(1.12); }
 .social-dial.open .dial-items { pointer-events: auto; }
 .social-dial.open .dial-item { opacity: 1; transform: none; transition-delay: calc(var(--i) * .07s); }
-.dial-items { flex-direction: column-reverse; }
+.social-dial.open .dial-item:hover { transform: scale(1.12); transition-delay: 0s; }
+@media (hover: hover) { .social-dial:hover .dial-items, .social-dial:focus-within .dial-items { pointer-events: auto; } .social-dial:hover .dial-item, .social-dial:focus-within .dial-item { opacity: 1; transform: none; transition-delay: calc(var(--i) * .07s); } .social-dial:hover .dial-item:hover { transform: scale(1.12); transition-delay: 0s; } }
 html:not(.js) .dial-items { display: none; }
-@media (max-width: 720px) { .social-dial { bottom: calc(clamp(16px, 3vw, 28px) + 58px); } .dial-label { display: none; } .dial-toggle { padding: 14px; } }
-@media (prefers-reduced-motion: reduce) { .dial-item, .dial-toggle svg { transition: opacity .01s; } }
+@keyframes dial-spin { to { transform: rotate(360deg); } }
+@keyframes dial-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.7); opacity: 0; } }
+@media (max-width: 720px) { .social-dial { bottom: calc(clamp(16px, 3vw, 28px) + 62px); } .dial-toggle, .dial-items { width: 54px; } .dial-toggle { height: 54px; } .dial-label { font-size: 8px; } }
+@media (prefers-reduced-motion: reduce) { .dial-toggle::before, .dial-pulse { animation: none; } .dial-item { transition: opacity .01s; } }
