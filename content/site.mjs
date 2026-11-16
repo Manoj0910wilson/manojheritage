@@ -17,6 +17,7 @@ export const site = {
   // Add real profiles when you have them, e.g. { label: 'Instagram', url: 'https://instagram.com/yourhandle' }
   social: [
     { label: 'Instagram', url: 'https://www.instagram.com/heri.tagespice/' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/company/heritage-spicesidukki/' },
     { label: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61596794153649' },
   ],
 
