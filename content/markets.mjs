@@ -264,6 +264,18 @@ export const markets = [
         ],
       },
       {
+        h: 'What to include in your request',
+        p: [
+          'To get a useful reply, tell us the size you need in millimetres, the colour and aroma you expect, the quantity, packing preference and delivery terms such as FOB, CFR or CIF. Our {link:green-cardamom-guide/|green cardamom buyer’s guide} explains each of these points in plain terms.',
+        ],
+      },
+      {
+        h: 'Samples before you commit',
+        p: [
+          'We offer samples on request so you can check colour, aroma and cleanliness yourself before ordering. Tell us how you will use the cardamom, whether Arabic coffee, halwa and sweets, or catering, and we will suggest what suits.',
+        ],
+      },
+      {
         h: 'Talk to us',
         p: [
           'If you are an importer, distributor or producer in Bahrain, send us your requirements on the {link:request-a-sample/|sample request page}. We will reply with how a sample and a first order could work.',
