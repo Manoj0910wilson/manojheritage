@@ -297,7 +297,7 @@ export function organizationLd() {
       '@type': 'ContactPoint', contactType: 'sales', email: site.email, telephone: site.phoneTel,
       availableLanguage: ['English', 'Arabic'], areaServed: ['IN', 'AE', 'SA', 'QA', 'KW', 'OM', 'BH'],
     }],
-    ...(site.social.length ? { sameAs: site.social.map((s) => s.url) } : {}),
+    ...(site.social.length ? { sameAs: [...site.social.map((s) => s.url), ...(site.sameAsExtra || [])] } : {}),
   };
 }
 export function websiteLd() {
