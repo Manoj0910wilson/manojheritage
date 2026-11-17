@@ -3,6 +3,7 @@ import {
   organizationLd, websiteLd, waHelloAr, whatsappLink, inline,
 } from './templates.mjs';
 import { guideAr } from '../content/guide-ar.mjs';
+import { faqAr } from '../content/faq-ar.mjs';
 import { marketsAr } from '../content/markets-ar.mjs';
 
 const hasAr = (slug) => Boolean(marketsAr[slug]);
@@ -239,6 +240,23 @@ function marketMain(ctx, m) {
   ${ctaBand(ctx, { kicker: m.ar, title: `تورّد إلى ${m.ar}؟ لنتحدث.`, text: 'أرسل متطلباتك وسنرد عليك بالخطوات التالية وعيّنة.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'تواصل عبر واتساب', path: waHelloAr, external: true } })}`;
 }
 
+function faqMain(ctx) {
+  return `
+  <section class="inner-hero ar-hero">
+    ${breadcrumbs(ctx, [{ name: 'أسئلة شائعة' }])}
+    <p class="section-kicker">أسئلة شائعة</p>
+    <h1 class="page-title">${faqAr.h1}</h1>
+    <p class="page-lede">${faqAr.lede}</p>
+  </section>
+  <div class="content-wrap">
+    <section>${faqList(faqAr.faq, ctx)}</section>
+    <section class="prose">
+      <p>لم تجد إجابتك؟ <a href="${href(ctx, 'ar/#enquiry')}">أرسل لنا سؤالك</a> أو راسلنا على <a href="${waHelloAr}" target="_blank" rel="noopener">واتساب</a>.</p>
+      <p>اقرأ أيضاً: <a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a> · <a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر الكامل</a></p>
+    </section>
+  </div>`;
+}
+
 export function arabicPages() {
   const pages = [];
   pages.push({
@@ -260,6 +278,9 @@ export function arabicPages() {
     crumbs: [{ name: 'الهيل الأخضر' }], faq: arGreenFaq,
     render: greenMain,
   });
+  pages.push({ lang: 'ar', path: 'ar/faq/', title: faqAr.metaTitle, description: faqAr.metaDescription, keywords: faqAr.keywords, locale: 'ar_AE', bodyClass: 'on-page is-ar',
+    alternates: { en: 'faq/', ar: 'ar/faq/' }, alt: 'faq/',
+    crumbs: [{ name: 'أسئلة شائعة' }], faq: faqAr.faq, render: faqMain });
   pages.push({
     lang: 'ar', path: 'ar/green-cardamom-guide/',
     title: guideAr.metaTitle, description: guideAr.metaDescription, keywords: guideAr.keywords, locale: 'ar_AE',

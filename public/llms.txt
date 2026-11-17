@@ -18,6 +18,7 @@ Note: Export credentials (IEC, Spices Board registration) are not claimed on thi
 - [Request a sample](https://manoj0910wilson.github.io/manojheritage/request-a-sample/)
 
 ## Guides
+- [Arabic FAQ (أسئلة شائعة عن الهيل الأخضر)](https://manoj0910wilson.github.io/manojheritage/ar/faq/)
 - [Arabic green cardamom guide (دليل الهيل الأخضر)](https://manoj0910wilson.github.io/manojheritage/ar/green-cardamom-guide/)
 - [Green cardamom (elaichi) buyer's guide](https://manoj0910wilson.github.io/manojheritage/green-cardamom-guide/)
 - [How to buy green cardamom in bulk in India](https://manoj0910wilson.github.io/manojheritage/journal/how-to-buy-green-cardamom-in-bulk-in-india/)
