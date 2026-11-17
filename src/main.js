@@ -19,6 +19,13 @@ function track(name, params = {}) {
 document.addEventListener('click', (event) => {
   const link = event.target.closest('[data-track="whatsapp"]');
   if (link) track('whatsapp_click', { page: location.pathname });
+  const a = event.target.closest('a[href]');
+  if (!a) return;
+  const h = a.getAttribute('href') || '';
+  if (h.startsWith('tel:')) track('call_click', { page: location.pathname });
+  else if (h.startsWith('mailto:')) track('email_click', { page: location.pathname });
+  else if (/instagram\.com|facebook\.com|linkedin\.com/.test(h)) track('social_click', { network: (h.match(/instagram|facebook|linkedin/) || [''])[0], page: location.pathname });
+  else if (/request-a-sample\/?$/.test(h)) track('sample_click', { page: location.pathname });
 });
 
 /* ---------- Header and mobile menu ---------- */
