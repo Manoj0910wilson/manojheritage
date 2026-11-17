@@ -472,6 +472,8 @@ export const generalFaq = [
   { q: 'How long does green cardamom last?', a: 'Whole pods stored sealed in a cool, dry place keep their aroma for many months. See {link:journal/how-long-does-green-cardamom-last/|how long green cardamom lasts}.' },
   { q: 'When is cardamom harvested in Kerala?', a: 'Pods are picked by hand in rounds over several months, mainly in the later part of the year. See {link:journal/cardamom-harvest-season-kerala/|the Kerala harvest season}.' },
   { q: 'What is elaichi?', a: 'Elaichi is the Hindi and Urdu name for cardamom. Heritage Spices supplies whole green elaichi from Idukki, Kerala. Read the {link:green-cardamom-guide/|complete guide}.' },
+  { q: 'How can I check cardamom quality at home?', a: 'Check colour, size, dryness, cleanliness, aroma and the seeds inside. See {link:journal/how-to-check-cardamom-quality-at-home/|6 simple quality tests}.' },
+  { q: 'What is cardamom called in Malayalam and Arabic?', a: 'It is elakka in Malayalam, elaichi in Hindi and hail (هيل) in Arabic. See {link:journal/cardamom-names-elaichi-elakka-hail/|cardamom names in other languages}.' },
   { q: 'How do I place an order?', a: 'Send us your requirements, approve a sample, receive a quotation and confirm the order. The full process is on the {link:export/|export process page}.' },
 ];
 
