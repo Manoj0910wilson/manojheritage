@@ -29,7 +29,7 @@ export const indiaPages = [
     faq: [
       { q: 'Do you sell to buyers inside India?', a: 'Yes. India is one of our main markets. We supply wholesalers, blenders, sweet makers, hotels and food businesses.' },
       { q: 'Can I get a sample before a bulk order?', a: 'Yes. Send your requirements through the sample request page and we will tell you how a sample can reach you.' },
-      { q: 'Do you publish prices?', a: 'No. Cardamom prices change with grade, size and season, so we quote on request for your quantity and city.' },
+      { q: 'Do you publish prices?', a: 'Retail pack prices (1 kg to 10 kg) are on our Products page. For wholesale, cardamom prices change with grade, size and season, so we quote on request for your quantity and city.' },
       { q: 'How is the order delivered?', a: 'By road, rail or courier depending on quantity and location. We confirm packing and delivery details with each order.' },
       { q: 'Do you supply small quantities?', a: 'Tell us the quantity you have in mind and we will say what is practical. Wholesale and bulk buyers are our main focus.' },
     ],

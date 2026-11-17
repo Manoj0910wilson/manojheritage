@@ -207,3 +207,33 @@ if ('IntersectionObserver' in window) {
   document.addEventListener('click', (e) => { if (!dial.contains(e.target)) set(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
 })();
+
+
+// Shop order panels: weight dropdown + quantity -> WhatsApp order message
+document.querySelectorAll('[data-order]').forEach((panel) => {
+  let cfg;
+  try { cfg = JSON.parse(panel.getAttribute('data-config')); } catch { return; }
+  const sel = panel.querySelector('[data-op-weight]');
+  const out = panel.querySelector('[data-op-qty]');
+  const total = panel.querySelector('[data-op-total]');
+  const per = panel.querySelector('[data-op-per]');
+  const img = panel.querySelector('[data-op-img]');
+  const btn = panel.querySelector('[data-op-order]');
+  let qty = 1;
+  const fmt = (n) => '₹' + n.toLocaleString('en-IN');
+  const render = () => {
+    const v = cfg.variants.find((x) => x.id === sel.value) || cfg.variants[0];
+    out.textContent = String(qty);
+    total.textContent = fmt(v.price * qty);
+    per.textContent = qty > 1 ? `${qty} x ${fmt(v.price)} · ${fmt(v.perKg)} / kg` : `${fmt(v.perKg)} / kg`;
+    if (img.getAttribute('src') !== v.img) img.setAttribute('src', v.img);
+    const text = `Hello Heritage Spices, I would like to order:\n\n${cfg.name} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
+    btn.setAttribute('href', `https://wa.me/${cfg.wa}?text=${encodeURIComponent(text)}`);
+    return v;
+  };
+  sel.addEventListener('change', render);
+  panel.querySelector('[data-op-minus]').addEventListener('click', () => { qty = Math.max(1, qty - 1); render(); });
+  panel.querySelector('[data-op-plus]').addEventListener('click', () => { qty = Math.min(20, qty + 1); render(); });
+  btn.addEventListener('click', () => { const v = render(); track('order_click', { product: cfg.name, weight: v.label, quantity: qty, value: v.price * qty }); });
+  render();
+});
