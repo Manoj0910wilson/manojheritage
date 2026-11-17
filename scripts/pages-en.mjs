@@ -110,6 +110,7 @@ function homeMain(ctx) {
         <article class="range-card range-card-light"><div class="card-number">02</div><img class="range-img range-img-seeds" src="${stage('seeds.webp')}" alt="Cardamom seeds" width="380" height="237" loading="lazy" decoding="async" /><h3>Selected seed profile</h3><p>Consistent selection for aroma-led food and beverage applications.</p><a href="${href(ctx, 'products/cardamom-seeds/')}">View the product <span>↗</span></a></article>
         <article class="range-card range-card-photo"><div class="card-number">03</div><img class="range-bg" src="${img('plant.webp')}" alt="" width="736" height="1104" loading="lazy" decoding="async" /><h3>Made for global buyers</h3><p>Origin-led conversations, clear communication, and flexible enquiries.</p><a href="${href(ctx, 'markets/')}">See our markets <span>↗</span></a></article>
       </div>
+      <p class="pack-line">Retail packs <strong>1 kg to 10 kg</strong> · Wholesale on request · Now also <a href="${href(ctx, 'products/tea-powder/')}">tea powder</a></p>
     </section>
 
     <section class="markets-section" id="markets" aria-labelledby="markets-title" data-pod="0.455,0.62,230,8,1">
@@ -204,10 +205,16 @@ function productsIndexMain(ctx) {
     crumbs: [{ name: 'Products' }],
   })}
   <div class="content-wrap">
-    <div class="card-grid two">
+    <div class="card-grid three">
       <article class="info-card tall"><span class="card-index">01</span><h2>Whole green cardamom</h2><p>Fresh, fragrant whole pods with a naturally clean finish. The pod protects the seeds, which helps keep the aroma, and it lets you judge colour, size and condition before you buy.</p><a class="arrow-link" href="${href(ctx, 'products/green-cardamom/')}">View specifications <span>↗</span></a></article>
       <article class="info-card tall"><span class="card-index">02</span><h2>Cardamom seeds</h2><p>Selected seeds for aroma-led food and beverage applications where whole pods are not needed. Availability and specification are confirmed on enquiry.</p><a class="arrow-link" href="${href(ctx, 'products/cardamom-seeds/')}">View details <span>↗</span></a></article>
+      <article class="info-card tall"><span class="card-index">03</span><h2>Tea powder</h2><p>Tea powder for wholesale and retail buyers. Pack sizes and availability are confirmed on enquiry.</p><a class="arrow-link" href="${href(ctx, 'products/tea-powder/')}">View details <span>↗</span></a></article>
     </div>
+    <section class="prose">
+      <h2>Retail and wholesale</h2>
+      <p>Green cardamom is available in retail packs from 1 kg to 10 kg, and in wholesale quantities on request.</p>
+      ${packChips()}
+    </section>
     <section class="prose">
       <h2>How to specify your order</h2>
       <p>Because every buyer’s needs are different, we do not publish a fixed price list. Prices depend on size, quantity, packing, destination and delivery terms. Tell us what you need and we will respond with a quotation.</p>
@@ -218,6 +225,9 @@ function productsIndexMain(ctx) {
     .replace(/\{link:([^|}]+)\|([^}]+)\}/g, (_, p, l) => `<a href="${href(ctx, p)}">${l}</a>`);
 }
 
+const RETAIL_KG = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const packChips = () => `<ul class="pack-chips" aria-label="Retail pack sizes">${RETAIL_KG.map((n) => `<li>${n} kg</li>`).join('')}</ul>`;
+
 export const greenFaq = [
   { q: 'What size is your green cardamom?', a: 'Size is specified in millimetres to suit your requirement, for example 6 mm, 7 mm or 8 mm and above, subject to availability. Tell us the size you need and we will confirm what is currently available and send a sample.' },
   { q: 'What is the minimum order quantity?', a: 'Minimum quantities are shared on enquiry because they depend on size, packing and shipping method. Send us your expected volume and we will respond with options.' },
@@ -225,7 +235,58 @@ export const greenFaq = [
   { q: 'Is green cardamom the same as black cardamom?', a: 'No. They are different spices. Green cardamom is small, sweet and floral and is used in tea, coffee and sweets. Black cardamom is larger, smoky and used mainly in savoury cooking.' },
   { q: 'Which countries do you supply?', a: 'We supply buyers across India and importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.' },
   { q: 'Can I get a sample before ordering?', a: 'Yes. Send your requirements on the sample request page and we will explain how a sample can reach you.' },
+  { q: 'Do you sell retail packs?', a: 'Yes. Along with wholesale quantities, we offer retail packs from 1 kg up to 10 kg (1, 2, 3, 4, 5, 6, 7, 8, 9 and 10 kg). Tell us the pack size and quantity you need and we will send a quotation.' },
   { q: 'Do you quote prices on the website?', a: 'No. Prices depend on size, quantity, packing, destination and delivery terms, so we quote on request.' },
+];
+
+function teaMain(ctx) {
+  return `
+  ${pageHero(ctx, {
+    kicker: 'Product',
+    h1: 'Tea<br /><em>powder.</em>',
+    lede: 'Tea powder for wholesale and retail buyers, supplied by Heritage Spices alongside our Idukki green cardamom.',
+    crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }],
+  })}
+  <div class="content-wrap two-col">
+    <div>
+      <section class="prose">
+        <h2>Overview</h2>
+        <p>Heritage Spices supplies tea powder to wholesale and retail customers. Tea and cardamom go together in chai, so many of our buyers order both from one place.</p>
+        <h2>Wholesale and retail</h2>
+        <p>Wholesale quantities are quoted on request. Retail pack sizes and availability are confirmed when you enquire. Tell us the pack size and quantity you need.</p>
+        <h2>Tea with cardamom</h2>
+        <p>Cardamom chai is one of the most common ways to use both products. Read how {link:journal/cardamom-for-chai-and-masala-blenders/|cardamom is used in chai and masala blends} and see our {link:products/green-cardamom/|whole green cardamom}.</p>
+        <h2>How to order</h2>
+        <p>Send us the type and pack size you want, your quantity and your location. We reply with availability and a quotation, and a sample can be arranged before you order.</p>
+      </section>
+    </div>
+    <aside class="side-card">
+      <p class="eyebrow">At a glance</p>
+      ${specTable([
+        ['Product', 'Tea powder'],
+        ['Supply', 'Wholesale and retail'],
+        ['Pack sizes', 'Confirmed on enquiry'],
+        ['Prices', 'Quoted on request'],
+        ['Samples', 'Available on request'],
+      ])}
+      <a class="solid-button full" href="${href(ctx, 'request-a-sample/')}">Request a quote <span aria-hidden="true">↗</span></a>
+    </aside>
+  </div>
+  <div class="content-wrap">
+    <section>
+      <h2 class="h2-small">Frequently asked questions</h2>
+      ${faqList(teaFaq, ctx)}
+    </section>
+  </div>
+  ${ctaBand(ctx, { kicker: 'Next step', title: 'Tell us what you need.', text: 'Share the pack size and quantity and we will send a quotation.', primary: { label: 'Request a quote', path: 'request-a-sample/' }, secondary: { label: 'Chat on WhatsApp', path: waHello, external: true } })}`
+    .replace(/\{link:([^|}]+)\|([^}]+)\}/g, (_, p, l) => `<a href="${href(ctx, p)}">${l}</a>`);
+}
+
+const teaFaq = [
+  { q: 'Do you supply tea powder for wholesale and retail?', a: 'Yes. We supply tea powder in wholesale quantities and in retail packs. Send us the pack size and quantity you need and we will confirm availability and send a quotation.' },
+  { q: 'What pack sizes are available?', a: 'Pack sizes are confirmed on enquiry, depending on the product and your requirement.' },
+  { q: 'Can I order tea powder together with green cardamom?', a: 'Yes. Many buyers order tea and cardamom together for chai. See our {link:products/green-cardamom/|green cardamom}.' },
+  { q: 'Do you publish prices?', a: 'No. Prices depend on pack size, quantity and delivery, so we quote on request.' },
 ];
 
 function greenMain(ctx) {
@@ -248,6 +309,10 @@ function greenMain(ctx) {
         <p>Green cardamom is called elaichi in Hindi, elakkai in Tamil, elakka in Malayalam and هيل (hayl) in Arabic. It is sometimes called the “queen of spices”.</p>
         <h2>How to choose and buy</h2>
         <p>Pod size, colour and aroma decide quality. Start with our {link:green-cardamom-guide/|complete green cardamom guide}, then read how {link:journal/indian-cardamom-grades-agb-ageb-explained/|Indian cardamom grades (AGEB, AGB, AGS)} work, the differences between {link:journal/green-vs-black-cardamom-differences/|green and black cardamom}, our {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|bulk buying checklist}, and how to {link:journal/how-to-store-green-cardamom-keep-aroma/|store cardamom} so it keeps its aroma.</p>
+        <h2>Retail and wholesale packs</h2>
+        <p>We supply green cardamom for both retail and wholesale. Retail packs are available from 1 kg to 10 kg, and larger wholesale quantities are quoted on request.</p>
+        ${packChips()}
+        <p>Prices depend on pack size, quantity and delivery, so we quote on request. {link:request-a-sample/|Tell us the pack size you need}.</p>
         <h2>Who it is for</h2>
         <p>Wholesalers, coffee and tea blenders, packers and food manufacturers, across {link:india/|India} and in the {link:markets/|Gulf}.</p>
       </section>
@@ -262,7 +327,8 @@ function greenMain(ctx) {
         ['Colour', 'Green, selected for an even colour'],
         ['Size', 'Specified in mm to your requirement, subject to availability'],
         ['Aroma', 'Fresh, sweet and clean'],
-        ['Packing', 'Food-grade packing; size agreed with you'],
+        ['Retail packs', '1 kg to 10 kg (1, 2, 3 … 10 kg)'],
+        ['Wholesale packing', 'Food-grade packing; size agreed with you'],
         ['Minimum order', 'Shared on enquiry'],
         ['Samples', 'Available on request'],
         ['Delivery terms', 'FOB, CFR or CIF on discussion'],
@@ -624,6 +690,7 @@ export function englishPages() {
     product: { name: 'Whole green cardamom', description: 'Whole dried green cardamom pods (Elettaria cardamomum) from Idukki, Kerala, India, selected for colour and aroma and prepared for export.', category: 'Spices' },
     render: greenMain,
   });
+  add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Heritage Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }
   for (const d of indiaPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, keywords: d.keywords, geo: d.geo, locale: 'en_IN', crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });

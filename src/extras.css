@@ -439,3 +439,9 @@ html:not(.js) .dial-items { display: none; }
 @keyframes dial-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.7); opacity: 0; } }
 @media (max-width: 720px) { .social-dial { bottom: calc(clamp(16px, 3vw, 28px) + 62px); } .dial-toggle, .dial-items { width: 54px; } .dial-toggle { height: 54px; } .dial-label { font-size: 8px; } }
 @media (prefers-reduced-motion: reduce) { .dial-toggle::before, .dial-pulse { animation: none; } .dial-item { transition: opacity .01s; } }
+
+/* Retail pack chips */
+.pack-chips { list-style: none; margin: 14px 0 18px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.pack-chips li { padding: 10px 18px; border: 1px solid var(--gold); border-radius: 999px; background: rgba(214,168,60,.12); font-weight: 600; letter-spacing: .02em; }
+.pack-line { margin-top: 22px; text-align: center; color: inherit; opacity: .92; }
+.pack-line a { text-decoration: underline; text-underline-offset: 3px; }
