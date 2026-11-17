@@ -206,13 +206,14 @@ function productsIndexMain(ctx) {
   })}
   <div class="content-wrap">
     <div class="card-grid three">
-      <article class="info-card tall"><span class="card-index">01</span><h2>Whole green cardamom</h2><p>Fresh, fragrant whole pods with a naturally clean finish. The pod protects the seeds, which helps keep the aroma, and it lets you judge colour, size and condition before you buy.</p><a class="arrow-link" href="${href(ctx, 'products/green-cardamom/')}">View specifications <span>↗</span></a></article>
-      <article class="info-card tall"><span class="card-index">02</span><h2>Cardamom seeds</h2><p>Selected seeds for aroma-led food and beverage applications where whole pods are not needed. Availability and specification are confirmed on enquiry.</p><a class="arrow-link" href="${href(ctx, 'products/cardamom-seeds/')}">View details <span>↗</span></a></article>
-      <article class="info-card tall"><span class="card-index">03</span><h2>Tea powder</h2><p>Tea powder for wholesale and retail buyers. Pack sizes and availability are confirmed on enquiry.</p><a class="arrow-link" href="${href(ctx, 'products/tea-powder/')}">View details <span>↗</span></a></article>
+      <article class="info-card tall"><span class="card-index">01</span><img class="card-pack" src="${href(ctx, 'assets/packs/cardamom-5kg.webp')}" alt="Heritage Spices green cardamom pack" width="700" height="1010" loading="lazy" decoding="async" /><h2>Whole green cardamom</h2><p>Fresh, fragrant whole pods with a naturally clean finish. The pod protects the seeds, which helps keep the aroma, and it lets you judge colour, size and condition before you buy.</p><a class="arrow-link" href="${href(ctx, 'products/green-cardamom/')}">View specifications <span>↗</span></a></article>
+      <article class="info-card tall"><span class="card-index">02</span><img class="card-pack card-seeds" src="${href(ctx, 'assets/stages/seeds.webp')}" alt="Cardamom seeds" width="380" height="237" loading="lazy" decoding="async" /><h2>Cardamom seeds</h2><p>Selected seeds for aroma-led food and beverage applications where whole pods are not needed. Availability and specification are confirmed on enquiry.</p><a class="arrow-link" href="${href(ctx, 'products/cardamom-seeds/')}">View details <span>↗</span></a></article>
+      <article class="info-card tall"><span class="card-index">03</span><img class="card-pack" src="${href(ctx, 'assets/packs/tea-powder.webp')}" alt="Heritage Spices tea powder pack" width="700" height="1010" loading="lazy" decoding="async" /><h2>Tea powder</h2><p>Tea powder for wholesale and retail buyers. Pack sizes and availability are confirmed on enquiry.</p><a class="arrow-link" href="${href(ctx, 'products/tea-powder/')}">View details <span>↗</span></a></article>
     </div>
     <section class="prose">
       <h2>Retail and wholesale</h2>
       <p>Green cardamom is available in retail packs from 1 kg to 10 kg, and in wholesale quantities on request.</p>
+      <figure class="pack-figure"><img src="${href(ctx, 'assets/packs/cardamom-range.webp')}" alt="Heritage Spices green cardamom retail packs in 1 kg, 5 kg and 10 kg pouches" width="1500" height="895" loading="lazy" decoding="async" /><figcaption>Illustrative pack designs.</figcaption></figure>
       ${packChips()}
     </section>
     <section class="prose">
@@ -252,6 +253,7 @@ function teaMain(ctx) {
       <section class="prose">
         <h2>Overview</h2>
         <p>Heritage Spices supplies tea powder to wholesale and retail customers. Tea and cardamom go together in chai, so many of our buyers order both from one place.</p>
+        <figure class="pack-figure pack-figure-single"><img src="${href(ctx, 'assets/packs/tea-powder.webp')}" alt="Heritage Spices tea powder pack" width="700" height="1010" loading="lazy" decoding="async" /><figcaption>Illustrative pack design.</figcaption></figure>
         <h2>Wholesale and retail</h2>
         <p>Wholesale quantities are quoted on request. Retail pack sizes and availability are confirmed when you enquire. Tell us the pack size and quantity you need.</p>
         <h2>Tea with cardamom</h2>
@@ -311,6 +313,7 @@ function greenMain(ctx) {
         <p>Pod size, colour and aroma decide quality. Start with our {link:green-cardamom-guide/|complete green cardamom guide}, then read how {link:journal/indian-cardamom-grades-agb-ageb-explained/|Indian cardamom grades (AGEB, AGB, AGS)} work, the differences between {link:journal/green-vs-black-cardamom-differences/|green and black cardamom}, our {link:journal/how-to-buy-green-cardamom-in-bulk-in-india/|bulk buying checklist}, and how to {link:journal/how-to-store-green-cardamom-keep-aroma/|store cardamom} so it keeps its aroma.</p>
         <h2>Retail and wholesale packs</h2>
         <p>We supply green cardamom for both retail and wholesale. Retail packs are available from 1 kg to 10 kg, and larger wholesale quantities are quoted on request.</p>
+        <figure class="pack-figure"><img src="${href(ctx, 'assets/packs/cardamom-range.webp')}" alt="Heritage Spices green cardamom retail packs in 1 kg, 5 kg and 10 kg pouches" width="1500" height="895" loading="lazy" decoding="async" /><figcaption>Illustrative pack designs for our 1 kg to 10 kg retail range.</figcaption></figure>
         ${packChips()}
         <p>Prices depend on pack size, quantity and delivery, so we quote on request. {link:request-a-sample/|Tell us the pack size you need}.</p>
         <h2>Who it is for</h2>
