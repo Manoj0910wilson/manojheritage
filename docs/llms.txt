@@ -10,6 +10,7 @@ Note: Export credentials (IEC, Spices Board registration) are not claimed on thi
 ## Key pages
 - [Home](https://manoj0910wilson.github.io/manojheritage/)
 - [Green cardamom specification, retail packs 1 kg to 10 kg and wholesale](https://manoj0910wilson.github.io/manojheritage/products/green-cardamom/)
+- [Green cardamom price list by grade (AGEB, AGB, AGS, 4-5 mm, rejects), updated daily from the Spices Board auction](https://manoj0910wilson.github.io/manojheritage/products/green-cardamom-price-list/)
 - [Tea powder, wholesale and retail](https://manoj0910wilson.github.io/manojheritage/products/tea-powder/)
 - [Buying cardamom in India](https://manoj0910wilson.github.io/manojheritage/india/)
 - [Bulk and wholesale (India)](https://manoj0910wilson.github.io/manojheritage/india/bulk-cardamom-wholesale/)
