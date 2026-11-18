@@ -21,6 +21,8 @@ export const grades = [
   { id: 'agb', code: 'AGB', name: 'Bold', size: 'approx. 7.5 to 8 mm', mult: 1.08, use: 'Everyday premium use, chai, sweets' },
   { id: 'ags', code: 'AGS', name: 'Superior', size: 'approx. 7 to 7.5 mm', mult: 0.98, use: 'Restaurants, blenders, value packs' },
   { id: 'std', code: 'Standard', name: 'Mixed', size: 'approx. 6 to 7 mm', mult: 0.88, use: 'Masala blends, bulk processing' },
+  { id: 'sm', code: '4-5 mm', name: 'Small pods', size: 'approx. 4 to 5 mm', mult: 0.72, use: 'Spice mixes, grinding, tea masala' },
+  { id: 'rej', code: 'Rejects', name: 'Broken pieces', size: 'split, broken and light pods', mult: 0.55, use: 'Powder, extracts, bulk processing' },
 ];
 export const defaultGradeId = 'agb';
 
