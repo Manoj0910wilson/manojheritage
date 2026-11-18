@@ -486,3 +486,14 @@ html:not(.js) .dial-items { display: none; }
 .shop-single .op-media { min-height: 360px; }
 .shop-single .op-media img { max-width: 100%; }
 @media (max-width: 860px) { .shop-grid .op-media { height: 280px; } .shop-single .op-media { min-height: 0; height: 300px; } .shop-single .op-media img { width: auto; height: 280px; max-width: 100%; object-fit: contain; } }
+
+.price-table-wrap { overflow-x: auto; border: 1px solid rgba(214,168,60,.4); border-radius: 18px; background: #fbf7ec; }
+.price-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.price-table th, .price-table td { padding: 16px 18px; text-align: left; border-bottom: 1px solid rgba(20,45,32,.1); vertical-align: top; }
+.price-table thead th { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text, #7f5d0e); }
+.price-table tbody th small { display: block; font-weight: 400; opacity: .7; margin-top: 3px; }
+.price-table td { font-weight: 600; }
+.price-table td:nth-child(2) { font-weight: 400; opacity: .85; }
+.price-table tbody tr:last-child th, .price-table tbody tr:last-child td { border-bottom: 0; }
+.op-field select { text-overflow: ellipsis; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

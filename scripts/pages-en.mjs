@@ -2,6 +2,7 @@ import { marketsAr } from '../content/markets-ar.mjs';
 import { guidePage } from '../content/guide.mjs';
 import { indiaPages } from '../content/india.mjs';
 import { shop, priceUpdated } from '../content/shop.mjs';
+import { grades, retailPerKg, wholesalePerKg, settings } from '../content/pricing.mjs';
 import {
   site, articles, markets, href, inline, plainText, esc, pageHero, ctaBand, faqList, stepsList, specTable,
   articleBody, enquiryForm, contactDetails, breadcrumbs, organizationLd, websiteLd, breadcrumbLd, faqLd,
@@ -200,30 +201,78 @@ function aboutMain(ctx) {
 const inr = (n) => '₹' + n.toLocaleString('en-IN');
 
 function orderPanel(ctx, prod, { link = true } = {}) {
-  const v0 = prod.variants[0];
-  const msg = (v) => `Hello Heritage Spices, I would like to order:\n\n${prod.name} - ${v.label} x 1\nPrice: ${inr(v.price)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
-  const data = JSON.stringify({ name: prod.name, wa: site.whatsapp, variants: prod.variants.map((v) => ({ id: v.id, label: v.label, price: v.price, perKg: v.perKg, img: href(ctx, `assets/packs/${v.img}`) })) });
+  const multi = prod.grades.length > 1;
+  const g0 = prod.grades.find((g) => g.id === prod.defaultGrade) || prod.grades[0];
+  const v0 = g0.variants[0];
+  const gl = (g) => (multi ? ` (${g.label})` : '');
+  const msg = (g, v) => `Hello Heritage Spices, I would like to order:\n\n${prod.name}${gl(g)} - ${v.label} x 1\nPrice: ${inr(v.price)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
+  const data = JSON.stringify({
+    name: prod.name, wa: site.whatsapp, multi,
+    grades: prod.grades.map((g) => ({ id: g.id, label: g.label, variants: g.variants.map((v) => ({ id: v.id, label: v.label, price: v.price, perKg: v.perKg, img: href(ctx, `assets/packs/${v.img}`) })) })),
+  });
   return `
   <article class="order-panel" data-order data-config='${data.replace(/'/g, '&#39;')}'>
     <div class="op-media"><img data-op-img src="${href(ctx, `assets/packs/${v0.img}`)}" alt="${prod.alt}" width="900" height="900" decoding="async" /></div>
     <div class="op-body">
       <h2 class="op-title">${prod.name}</h2>
       <p class="op-short">${prod.short}</p>
+      ${multi ? `<label class="op-field"><span>Grade</span>
+        <select data-op-grade aria-label="Choose grade">${prod.grades.map((g) => `<option value="${g.id}"${g.id === g0.id ? ' selected' : ''}>${g.label} · ${g.sub}</option>`).join('')}</select>
+      </label>` : ''}
       <div class="op-row">
         <label class="op-field"><span>Weight</span>
-          <select data-op-weight aria-label="Choose weight">${prod.variants.map((v) => `<option value="${v.id}">${v.label} · ${inr(v.price)}</option>`).join('')}</select>
+          <select data-op-weight aria-label="Choose weight">${g0.variants.map((v) => `<option value="${v.id}">${v.label} · ${inr(v.price)}</option>`).join('')}</select>
         </label>
         <div class="op-field"><span>Quantity</span>
           <div class="op-qty"><button type="button" data-op-minus aria-label="Decrease quantity">−</button><output data-op-qty>1</output><button type="button" data-op-plus aria-label="Increase quantity">+</button></div>
         </div>
       </div>
       <div class="op-price"><strong data-op-total>${inr(v0.price)}</strong><small data-op-per>${inr(v0.perKg)} / kg</small></div>
-      <a class="solid-button op-order" data-op-order href="${whatsappLink(msg(v0))}" target="_blank" rel="noopener">Order on WhatsApp <span aria-hidden="true">↗</span></a>
-      <p class="op-note">Delivery charges extra. Final price and availability confirmed on WhatsApp.</p>
+      <a class="solid-button op-order" data-op-order href="${whatsappLink(msg(g0, v0))}" target="_blank" rel="noopener">Order on WhatsApp <span aria-hidden="true">↗</span></a>
+      <p class="op-note">Prices follow the daily market. Delivery extra. Final price confirmed on WhatsApp.</p>
       ${link ? `<a class="arrow-link" href="${href(ctx, prod.link)}">Details <span>↗</span></a>` : ''}
     </div>
   </article>`;
 }
+
+function priceListMain(ctx) {
+  const inrk = (n) => inr(n) + ' / kg';
+  const rows = grades.map((g) => `
+    <tr>
+      <th scope="row"><strong>${g.code}</strong> ${g.name}<small>${g.size}</small></th>
+      <td>${g.use}</td>
+      <td>${inrk(retailPerKg(g, 1))}</td>
+      <td>${inrk(wholesalePerKg(g))}</td>
+      <td><a class="arrow-link" href="${whatsappLink(`Hello Heritage Spices, please send me a wholesale quotation for green cardamom ${g.code} ${g.name}.\n\nQuantity (kg):\nCity / country:`)}" target="_blank" rel="noopener">Quote <span>↗</span></a></td>
+    </tr>`).join('');
+  return `
+  <section class="inner-hero compact">
+    ${breadcrumbs(ctx, [{ name: 'Products', path: 'products/' }, { name: 'Price list' }])}
+    <h1 class="page-title">Green cardamom <em>price list.</em></h1>
+    <p class="page-lede">Grade-wise prices from Idukki, Kerala. Updated ${priceUpdated}, following the daily Spices Board of India cardamom auction.</p>
+  </section>
+  <div class="content-wrap">
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead><tr><th scope="col">Grade and size</th><th scope="col">Best for</th><th scope="col">Retail (1 kg pack)</th><th scope="col">Wholesale (${settings.wholesaleMinKg} kg and above)</th><th scope="col"><span class="sr-only">Quote</span></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <p class="price-updated">Retail packs from 1 kg to 10 kg get a small per-kg saving on larger packs. Prices change with the daily market. Delivery extra. Final price confirmed on WhatsApp.</p>
+    <p class="shop-more"><a class="solid-button" href="${href(ctx, 'products/')}">Order retail packs <span aria-hidden="true">↗</span></a></p>
+    <section>
+      <h2 class="h2-small">Frequently asked questions</h2>
+      ${faqList(priceFaq, ctx)}
+    </section>
+  </div>`.replace(/\{link:([^|}]+)\|([^}]+)\}/g, (_, p, l) => `<a href="${href(ctx, p)}">${l}</a>`);
+}
+
+const priceFaq = [
+  { q: 'How are your cardamom prices set?', a: 'Prices follow the daily Spices Board of India small cardamom auction, adjusted for grade, with our margin on top. They update every day.' },
+  { q: 'What do AGEB, AGB and AGS mean?', a: 'They are Alleppey Green grades: Extra Bold, Bold and Superior. Larger, greener, more uniform pods sit in higher grades. See {link:journal/indian-cardamom-grades-agb-ageb-explained/|grades explained}.' },
+  { q: 'What is the minimum for wholesale prices?', a: 'Wholesale prices apply from 25 kg. For export or larger quantities, message us on WhatsApp for a quotation.' },
+  { q: 'Is the price final?', a: 'Prices are indicative and follow the market. We confirm the final price, availability and delivery on WhatsApp before you pay.' },
+];
 
 function productsIndexMain(ctx) {
   return `
@@ -234,8 +283,8 @@ function productsIndexMain(ctx) {
   </section>
   <div class="content-wrap">
     <div class="shop-grid">${shop.map((p) => orderPanel(ctx, p)).join('')}</div>
-    <p class="price-updated">Prices updated ${priceUpdated}. Cardamom prices move with the market.</p>
-    <p class="shop-more">Buying in bulk? <a href="${waHello}" target="_blank" rel="noopener">WhatsApp us</a> for wholesale quotes · <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a> · <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a></p>
+    <p class="price-updated">Prices updated ${priceUpdated}. They follow the daily Spices Board of India cardamom auction.</p>
+    <p class="shop-more">Buying in bulk? <a href="${waHello}" target="_blank" rel="noopener">WhatsApp us</a> for wholesale quotes · <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a> · <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a> · <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a></p>
   </div>`;
 }
 
@@ -295,10 +344,10 @@ function greenMain(ctx) {
     crumb: 'Whole green cardamom',
     rows: [
       ['Product', 'Whole green cardamom (elaichi)'], ['Origin', 'Idukki, Kerala, India'], ['Form', 'Whole dried pods'],
-      ['Retail packs', '1 kg to 10 kg'], ['Wholesale', 'Quoted on request'], ['Samples', 'Available on request'],
+      ['Grades', 'AGEB, AGB, AGS, Standard'], ['Retail packs', '1 kg to 10 kg'], ['Wholesale', '25 kg and above, see price list'], ['Samples', 'Available on request'],
     ],
     faq: greenFaq,
-    links: 'Read more: {link:green-cardamom-guide/|buyer’s guide} · {link:journal/indian-cardamom-grades-agb-ageb-explained/|grades} · {link:journal/how-to-store-green-cardamom-keep-aroma/|storage} · {link:india/bulk-cardamom-wholesale/|bulk and wholesale}',
+    links: '{link:products/green-cardamom-price-list/|Grade-wise price list} · {link:green-cardamom-guide/|buyer’s guide} · {link:journal/indian-cardamom-grades-agb-ageb-explained/|grades} · {link:journal/how-to-store-green-cardamom-keep-aroma/|storage} · {link:india/bulk-cardamom-wholesale/|bulk and wholesale}',
   });
 }
 
@@ -646,6 +695,7 @@ export function englishPages() {
     product: { name: 'Whole green cardamom', description: 'Whole dried green cardamom pods (Elettaria cardamomum) from Idukki, Kerala, India, selected for colour and aroma and prepared for export.', category: 'Spices' },
     render: greenMain,
   });
+  add({ path: 'products/green-cardamom-price-list/', title: 'Green Cardamom Price List by Grade (Idukki)', description: 'Grade-wise green cardamom prices from Idukki, Kerala: AGEB, AGB, AGS and standard. Retail and wholesale per kg, updated with the daily Spices Board auction.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
   add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Heritage Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }

@@ -209,10 +209,11 @@ if ('IntersectionObserver' in window) {
 })();
 
 
-// Shop order panels: weight dropdown + quantity -> WhatsApp order message
+// Shop order panels: grade + weight dropdowns + quantity -> WhatsApp order message
 document.querySelectorAll('[data-order]').forEach((panel) => {
   let cfg;
   try { cfg = JSON.parse(panel.getAttribute('data-config')); } catch { return; }
+  const gSel = panel.querySelector('[data-op-grade]');
   const sel = panel.querySelector('[data-op-weight]');
   const out = panel.querySelector('[data-op-qty]');
   const total = panel.querySelector('[data-op-total]');
@@ -221,19 +222,30 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   const btn = panel.querySelector('[data-op-order]');
   let qty = 1;
   const fmt = (n) => '₹' + n.toLocaleString('en-IN');
+  const grade = () => cfg.grades.find((g) => g.id === (gSel ? gSel.value : cfg.grades[0].id)) || cfg.grades[0];
+  const fillWeights = () => {
+    const cur = sel.value;
+    const g = grade();
+    sel.innerHTML = g.variants.map((v) => `<option value="${v.id}">${v.label} · ${fmt(v.price)}</option>`).join('');
+    if (g.variants.some((v) => v.id === cur)) sel.value = cur;
+  };
   const render = () => {
-    const v = cfg.variants.find((x) => x.id === sel.value) || cfg.variants[0];
+    const g = grade();
+    const v = g.variants.find((x) => x.id === sel.value) || g.variants[0];
     out.textContent = String(qty);
     total.textContent = fmt(v.price * qty);
     per.textContent = qty > 1 ? `${qty} x ${fmt(v.price)} · ${fmt(v.perKg)} / kg` : `${fmt(v.perKg)} / kg`;
     if (img.getAttribute('src') !== v.img) img.setAttribute('src', v.img);
-    const text = `Hello Heritage Spices, I would like to order:\n\n${cfg.name} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
+    const gl = cfg.multi ? ` (${g.label})` : '';
+    const text = `Hello Heritage Spices, I would like to order:\n\n${cfg.name}${gl} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
     btn.setAttribute('href', `https://wa.me/${cfg.wa}?text=${encodeURIComponent(text)}`);
-    return v;
+    return { g, v };
   };
+  if (gSel) gSel.addEventListener('change', () => { fillWeights(); render(); });
   sel.addEventListener('change', render);
   panel.querySelector('[data-op-minus]').addEventListener('click', () => { qty = Math.max(1, qty - 1); render(); });
   panel.querySelector('[data-op-plus]').addEventListener('click', () => { qty = Math.min(20, qty + 1); render(); });
-  btn.addEventListener('click', () => { const v = render(); track('order_click', { product: cfg.name, weight: v.label, quantity: qty, value: v.price * qty }); });
+  btn.addEventListener('click', () => { const { g, v } = render(); track('order_click', { product: cfg.name, grade: g.label, weight: v.label, quantity: qty, value: v.price * qty }); });
+  fillWeights();
   render();
 });
