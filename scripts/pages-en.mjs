@@ -167,12 +167,12 @@ function aboutMain(ctx) {
     <section class="prose">
       <h2>Heritage Spices at a glance</h2>
       <ul>
-        <li><strong>What we are:</strong> a green cardamom (elaichi) supplier based in Idukki, Kerala, India.</li>
+        <li><strong>What we are:</strong> Heritage Spices, also written Heritage Spices Idukki, a green cardamom (elaichi) supplier based in Pallivasal, Idukki, Kerala, India. We are not affiliated with other businesses that use a similar name.</li>
         <li><strong>What we supply:</strong> whole green cardamom pods; cardamom seeds on request.</li>
         <li><strong>Who we supply:</strong> wholesalers, traders, masala and chai blenders, coffee blenders, restaurants, retail packers and importers.</li>
         <li><strong>Where we supply:</strong> India, and the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.</li>
         <li><strong>Languages:</strong> English and Arabic.</li>
-        <li><strong>How to order:</strong> send your requirements, receive a sample and a quotation, then confirm the order. Prices are quoted on request.</li>
+        <li><strong>How to order:</strong> choose a grade and weight in the {link:products/|shop}, or send your requirements for a sample and quotation. See the {link:products/green-cardamom-price-list/|grade-wise price list}.</li>
         <li><strong>Contact:</strong> WhatsApp +91 89395 35151, heritagespices01@gmail.com.</li>
         <li><strong>Learn more:</strong> {link:green-cardamom-guide/|green cardamom buyer’s guide} · {link:faq/|frequently asked questions} · {link:india/|buying in India} · {link:markets/|Gulf markets}.</li>
       </ul>
@@ -680,13 +680,13 @@ export function englishPages() {
   add({
     path: '',
     title: 'Heritage Spices | Green Cardamom (Elaichi) Supplier, Idukki',
-    description: 'Premium whole green cardamom from Idukki, Kerala for buyers across India and importers in the UAE, Saudi Arabia and the Gulf. Request a sample.',
+    description: 'Heritage Spices Idukki: premium whole green cardamom from Pallivasal, Idukki, Kerala for buyers in India and the Gulf. Grade-wise price list. Request a sample.',
     bodyClass: 'is-home',
     alternates: { en: '', ar: 'ar/' }, alt: 'ar/',
     jsonld: () => [organizationLd(), websiteLd()],
     render: homeMain,
   });
-  add({ path: 'about/', title: 'About Us', description: 'Heritage Spices sources premium green cardamom directly from farmers in Idukki, Kerala. Learn about our story, our values and how we work with importers.', crumbs: [{ name: 'About' }], render: aboutMain });
+  add({ path: 'about/', title: 'About Heritage Spices Idukki, Kerala', description: 'Heritage Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
   add({ path: 'products/', title: 'Products', description: 'Whole green cardamom and cardamom seeds from Idukki, Kerala, selected for a clean aroma and prepared for export. View specifications and request a sample.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
   add({
     path: 'products/green-cardamom/', title: 'Green Cardamom (Elaichi) from Idukki, Kerala',
