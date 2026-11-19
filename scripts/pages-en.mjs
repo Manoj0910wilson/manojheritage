@@ -654,6 +654,7 @@ function articleMain(ctx, a) {
       <div class="journal-list compact">
         ${related.map((r) => `<a class="journal-row" href="${href(ctx, `journal/${r.slug}/`)}"><span class="journal-row-body"><span class="journal-meta">${r.tag} · ${r.readTime}</span><strong>${r.title}</strong></span><span class="journal-row-arrow" aria-hidden="true">↗</span></a>`).join('')}
       </div>
+      <div class="chip-row"><a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a><a href="${href(ctx, 'products/')}">Shop retail packs</a><a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a><a href="${href(ctx, 'markets/')}">Gulf markets</a></div>
     </section>
   </div>
   ${ctaBand(ctx, { kicker: 'Talk to Heritage Spices', title: 'Have questions about Idukki cardamom?', primary: { label: 'Request a sample', path: 'request-a-sample/' }, secondary: { label: 'Chat on WhatsApp', path: waHello, external: true } })}`;

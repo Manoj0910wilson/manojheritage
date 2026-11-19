@@ -107,7 +107,7 @@ function footer(ctx) {
         <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/heritage-spices-logo.webp')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
         <p>هيل نقي. جذوره في التراث.</p>
       </div>
-      <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
+      <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/markets/qatar/')}">الهيل في قطر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
       <div><h3>تواصل معنا</h3><a href="mailto:${site.email}">${site.email}</a><a href="${tel}" dir="ltr">${site.phoneDisplay}</a><a href="${waHelloAr}" target="_blank" rel="noopener">واتساب</a></div>
     </div>
     ${social}
@@ -124,6 +124,7 @@ function footer(ctx) {
       </div>
       <div><h3>Products</h3>
         <a href="${href(ctx, 'products/green-cardamom/')}">Whole green cardamom</a>
+        <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a>
         <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a>
         <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a>
       
@@ -133,6 +134,12 @@ function footer(ctx) {
         <a href="${href(ctx, 'journal/indian-cardamom-grades-agb-ageb-explained/')}">Cardamom grades</a>
         <a href="${href(ctx, 'journal/green-vs-black-cardamom-differences/')}">Green vs black</a>
         <a href="${href(ctx, 'journal/how-to-store-green-cardamom-keep-aroma/')}">Storing cardamom</a>
+        <a href="${href(ctx, 'journal/green-cardamom-sizes-explained/')}">Sizes explained</a>
+        <a href="${href(ctx, 'journal/what-to-look-for-in-a-premium-green-pod/')}">What makes a premium pod</a>
+        <a href="${href(ctx, 'journal/why-idukki-cardamom-has-a-character-of-its-own/')}">Why Idukki cardamom</a>
+        <a href="${href(ctx, 'journal/cardamom-in-arabic-coffee/')}">Cardamom in Arabic coffee</a>
+        <a href="${href(ctx, 'journal/how-to-import-cardamom-from-india/')}">How to import from India</a>
+        <a href="${href(ctx, 'journal/building-clearer-conversations-across-the-supply-chain/')}">Clear supply-chain talks</a>
       </div>
       <div><h3>Markets</h3>
         <a href="${href(ctx, 'india/')}">India</a>
