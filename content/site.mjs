@@ -7,7 +7,7 @@ export const site = {
   // The public address of the site WITHOUT a trailing slash.
   // Today it is the free GitHub address. When you buy a custom domain, change this
   // (or build with SITE_URL=https://yourdomain.com) and add a CNAME file in /public.
-  url: (process.env.SITE_URL || 'https://manoj0910wilson.github.io/manojheritage').replace(/\/$/, ''),
+  url: (process.env.SITE_URL || 'https://heritagespices.in').replace(/\/$/, ''),
 
   email: 'heritagespices01@gmail.com',
   phoneDisplay: '+91 89395 35151',
