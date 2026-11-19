@@ -26,7 +26,7 @@ export const site = {
   // Paste your Google Analytics 4 measurement ID here (looks like G-XXXXXXXXXX) to start tracking visits.
   analyticsId: 'G-WEL55YYFTG',
   // Paste the token from Google Search Console's "HTML tag" verification method (just the content value).
-  searchConsoleVerification: '',
+  searchConsoleVerification: 'ul4R6kRw_oZKRV_dZuPleUFOYtcORsr647OhKYoblAA',
 
   // Dates used in article markup and the sitemap.
   published: '2026-11-06',
