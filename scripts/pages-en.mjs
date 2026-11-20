@@ -285,6 +285,16 @@ function productsIndexMain(ctx) {
   <div class="content-wrap">
     <div class="shop-grid">${shop.map((p) => orderPanel(ctx, p)).join('')}</div>
     <p class="price-updated">Prices updated ${priceUpdated}. They follow the daily Spices Board of India cardamom auction.</p>
+    <section class="how-order" aria-label="How ordering works">
+      <h2 class="h2-small">How ordering works</h2>
+      <ol class="how-steps">
+        <li><strong>Choose</strong><span>Pick the grade, weight and quantity.</span></li>
+        <li><strong>Send</strong><span>Tap Order on WhatsApp. Your message is filled in for you.</span></li>
+        <li><strong>Confirm</strong><span>We confirm today\u2019s price, availability and delivery.</span></li>
+        <li><strong>Receive</strong><span>Payment and dispatch are agreed with you on WhatsApp.</span></li>
+      </ol>
+      <ul class="trust-row"><li>Direct from Idukki, Kerala</li><li>Grade-wise daily prices</li><li>Sample on request</li></ul>
+    </section>
     <p class="shop-more">Buying in bulk? <a href="${waHello}" target="_blank" rel="noopener">WhatsApp us</a> for wholesale quotes · <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a> · <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a> · <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a></p>
   </div>`;
 }

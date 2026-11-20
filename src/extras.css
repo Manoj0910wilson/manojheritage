@@ -497,3 +497,20 @@ html:not(.js) .dial-items { display: none; }
 .price-table tbody tr:last-child th, .price-table tbody tr:last-child td { border-bottom: 0; }
 .op-field select { text-overflow: ellipsis; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.how-order { margin: 56px 0 8px; }
+.how-steps { list-style: none; counter-reset: h; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.how-steps li { counter-increment: h; padding: 20px 18px; border: 1px solid rgba(20,45,32,.12); border-radius: 16px; background: #fbf7ec; display: grid; gap: 6px; }
+.how-steps li::before { content: counter(h); width: 28px; height: 28px; border-radius: 50%; background: #1d3b2a; color: #f4e7c2; display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+.how-steps strong { font-size: 17px; }
+.how-steps span { font-size: 14px; line-height: 1.5; opacity: .8; }
+.trust-row { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.trust-row li { padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(214,168,60,.5); font-size: 13px; }
+@media (max-width: 760px) { .how-steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 460px) { .how-steps { grid-template-columns: 1fr; } }
+.price-table-wrap { max-width: 100%; }
+@media (max-width: 640px) {
+  .price-table { min-width: 0; font-size: 14px; }
+  .price-table th, .price-table td { padding: 12px 10px; }
+  .price-table th:nth-child(2), .price-table td:nth-child(2) { display: none; }
+}
