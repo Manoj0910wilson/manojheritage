@@ -271,6 +271,7 @@ const priceFaq = [
   { q: 'How are your cardamom prices set?', a: 'Prices follow the daily Spices Board of India small cardamom auction, adjusted for grade, with our margin on top. They update every day.' },
   { q: 'What do AGEB, AGB and AGS mean?', a: 'They are Alleppey Green grades: Extra Bold, Bold and Superior. Larger, greener, more uniform pods sit in higher grades. See {link:journal/indian-cardamom-grades-agb-ageb-explained/|grades explained}.' },
   { q: 'What is the minimum for wholesale prices?', a: 'Wholesale prices apply from 25 kg. For export or larger quantities, message us on WhatsApp for a quotation.' },
+  { q: 'What is the price of 1 kg of green cardamom today?', a: 'The table above shows today\u2019s retail rate per kg for each grade at a 1 kg pack, and the wholesale rate from 25 kg. It updates every day.' },
   { q: 'Is the price final?', a: 'Prices are indicative and follow the market. We confirm the final price, availability and delivery on WhatsApp before you pay.' },
 ];
 
@@ -299,6 +300,9 @@ export const greenFaq = [
   { q: 'Which countries do you supply?', a: 'We supply buyers across India and importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.' },
   { q: 'Can I get a sample before ordering?', a: 'Yes. Send your requirements on the sample request page and we will explain how a sample can reach you.' },
   { q: 'Do you sell retail packs?', a: 'Yes. Along with wholesale quantities, we offer retail packs from 1 kg up to 10 kg (1, 2, 3, 4, 5, 6, 7, 8, 9 and 10 kg). Tell us the pack size and quantity you need and we will send a quotation.' },
+  { q: 'Where can I buy 8 mm green cardamom?', a: 'You can buy 8 mm bold green cardamom (AGEB and AGB grades) directly from Heritage Spices in Idukki, Kerala. Choose the grade and a 1 kg to 10 kg pack in our shop and order on WhatsApp, or ask for a bulk quotation.' },
+  { q: 'What is the price of 1 kg green cardamom today?', a: 'It changes every day with the Spices Board of India auction and depends on the grade. See today\u2019s retail and wholesale rate for each grade on our {link:products/green-cardamom-price-list/|price list}.' },
+  { q: 'Is Idukki cardamom good quality?', a: 'Idukki is one of India\u2019s main cardamom-growing districts and is known for aromatic, well-coloured pods. Quality still depends on the lot, so check size, colour and aroma, or request a sample.' },
   { q: 'Do you show prices on the website?', a: 'Yes for retail packs from 1 kg to 10 kg, which you can order on WhatsApp. Wholesale, export and delivery terms depend on size, quantity, packing and destination, so we quote those on request.' },
 ];
 
@@ -679,24 +683,24 @@ export function englishPages() {
 
   add({
     path: '',
-    title: 'Heritage Spices | Green Cardamom (Elaichi) Supplier, Idukki',
-    description: 'Heritage Spices Idukki: premium whole green cardamom from Pallivasal, Idukki, Kerala for buyers in India and the Gulf. Grade-wise price list. Request a sample.',
+    title: 'Heritage Spices | Buy Green Cardamom (Elaichi), Idukki',
+    description: 'Buy premium green cardamom (elaichi) direct from Idukki, Kerala: 8 mm bold AGEB, AGB and AGS. Retail 1 to 10 kg, bulk wholesale, India and Gulf. See prices.',
     bodyClass: 'is-home',
     alternates: { en: '', ar: 'ar/' }, alt: 'ar/',
     jsonld: () => [organizationLd(), websiteLd()],
     render: homeMain,
   });
   add({ path: 'about/', title: 'About Heritage Spices Idukki, Kerala', description: 'Heritage Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
-  add({ path: 'products/', title: 'Products', description: 'Whole green cardamom and cardamom seeds from Idukki, Kerala, selected for a clean aroma and prepared for export. View specifications and request a sample.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
+  add({ path: 'products/', title: 'Buy Green Cardamom Online, 1 kg to 10 kg', description: 'Buy green cardamom (elaichi) online from Idukki, Kerala. Choose grade AGEB, AGB or AGS and a 1 kg to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
   add({
-    path: 'products/green-cardamom/', title: 'Green Cardamom (Elaichi) from Idukki, Kerala',
-    description: 'Whole green cardamom (elaichi) from Idukki, Kerala for buyers in India and the Gulf: specification, uses, packing and FAQs. Request a sample.',
+    path: 'products/green-cardamom/', title: 'Buy Green Cardamom (Elaichi) Online, Idukki',
+    description: 'Whole green cardamom (elaichi) from Idukki, Kerala: 8 mm bold, 7 mm and small pods. Retail packs, bulk wholesale and Gulf supply. Specification, uses and FAQs.',
     alternates: { en: 'products/green-cardamom/', ar: 'ar/green-cardamom/' }, alt: 'ar/green-cardamom/',
     crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Whole green cardamom' }], faq: greenFaq,
     product: { name: 'Whole green cardamom', description: 'Whole dried green cardamom pods (Elettaria cardamomum) from Idukki, Kerala, India, selected for colour and aroma and prepared for export.', category: 'Spices' },
     render: greenMain,
   });
-  add({ path: 'products/green-cardamom-price-list/', title: 'Green Cardamom Price List by Grade (Idukki)', description: 'Grade-wise green cardamom prices from Idukki, Kerala: AGEB, AGB, AGS and standard. Retail and wholesale per kg, updated with the daily Spices Board auction.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
+  add({ path: 'products/green-cardamom-price-list/', title: 'Green Cardamom Price per Kg by Grade, Idukki', description: 'Green cardamom (elaichi) price per kg today by grade: AGEB, AGB, AGS, small pods and rejects. Retail and wholesale from Idukki, updated daily with the auction.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
   add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Heritage Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }
