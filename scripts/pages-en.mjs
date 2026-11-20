@@ -30,13 +30,13 @@ function homeMain(ctx) {
       <div class="hero-copy reveal">
         <p class="eyebrow">Premium cardamom · Idukki, Kerala</p>
         <h1 id="hero-title">Pure Cardamom.<br /><em>Rooted in Heritage.</em></h1>
-        <p class="hero-lede">A bright, aromatic harvest sourced directly from the hills of Idukki and prepared for discerning kitchens around the world.</p>
+        <p class="hero-lede">A bright, aromatic harvest grown on our own farm in the hills of Idukki and prepared for discerning kitchens around the world.</p>
         <p class="hero-markets">Supplying buyers across <a href="${href(ctx, 'india/')}">India</a> and importers in the <a href="${href(ctx, 'markets/uae/')}">UAE</a>, <a href="${href(ctx, 'markets/saudi-arabia/')}">Saudi Arabia</a>, <a href="${href(ctx, 'markets/qatar/')}">Qatar</a> and the <a href="${href(ctx, 'markets/')}">Gulf</a>.</p>
         <div class="hero-actions">
           <a class="solid-button" href="${href(ctx, 'products/green-cardamom/')}">Explore our cardamom <span aria-hidden="true">↗</span></a>
           <a class="text-button" href="${href(ctx, 'request-a-sample/')}"><span class="phone-dot">✦</span> Request a sample</a>
         </div>
-        <div class="hero-proof"><span>Direct from farmers</span><i></i><span>Carefully selected</span><i></i><span>Export-ready quality</span></div>
+        <div class="hero-proof"><span>Grown on our own farm</span><i></i><span>Carefully selected</span><i></i><span>Export-ready quality</span></div>
       </div>
       <div class="hero-stage" data-stage aria-label="Animated cardamom pod">
         <img class="pod-image" src="${pod}" alt="A fresh green cardamom pod from Idukki" width="993" height="1000" fetchpriority="high" />
@@ -51,7 +51,7 @@ function homeMain(ctx) {
       <div class="intro-grid">
         <h2 id="story-title">A small pod.<br /><em>A lasting impression.</em></h2>
         <div class="intro-text">
-          <p>We believe exceptional cardamom begins with exceptional care. From farmer-direct relationships in Idukki to careful selection and preparation, every pod carries the character of its origin.</p>
+          <p>We believe exceptional cardamom begins with exceptional care. From our own farm in Idukki to careful selection and preparation, every pod carries the character of its origin.</p>
           <a class="arrow-link" href="${href(ctx, 'about/')}">Our story <span>↗</span></a>
         </div>
       </div>
@@ -97,7 +97,7 @@ function homeMain(ctx) {
       <div class="detail-strip">
         <dl>
           <div><dt>Origin</dt><dd>Idukki, Kerala</dd></div>
-          <div><dt>Source</dt><dd>Direct from farmers</dd></div>
+          <div><dt>Source</dt><dd>Our own farm, Idukki</dd></div>
           <div><dt>Format</dt><dd>Whole green cardamom</dd></div>
         </dl>
         <a class="solid-button" href="${href(ctx, 'products/green-cardamom/')}">See specifications <span aria-hidden="true">↗</span></a>
@@ -162,12 +162,12 @@ function aboutMain(ctx) {
     <section class="prose">
       <h2>Our story</h2>
       <p>Cardamom is often called the queen of spices, and Kerala’s Idukki district is one of the places it has long been grown. We started Heritage Spices to bring that harvest to buyers who care about where their ingredients begin, and who want a supplier that communicates clearly.</p>
-      <p>We work directly with farmers in Idukki, and we select pods carefully for colour, aroma and condition before they are prepared for export. Our focus today is on importers, wholesalers and food and beverage businesses in the Gulf, where cardamom is part of everyday hospitality.</p>
+      <p>We grow our cardamom on our own farm in Idukki, and we select pods carefully for colour, aroma and condition before they are prepared for export. Our focus today is on importers, wholesalers and food and beverage businesses in the Gulf, where cardamom is part of everyday hospitality.</p>
     </section>
     <section class="prose">
       <h2>Heritage Spices at a glance</h2>
       <ul>
-        <li><strong>What we are:</strong> Heritage Spices, also written Heritage Spices Idukki, a green cardamom (elaichi) supplier based in Pallivasal, Idukki, Kerala, India. We are not affiliated with other businesses that use a similar name.</li>
+        <li><strong>What we are:</strong> Heritage Spices, also written Heritage Spices Idukki, a green cardamom (elaichi) grower and supplier based in Pallivasal, Idukki, Kerala, India, selling cardamom grown on its own farm. We are not affiliated with other businesses that use a similar name.</li>
         <li><strong>What we supply:</strong> whole green cardamom pods; cardamom seeds on request.</li>
         <li><strong>Who we supply:</strong> wholesalers, traders, masala and chai blenders, coffee blenders, restaurants, retail packers and importers.</li>
         <li><strong>Where we supply:</strong> India, and the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.</li>
@@ -180,7 +180,7 @@ function aboutMain(ctx) {
     <section>
       <h2 class="h2-small">What we stand for</h2>
       <div class="card-grid three">
-        <article class="info-card"><span class="card-index">01</span><h3>A traceable origin</h3><p>We source directly from growers in Idukki, so we can talk about where your cardamom came from and who grew it.</p></article>
+        <article class="info-card"><span class="card-index">01</span><h3>A traceable origin</h3><p>We grow it on our own farm in Idukki, so we can tell you exactly where your cardamom came from and who grew it.</p></article>
         <article class="info-card"><span class="card-index">02</span><h3>Careful selection</h3><p>Pods are chosen for a clean aroma, even colour and good condition, because small differences are easy to taste.</p></article>
         <article class="info-card"><span class="card-index">03</span><h3>Clear communication</h3><p>Written specifications, samples before orders, and straight answers on availability, packing and paperwork.</p></article>
       </div>
@@ -542,7 +542,7 @@ function exportMain(ctx) {
 }
 
 export const generalFaq = [
-  { q: 'Where does your cardamom come from?', a: 'Our green cardamom comes from Idukki, Kerala, in the Western Ghats of southern India, and is sourced directly from farmers.' },
+  { q: 'Where does your cardamom come from?', a: 'Our green cardamom comes from Idukki, Kerala, in the Western Ghats of southern India, and is grown on our own farm.' },
   { q: 'Which products do you supply?', a: 'Our main product is whole green cardamom. Cardamom seeds are available on enquiry. See the {link:products/|products page}.' },
   { q: 'Which countries do you supply?', a: 'India is one of our main markets (see {link:india/|buying cardamom in India}). We also supply importers in the Gulf: the {link:markets/uae/|UAE}, {link:markets/saudi-arabia/|Saudi Arabia}, {link:markets/qatar/|Qatar}, {link:markets/kuwait/|Kuwait}, {link:markets/oman/|Oman} and {link:markets/bahrain/|Bahrain}. Buyers from other countries are welcome to enquire.' },
   { q: 'Can I get a sample before ordering?', a: 'Yes. Samples are available on request. Use the {link:request-a-sample/|sample request page} and tell us your requirements and destination.' },

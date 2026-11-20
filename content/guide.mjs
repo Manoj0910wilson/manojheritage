@@ -36,6 +36,6 @@ export const guidePage = {
     { q: 'What is the difference between green and black cardamom?', a: 'Green cardamom is small, sweet and floral. Black cardamom is larger, smoky and used mainly in savoury dishes. They are different spices.' },
     { q: 'How is green cardamom graded?', a: 'Mainly by pod size and colour, from extra bold to bold and smaller grades. Size ranges vary by trader, so ask for millimetres and a sample.' },
     { q: 'How should I store green cardamom?', a: 'Whole pods in an airtight container in a cool, dry, dark place, away from strong smells. Grind only what you need.' },
-    { q: 'Where does Heritage Spices source its cardamom?', a: 'From Idukki in Kerala, India. We supply buyers in India and importers in the Gulf. Grades and packing are confirmed on enquiry.' },
+    { q: 'Where does Heritage Spices source its cardamom?', a: 'We grow it on our own farm in Idukki, Kerala, India. We supply buyers in India and importers in the Gulf. Grades and packing are confirmed on enquiry.' },
   ],
 };
