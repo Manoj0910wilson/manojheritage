@@ -1,7 +1,7 @@
 {
   "source": "Spices Board of India, small cardamom daily auction",
-  "updated": "2026-11-19",
-  "auctionDate": "2026-11-19",
+  "updated": "2026-11-21",
+  "auctionDate": "2026-11-21",
   "history": [
     {
       "date": "2026-11-17",
@@ -12,6 +12,11 @@
       "date": "2026-11-19",
       "avg": 2908.67,
       "max": 3422
+    },
+    {
+      "date": "2026-11-21",
+      "avg": 2911.56,
+      "max": 3906
     }
   ]
 }
