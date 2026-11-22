@@ -5,7 +5,7 @@
 import { readFileSync } from 'node:fs';
 
 export const settings = {
-  retailMargin: 0.30,      // markup over the market-based price for retail packs (1-10 kg). Retail sellers such as Hyperpure charge about this much more than trade rates.
+  retailMargin: 0.15,      // retail packs (1-10 kg): 15% over the market-based price
   wholesaleMargin: 0.00,   // wholesale (wholesaleMinKg and above) is priced at the market-based rate, ~Rs 50-100 under comparable Idukki sellers
   wholesaleMinKg: 25,
   smoothDays: 3,           // average the last N auction days so the price does not jump daily
