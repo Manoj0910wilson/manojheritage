@@ -246,7 +246,23 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   panel.querySelector('[data-op-minus]').addEventListener('click', () => { qty = Math.max(1, qty - 1); render(); });
   panel.querySelector('[data-op-plus]').addEventListener('click', () => { qty = Math.min(20, qty + 1); render(); });
   btn.addEventListener('click', () => { const { g, v } = render(); track('order_click', { product: cfg.name, grade: g.label, weight: v.label, quantity: qty, value: v.price * qty }); });
+  // Remember the chosen size, weight and quantity across refreshes (and allow ?size=8mm&weight=5kg links)
+  const key = 'hs-order-' + (cfg.name || 'p');
+  const store = {
+    get() { try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; } },
+    set(v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch { /* storage unavailable */ } },
+  };
+  const save = () => store.set({ g: gSel ? gSel.value : null, w: sel.value, q: qty });
   fillWeights();
+  const params = new URLSearchParams(location.search);
+  const saved = store.get() || {};
+  const wantG = (cfg.name === 'Green Cardamom' && params.get('size')) || saved.g;
+  const wantW = (cfg.name === 'Green Cardamom' && params.get('weight')) || saved.w;
+  if (gSel && wantG && cfg.grades.some((g) => g.id === wantG)) { gSel.value = wantG; fillWeights(); }
+  if (wantW && grade().variants.some((v) => v.id === wantW)) sel.value = wantW;
+  if (saved.q && Number(saved.q) >= 1 && Number(saved.q) <= 20) qty = Number(saved.q);
+  panel.addEventListener('change', save);
+  panel.addEventListener('click', () => setTimeout(save, 0));
   render();
 });
 
