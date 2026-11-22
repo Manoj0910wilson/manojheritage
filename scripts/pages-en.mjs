@@ -1,6 +1,6 @@
 import { marketsAr } from '../content/markets-ar.mjs';
 import { guidePage } from '../content/guide.mjs';
-import { indiaPages } from '../content/india.mjs';
+import { indiaPages, cityPages } from '../content/india.mjs';
 import { shop, priceUpdated } from '../content/shop.mjs';
 import { grades, retailPerKg, wholesalePerKg, settings } from '../content/pricing.mjs';
 import {
@@ -715,6 +715,7 @@ export function englishPages() {
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }
   for (const d of indiaPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, keywords: d.keywords, geo: d.geo, locale: 'en_IN', crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
+  for (const d of cityPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, keywords: d.keywords, geo: d.geo, locale: 'en_IN', crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
   add({ path: 'markets/', title: 'Markets: Cardamom for the Gulf', description: 'Heritage Spices supplies whole green cardamom to importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. Choose your market to learn more.', crumbs: [{ name: 'Markets' }], render: marketsIndexMain });
   for (const m of markets) {
     add({

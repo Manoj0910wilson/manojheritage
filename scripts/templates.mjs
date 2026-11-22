@@ -147,6 +147,10 @@ function footer(ctx) {
       </div>
       <div><h3>Markets</h3>
         <a href="${href(ctx, 'india/')}">India</a>
+        <a href="${href(ctx, 'india/chennai/')}">Chennai</a>
+        <a href="${href(ctx, 'india/bengaluru/')}">Bengaluru</a>
+        <a href="${href(ctx, 'india/hyderabad/')}">Hyderabad</a>
+        <a href="${href(ctx, 'india/north-india/')}">Delhi and North India</a>
         ${markets.map((m) => `<a href="${href(ctx, `markets/${m.slug}/`)}">${m.name}</a>`).join('')}
       </div>
       <div><h3>Company</h3>
