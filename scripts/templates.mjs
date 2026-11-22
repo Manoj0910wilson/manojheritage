@@ -30,11 +30,8 @@ export const tel = `tel:${site.phoneTel}`;
 const nav = {
   en: [
     ['Products', 'products/'],
-    ['India', 'india/'],
-    ['Gulf', 'markets/'],
-    ['Export', 'export/'],
-    ['About', 'about/'],
-    ['Journal', 'journal/'],
+    ['Markets', [['India', 'india/'], ['Gulf', 'markets/'], ['Export', 'export/']]],
+    ['About', [['Our story', 'about/'], ['Journal', 'journal/']]],
     ['Contact', 'contact/'],
   ],
   ar: [
@@ -53,7 +50,14 @@ function header(ctx, page) {
     if (clean === 'ar/') return ctx.path === 'ar/';
     return ctx.path === clean || ctx.path.startsWith(clean);
   };
-  const links = items.map(([label, target]) => `<a href="${href(ctx, target)}"${isActive(target) ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  const linkHtml = ([label, target]) => `<a href="${href(ctx, target)}"${isActive(target) ? ' aria-current="page"' : ''}>${label}</a>`;
+  const groupActive = (kids) => kids.some(([, t]) => isActive(t));
+  const links = items.map((it) => Array.isArray(it[1])
+    ? `<div class="nav-group"><button type="button" class="nav-parent"${groupActive(it[1]) ? ' aria-current="true"' : ''} aria-expanded="false" aria-haspopup="true" data-nav-parent>${it[0]} <span class="nav-caret" aria-hidden="true"></span></button><div class="nav-sub">${it[1].map(linkHtml).join('')}</div></div>`
+    : linkHtml(it)).join('');
+  const mobileLinks = items.map((it) => Array.isArray(it[1])
+    ? `<div class="m-group"><span class="m-group-title">${it[0]}</span>${it[1].map(linkHtml).join('')}</div>`
+    : linkHtml(it)).join('');
   const altHref = page.alt ? href(ctx, page.alt) : null;
   const isAr = ctx.lang === 'ar';
   const langLink = isAr
@@ -75,7 +79,7 @@ function header(ctx, page) {
       <button class="menu-button" aria-label="${isAr ? 'فتح القائمة' : 'Open navigation'}" aria-expanded="false" data-menu-button><span></span><span></span></button>
     </div>
     <div class="mobile-menu" data-mobile-menu>
-      ${links}
+      ${mobileLinks}
       ${langLink}
       <a class="outline-button" href="${tel}">${isAr ? 'اتصل' : 'Call'} <bdi>${site.phoneDisplay}</bdi></a>
     </div>

@@ -172,7 +172,7 @@ function aboutMain(ctx) {
         <li><strong>Who we supply:</strong> wholesalers, traders, masala and chai blenders, coffee blenders, restaurants, retail packers and importers.</li>
         <li><strong>Where we supply:</strong> India, and the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.</li>
         <li><strong>Languages:</strong> English and Arabic.</li>
-        <li><strong>How to order:</strong> choose a grade and weight in the {link:products/|shop}, or send your requirements for a sample and quotation. See the {link:products/green-cardamom-price-list/|grade-wise price list}.</li>
+        <li><strong>How to order:</strong> choose a size and weight in the {link:products/|shop}, or send your requirements for a sample and quotation. See the {link:products/green-cardamom-price-list/|grade-wise price list}.</li>
         <li><strong>Contact:</strong> WhatsApp +91 89395 35151, heritagespices01@gmail.com.</li>
         <li><strong>Learn more:</strong> {link:green-cardamom-guide/|green cardamom buyer’s guide} · {link:faq/|frequently asked questions} · {link:india/|buying in India} · {link:markets/|Gulf markets}.</li>
       </ul>
@@ -216,8 +216,8 @@ function orderPanel(ctx, prod, { link = true } = {}) {
     <div class="op-body">
       <h2 class="op-title">${prod.name}</h2>
       <p class="op-short">${prod.short}</p>
-      ${multi ? `<label class="op-field"><span>Grade</span>
-        <select data-op-grade aria-label="Choose grade">${prod.grades.map((g) => `<option value="${g.id}"${g.id === g0.id ? ' selected' : ''}>${g.label} · ${g.sub}</option>`).join('')}</select>
+      ${multi ? `<label class="op-field"><span>Size</span>
+        <select data-op-grade aria-label="Choose size">${prod.grades.map((g) => `<option value="${g.id}"${g.id === g0.id ? ' selected' : ''}>${g.label} · ${g.sub}</option>`).join('')}</select>
       </label>` : ''}
       <div class="op-row">
         <label class="op-field"><span>Weight</span>
@@ -249,12 +249,12 @@ function priceListMain(ctx) {
   <section class="inner-hero compact">
     ${breadcrumbs(ctx, [{ name: 'Products', path: 'products/' }, { name: 'Price list' }])}
     <h1 class="page-title">Green cardamom <em>price list.</em></h1>
-    <p class="page-lede">Grade-wise prices from Idukki, Kerala. Updated ${priceUpdated}, following the daily Spices Board of India cardamom auction.</p>
+    <p class="page-lede">Size and grade-wise prices from Idukki, Kerala. Updated ${priceUpdated}, following the daily Spices Board of India cardamom auction.</p>
   </section>
   <div class="content-wrap">
     <div class="price-table-wrap">
       <table class="price-table">
-        <thead><tr><th scope="col">Grade and size</th><th scope="col">Best for</th><th scope="col">Retail (1 kg pack)</th><th scope="col">Wholesale (${settings.wholesaleMinKg} kg and above)</th><th scope="col"><span class="sr-only">Quote</span></th></tr></thead>
+        <thead><tr><th scope="col">Size and grade</th><th scope="col">Best for</th><th scope="col">Retail (1 kg pack)</th><th scope="col">Wholesale (${settings.wholesaleMinKg} kg and above)</th><th scope="col"><span class="sr-only">Quote</span></th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
@@ -293,7 +293,7 @@ function productsIndexMain(ctx) {
         <li><strong>Confirm</strong><span>We confirm today\u2019s price, availability and delivery.</span></li>
         <li><strong>Receive</strong><span>Payment and dispatch are agreed with you on WhatsApp.</span></li>
       </ol>
-      <ul class="trust-row"><li>Direct from Idukki, Kerala</li><li>Grade-wise daily prices</li><li>Sample on request</li></ul>
+      <ul class="trust-row"><li>Direct from Idukki, Kerala</li><li>Size-wise daily prices</li><li>Sample on request</li></ul>
     </section>
     <p class="shop-more">Buying in bulk? <a href="${waHello}" target="_blank" rel="noopener">WhatsApp us</a> for wholesale quotes · <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a> · <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a> · <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a></p>
   </div>`;
@@ -310,7 +310,7 @@ export const greenFaq = [
   { q: 'Which countries do you supply?', a: 'We supply buyers across India and importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.' },
   { q: 'Can I get a sample before ordering?', a: 'Yes. Send your requirements on the sample request page and we will explain how a sample can reach you.' },
   { q: 'Do you sell retail packs?', a: 'Yes. Along with wholesale quantities, we offer retail packs from 1 kg up to 10 kg (1, 2, 3, 4, 5, 6, 7, 8, 9 and 10 kg). Tell us the pack size and quantity you need and we will send a quotation.' },
-  { q: 'Where can I buy 8 mm green cardamom?', a: 'You can buy 8 mm bold green cardamom (AGEB and AGB grades) directly from Heritage Spices in Idukki, Kerala. Choose the grade and a 1 kg to 10 kg pack in our shop and order on WhatsApp, or ask for a bulk quotation.' },
+  { q: 'Where can I buy 8 mm green cardamom?', a: 'You can buy 8 mm bold green cardamom (AGEB grade) directly from Heritage Spices in Idukki, Kerala. Choose the size and a 1 kg to 10 kg pack in our shop and order on WhatsApp, or ask for a bulk quotation.' },
   { q: 'What is the price of 1 kg green cardamom today?', a: 'It changes every day with the Spices Board of India auction and depends on the grade. See today\u2019s retail and wholesale rate for each grade on our {link:products/green-cardamom-price-list/|price list}.' },
   { q: 'Is Idukki cardamom good quality?', a: 'Idukki is one of India\u2019s main cardamom-growing districts and is known for aromatic, well-coloured pods. Quality still depends on the lot, so check size, colour and aroma, or request a sample.' },
   { q: 'Do you show prices on the website?', a: 'Yes for retail packs from 1 kg to 10 kg, which you can order on WhatsApp. Wholesale, export and delivery terms depend on size, quantity, packing and destination, so we quote those on request.' },
@@ -358,7 +358,7 @@ function greenMain(ctx) {
     crumb: 'Whole green cardamom',
     rows: [
       ['Product', 'Whole green cardamom (elaichi)'], ['Origin', 'Idukki, Kerala, India'], ['Form', 'Whole dried pods'],
-      ['Grades', 'AGEB, AGB, AGS, Standard'], ['Retail packs', '1 kg to 10 kg'], ['Wholesale', '25 kg and above, see price list'], ['Samples', 'Available on request'],
+      ['Sizes', '8 mm, 7 mm, 6 mm, 5 mm, rejects'], ['Retail packs', '1 kg to 10 kg'], ['Wholesale', '25 kg and above, see price list'], ['Samples', 'Available on request'],
     ],
     faq: greenFaq,
     links: '{link:products/green-cardamom-price-list/|Grade-wise price list} · {link:green-cardamom-guide/|buyer’s guide} · {link:journal/indian-cardamom-grades-agb-ageb-explained/|grades} · {link:journal/how-to-store-green-cardamom-keep-aroma/|storage} · {link:india/bulk-cardamom-wholesale/|bulk and wholesale}',
@@ -694,14 +694,14 @@ export function englishPages() {
   add({
     path: '',
     title: 'Heritage Spices | Buy Green Cardamom (Elaichi), Idukki',
-    description: 'Buy premium green cardamom (elaichi) direct from Idukki, Kerala: 8 mm bold AGEB, AGB and AGS. Retail 1 to 10 kg, bulk wholesale, India and Gulf. See prices.',
+    description: 'Buy premium green cardamom (elaichi) direct from Idukki, Kerala: 8 mm, 7 mm and 6 mm pods. Retail 1 to 10 kg, bulk wholesale, India and Gulf. See prices.',
     bodyClass: 'is-home',
     alternates: { en: '', ar: 'ar/' }, alt: 'ar/',
     jsonld: () => [organizationLd(), websiteLd()],
     render: homeMain,
   });
   add({ path: 'about/', title: 'About Heritage Spices Idukki, Kerala', description: 'Heritage Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
-  add({ path: 'products/', title: 'Buy Green Cardamom Online, 1 kg to 10 kg', description: 'Buy green cardamom (elaichi) online from Idukki, Kerala. Choose grade AGEB, AGB or AGS and a 1 kg to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
+  add({ path: 'products/', title: 'Buy Green Cardamom Online, 1 kg to 10 kg', description: 'Buy green cardamom (elaichi) online from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 1 kg to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
   add({
     path: 'products/green-cardamom/', title: 'Buy Green Cardamom (Elaichi) Online, Idukki',
     description: 'Whole green cardamom (elaichi) from Idukki, Kerala: 8 mm bold, 7 mm and small pods. Retail packs, bulk wholesale and Gulf supply. Specification, uses and FAQs.',
@@ -710,7 +710,7 @@ export function englishPages() {
     product: { name: 'Whole green cardamom', description: 'Whole dried green cardamom pods (Elettaria cardamomum) from Idukki, Kerala, India, selected for colour and aroma and prepared for export.', category: 'Spices' },
     render: greenMain,
   });
-  add({ path: 'products/green-cardamom-price-list/', title: 'Green Cardamom Price per Kg by Grade, Idukki', description: 'Green cardamom (elaichi) price per kg today by grade: AGEB, AGB, AGS, small pods and rejects. Retail and wholesale from Idukki, updated daily with the auction.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
+  add({ path: 'products/green-cardamom-price-list/', title: 'Green Cardamom Price per Kg by Grade, Idukki', description: 'Green cardamom (elaichi) price per kg today by size and grade: 8 mm AGEB, 7 mm AGB/AGS, 6 mm, 5 mm. Retail and wholesale from Idukki, updated daily.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
   add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Heritage Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }

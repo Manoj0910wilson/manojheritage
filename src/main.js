@@ -249,3 +249,16 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   fillWeights();
   render();
 });
+
+// Header dropdowns: tap to open on touch screens, Escape or outside click to close
+(() => {
+  const groups = document.querySelectorAll('.nav-group');
+  const closeAll = (except) => groups.forEach((g) => { if (g !== except) { g.classList.remove('is-open'); const b = g.querySelector('[data-nav-parent]'); if (b) b.setAttribute('aria-expanded', 'false'); } });
+  groups.forEach((g) => {
+    const btn = g.querySelector('[data-nav-parent]');
+    if (!btn) return;
+    btn.addEventListener('click', (e) => { e.stopPropagation(); const open = !g.classList.contains('is-open'); closeAll(g); g.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); });
+  });
+  document.addEventListener('click', () => closeAll());
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+})();

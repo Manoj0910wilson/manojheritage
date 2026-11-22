@@ -514,3 +514,16 @@ html:not(.js) .dial-items { display: none; }
   .price-table th, .price-table td { padding: 12px 10px; }
   .price-table th:nth-child(2), .price-table td:nth-child(2) { display: none; }
 }
+
+/* Header dropdown groups */
+.nav-group { position: relative; display: inline-flex; align-items: center; }
+.nav-parent { background: none; border: 0; padding: 0; font: inherit; color: var(--leaf); font-size: 13px; font-weight: 500; letter-spacing: .02em; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: color .2s ease; }
+.nav-parent:hover, .nav-group:focus-within .nav-parent, .nav-parent[aria-current] { color: var(--gold); }
+.nav-caret { width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); }
+.nav-sub { position: absolute; top: 100%; left: -16px; min-width: 190px; padding: 14px 8px 8px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .2s ease, transform .2s ease, visibility .2s; z-index: 60; }
+.nav-sub::before { content: ""; position: absolute; inset: 8px 0 0 0; background: rgba(251,247,236,.98); border: 1px solid rgba(214,168,60,.4); border-radius: 14px; box-shadow: 0 18px 40px rgba(23,60,43,.14); z-index: -1; }
+.nav-sub a { display: block; padding: 11px 16px; white-space: nowrap; }
+.nav-group:hover .nav-sub, .nav-group:focus-within .nav-sub, .nav-group.is-open .nav-sub { opacity: 1; visibility: visible; transform: none; }
+.m-group { display: grid; gap: 14px; padding-left: 0; }
+.m-group-title { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-text, #7f5d0e); }
+.m-group a { padding-left: 14px; border-left: 2px solid rgba(214,168,60,.5); }

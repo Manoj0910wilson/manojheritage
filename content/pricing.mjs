@@ -5,8 +5,8 @@
 import { readFileSync } from 'node:fs';
 
 export const settings = {
-  retailMargin: 0.20,      // markup over the cost basis for retail packs (1-10 kg)
-  wholesaleMargin: 0.10,   // markup for wholesale (wholesaleMinKg and above)
+  retailMargin: 0.30,      // markup over the market-based price for retail packs (1-10 kg). Retail sellers such as Hyperpure charge about this much more than trade rates.
+  wholesaleMargin: 0.00,   // wholesale (wholesaleMinKg and above) is priced at the market-based rate, ~Rs 50-100 under comparable Idukki sellers
   wholesaleMinKg: 25,
   smoothDays: 3,           // average the last N auction days so the price does not jump daily
   roundTo: 10,             // round prices to the nearest Rs 10
@@ -17,14 +17,13 @@ export const settings = {
 // mult = grade price as a multiple of the auction average (the auction average mixes all grades,
 // so bigger, greener pods sit above it and smaller or mixed pods below it).
 export const grades = [
-  { id: 'ageb', code: 'AGEB', name: 'Extra Bold', size: 'approx. 8 mm and above', mult: 1.20, use: 'Premium retail, gifting, Arabic coffee' },
-  { id: 'agb', code: 'AGB', name: 'Bold', size: 'approx. 7.5 to 8 mm', mult: 1.08, use: 'Everyday premium use, chai, sweets' },
-  { id: 'ags', code: 'AGS', name: 'Superior', size: 'approx. 7 to 7.5 mm', mult: 0.98, use: 'Restaurants, blenders, value packs' },
-  { id: 'std', code: 'Standard', name: 'Mixed', size: 'approx. 6 to 7 mm', mult: 0.88, use: 'Masala blends, bulk processing' },
-  { id: 'sm', code: '4-5 mm', name: 'Small pods', size: 'approx. 4 to 5 mm', mult: 0.72, use: 'Spice mixes, grinding, tea masala' },
+  { id: '8mm', code: '8 mm', name: 'Extra Bold (AGEB)', size: '8 mm and above', mult: 1.11, use: 'Premium retail, gifting, Arabic coffee' },
+  { id: '7mm', code: '7 mm', name: 'Bold (AGB / AGS)', size: '7 to 8 mm', mult: 1.00, use: 'Everyday premium use, chai, sweets, restaurants' },
+  { id: '6mm', code: '6 mm', name: 'Standard', size: '6 to 7 mm', mult: 0.84, use: 'Masala blends, bulk processing' },
+  { id: '5mm', code: '5 mm', name: 'Small pods', size: '4 to 5 mm', mult: 0.77, use: 'Spice mixes, grinding, tea masala' },
   { id: 'rej', code: 'Rejects', name: 'Broken pieces', size: 'split, broken and light pods', mult: 0.55, use: 'Powder, extracts, bulk processing' },
 ];
-export const defaultGradeId = 'agb';
+export const defaultGradeId = '7mm';
 
 const data = JSON.parse(readFileSync(new URL('./prices-data.json', import.meta.url), 'utf8'));
 const hist = [...(data.history || [])].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, settings.smoothDays);

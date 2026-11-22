@@ -8,13 +8,13 @@ export const shop = [
   {
     id: 'green-cardamom',
     name: 'Green Cardamom',
-    short: 'Premium whole pods from Idukki, Kerala. Choose a grade and weight.',
+    short: 'Premium whole pods from Idukki, Kerala. Choose a size and weight.',
     link: 'products/green-cardamom/',
     alt: 'Heritage Spices green cardamom pouch',
     defaultGrade: defaultGradeId,
     grades: grades.map((g) => ({
       id: g.id,
-      label: `${g.code} ${g.name}`,
+      label: g.code,
       sub: g.size,
       variants: kgs.map((n) => {
         const perKg = retailPerKg(g, n);
