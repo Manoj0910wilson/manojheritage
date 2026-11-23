@@ -2,6 +2,7 @@
 import { grades, defaultGradeId, retailPerKg, updatedLabel } from './pricing.mjs';
 
 export const priceUpdated = updatedLabel;
+const smalls = [{ id: '25g', label: '25 g', kg: 0.025 }, { id: '50g', label: '50 g', kg: 0.05 }, { id: '100g', label: '100 g', kg: 0.1 }, { id: '500g', label: '500 g', kg: 0.5 }];
 const kgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const shop = [
@@ -16,10 +17,13 @@ export const shop = [
       id: g.id,
       label: g.code,
       sub: g.size,
-      variants: kgs.map((n) => {
+      variants: [...smalls.map((x) => {
+        const perKg = retailPerKg(g, x.kg);
+        return { id: x.id, label: x.label, price: Math.round(perKg * x.kg / 5) * 5, perKg, img: `cardamom-${x.id}.webp` };
+      }), ...kgs.map((n) => {
         const perKg = retailPerKg(g, n);
         return { id: `${n}kg`, label: `${n} kg`, price: perKg * n, perKg, img: `cardamom-${n}kg.webp` };
-      }),
+      })],
     })),
   },
   {

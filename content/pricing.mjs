@@ -11,7 +11,7 @@ export const settings = {
   smoothDays: 3,           // average the last N auction days so the price does not jump daily
   roundTo: 10,             // round prices to the nearest Rs 10
   // per-kg discount for bigger retail packs (applies from this weight upward)
-  tiers: [ { fromKg: 1, off: 0 }, { fromKg: 2, off: 0.0125 }, { fromKg: 4, off: 0.025 }, { fromKg: 6, off: 0.0375 }, { fromKg: 8, off: 0.05 } ],
+  tiers: [ { fromKg: 0.025, off: -0.20 }, { fromKg: 0.05, off: -0.15 }, { fromKg: 0.1, off: -0.10 }, { fromKg: 0.5, off: -0.04 }, { fromKg: 1, off: 0 }, { fromKg: 2, off: 0.0125 }, { fromKg: 4, off: 0.025 }, { fromKg: 6, off: 0.0375 }, { fromKg: 8, off: 0.05 } ],
 };
 
 // mult = grade price as a multiple of the auction average (the auction average mixes all grades,

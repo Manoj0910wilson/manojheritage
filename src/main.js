@@ -260,6 +260,7 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   const wantW = (cfg.name === 'Green Cardamom' && params.get('weight')) || saved.w;
   if (gSel && wantG && cfg.grades.some((g) => g.id === wantG)) { gSel.value = wantG; fillWeights(); }
   if (wantW && grade().variants.some((v) => v.id === wantW)) sel.value = wantW;
+  else if (grade().variants.some((v) => v.id === '1kg')) sel.value = '1kg';
   if (saved.q && Number(saved.q) >= 1 && Number(saved.q) <= 20) qty = Number(saved.q);
   panel.addEventListener('change', save);
   panel.addEventListener('click', () => setTimeout(save, 0));

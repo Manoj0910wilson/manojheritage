@@ -42,7 +42,7 @@ function homeMain(ctx) {
       <div class="hero-copy reveal">
         <p class="eyebrow">Buy cardamom (elaichi) · Idukki, Kerala</p>
         <h1 id="hero-title">Pure Cardamom.<br /><em>Rooted in Heritage.</em></h1>
-        <p class="hero-lede">Green cardamom (elaichi) grown on our own farm in Idukki, Kerala. Order 1 kg to 10 kg packs on WhatsApp, or ask for wholesale and export rates.</p>
+        <p class="hero-lede">Green cardamom (elaichi) grown on our own farm in Idukki, Kerala. Order 25 g to 10 kg packs on WhatsApp, or ask for wholesale and export rates.</p>
         <p class="hero-markets">Supplying buyers across <a href="${href(ctx, 'india/')}">India</a> and importers in the <a href="${href(ctx, 'markets/uae/')}">UAE</a>, <a href="${href(ctx, 'markets/saudi-arabia/')}">Saudi Arabia</a>, <a href="${href(ctx, 'markets/qatar/')}">Qatar</a> and the <a href="${href(ctx, 'markets/')}">Gulf</a>.</p>
         <div class="hero-actions">
           <a class="solid-button" href="${href(ctx, 'products/')}">Shop cardamom <span aria-hidden="true">↗</span></a>
@@ -126,7 +126,7 @@ function homeMain(ctx) {
         <article class="range-card range-card-light"><div class="card-number">02</div><img class="range-img range-img-seeds" src="${stage('seeds.webp')}" alt="Cardamom seeds" width="380" height="237" loading="lazy" decoding="async" /><h3>Selected seed profile</h3><p>Consistent selection for aroma-led food and beverage applications.</p><a href="${href(ctx, 'products/cardamom-seeds/')}">View the product <span>↗</span></a></article>
         <article class="range-card range-card-photo"><div class="card-number">03</div><img class="range-bg" src="${img('plant.webp')}" alt="" width="736" height="1104" loading="lazy" decoding="async" /><h3>Made for global buyers</h3><p>Origin-led conversations, clear communication, and flexible enquiries.</p><a href="${href(ctx, 'markets/')}">See our markets <span>↗</span></a></article>
       </div>
-      <p class="pack-line">Retail packs <strong>1 kg to 10 kg</strong> · Wholesale on request · Now also <a href="${href(ctx, 'products/tea-powder/')}">tea powder</a></p>
+      <p class="pack-line">Retail packs <strong>25 g to 10 kg</strong> · Wholesale on request · Now also <a href="${href(ctx, 'products/tea-powder/')}">tea powder</a></p>
     </section>
 
     <section class="markets-section" id="markets" aria-labelledby="markets-title" data-pod="0.455,0.62,230,8,1">
@@ -217,7 +217,7 @@ const inr = (n) => '₹' + n.toLocaleString('en-IN');
 function orderPanel(ctx, prod, { link = true } = {}) {
   const multi = prod.grades.length > 1;
   const g0 = prod.grades.find((g) => g.id === prod.defaultGrade) || prod.grades[0];
-  const v0 = g0.variants[0];
+  const v0 = g0.variants.find((x) => x.id === '1kg') || g0.variants[0];
   const gl = (g) => (multi ? ` (${g.label})` : '');
   const msg = (g, v) => `Hello Heritage Spices, I would like to order:\n\n${prod.name}${gl(g)} - ${v.label} x 1\nPrice: ${inr(v.price)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
   const data = JSON.stringify({
@@ -235,7 +235,7 @@ function orderPanel(ctx, prod, { link = true } = {}) {
       </label>` : ''}
       <div class="op-row">
         <label class="op-field"><span>Weight</span>
-          <select data-op-weight aria-label="Choose weight">${g0.variants.map((v) => `<option value="${v.id}">${v.label} · ${inr(v.price)}</option>`).join('')}</select>
+          <select data-op-weight aria-label="Choose weight">${g0.variants.map((v) => `<option value="${v.id}"${v.id === v0.id ? ' selected' : ''}>${v.label} · ${inr(v.price)}</option>`).join('')}</select>
         </label>
         <div class="op-field"><span>Quantity</span>
           <div class="op-qty"><button type="button" data-op-minus aria-label="Decrease quantity">−</button><output data-op-qty>1</output><button type="button" data-op-plus aria-label="Increase quantity">+</button></div>
@@ -272,7 +272,7 @@ function priceListMain(ctx) {
         <tbody>${rows}</tbody>
       </table>
     </div>
-    <p class="price-updated">Retail packs from 1 kg to 10 kg get a small per-kg saving on larger packs. Prices change with the daily market. Delivery extra. Final price confirmed on WhatsApp.</p>
+    <p class="price-updated">Retail packs from 25 g to 10 kg get a small per-kg saving on larger packs. Prices change with the daily market. Delivery extra. Final price confirmed on WhatsApp.</p>
     <p class="shop-more"><a class="solid-button" href="${href(ctx, 'products/')}">Order retail packs <span aria-hidden="true">↗</span></a></p>
     <section>
       <h2 class="h2-small">Frequently asked questions</h2>
@@ -327,7 +327,7 @@ export const greenFaq = [
   { q: 'Where can I buy 8 mm green cardamom?', a: 'You can buy 8 mm bold green cardamom (AGEB grade) directly from Heritage Spices in Idukki, Kerala. Choose the size and a 1 kg to 10 kg pack in our shop and order on WhatsApp, or ask for a bulk quotation.' },
   { q: 'What is the price of 1 kg green cardamom today?', a: 'It changes every day with the Spices Board of India auction and depends on the grade. See today\u2019s retail and wholesale rate for each grade on our {link:products/green-cardamom-price-list/|price list}.' },
   { q: 'Is Idukki cardamom good quality?', a: 'Idukki is one of India\u2019s main cardamom-growing districts and is known for aromatic, well-coloured pods. Quality still depends on the lot, so check size, colour and aroma, or request a sample.' },
-  { q: 'Do you show prices on the website?', a: 'Yes for retail packs from 1 kg to 10 kg, which you can order on WhatsApp. Wholesale, export and delivery terms depend on size, quantity, packing and destination, so we quote those on request.' },
+  { q: 'Do you show prices on the website?', a: 'Yes for retail packs from 25 g to 10 kg, which you can order on WhatsApp. Wholesale, export and delivery terms depend on size, quantity, packing and destination, so we quote those on request.' },
 ];
 
 function productSpecPage(ctx, prod, { crumb, rows, faq, links }) {
@@ -372,7 +372,7 @@ function greenMain(ctx) {
     crumb: 'Whole green cardamom',
     rows: [
       ['Product', 'Whole green cardamom (elaichi)'], ['Origin', 'Idukki, Kerala, India'], ['Form', 'Whole dried pods'],
-      ['Sizes', '8 mm, 7 mm, 6 mm, 5 mm, rejects'], ['Retail packs', '1 kg to 10 kg'], ['Wholesale', '25 kg and above, see price list'], ['Samples', 'Available on request'],
+      ['Sizes', '8 mm, 7 mm, 6 mm, 5 mm, rejects'], ['Retail packs', '25 g to 10 kg'], ['Wholesale', '25 kg and above, see price list'], ['Samples', 'Available on request'],
     ],
     faq: greenFaq,
     links: '{link:products/green-cardamom-price-list/|Grade-wise price list} · {link:green-cardamom-guide/|buyer’s guide} · {link:journal/indian-cardamom-grades-agb-ageb-explained/|grades} · {link:journal/how-to-store-green-cardamom-keep-aroma/|storage} · {link:india/bulk-cardamom-wholesale/|bulk and wholesale}',
@@ -561,7 +561,7 @@ export const generalFaq = [
   { q: 'Which countries do you supply?', a: 'India is one of our main markets (see {link:india/|buying cardamom in India}). We also supply importers in the Gulf: the {link:markets/uae/|UAE}, {link:markets/saudi-arabia/|Saudi Arabia}, {link:markets/qatar/|Qatar}, {link:markets/kuwait/|Kuwait}, {link:markets/oman/|Oman} and {link:markets/bahrain/|Bahrain}. Buyers from other countries are welcome to enquire.' },
   { q: 'Can I get a sample before ordering?', a: 'Yes. Samples are available on request. Use the {link:request-a-sample/|sample request page} and tell us your requirements and destination.' },
   { q: 'What is your minimum order quantity?', a: 'Minimum quantities depend on size, packing and shipping method and are shared on enquiry. Tell us the volume you are considering and we will respond with options.' },
-  { q: 'Do you publish prices?', a: 'Yes, for retail packs from 1 kg to 10 kg: see the {link:products/|Products page} and order on WhatsApp. Wholesale and export prices depend on size, quantity, packing, destination and delivery terms, so we quote those on request.' },
+  { q: 'Do you publish prices?', a: 'Yes, for retail packs from 25 g to 10 kg: see the {link:products/|Products page} and order on WhatsApp. Wholesale and export prices depend on size, quantity, packing, destination and delivery terms, so we quote those on request.' },
   { q: 'Which delivery terms do you offer?', a: 'We are happy to discuss FOB, CFR and CIF. Read more on the {link:export/|export process page}.' },
   { q: 'Which documents come with a shipment?', a: 'Typically a commercial invoice, packing list, bill of lading or airway bill and certificate of origin, plus any certificates your destination requires. We confirm the exact list with you for each order.' },
   { q: 'How should I store green cardamom?', a: 'Keep it sealed, in a cool, dry place, away from direct sunlight and strong odours.' },

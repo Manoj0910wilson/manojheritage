@@ -31,7 +31,7 @@ export const indiaPages = [
     faq: [
       { q: 'Do you sell to buyers inside India?', a: 'Yes. India is one of our main markets. We supply wholesalers, blenders, sweet makers, hotels and food businesses.' },
       { q: 'Can I get a sample before a bulk order?', a: 'Yes. Send your requirements through the sample request page and we will tell you how a sample can reach you.' },
-      { q: 'Do you publish prices?', a: 'Retail pack prices (1 kg to 10 kg) are on our Products page. For wholesale, cardamom prices change with grade, size and season, so we quote on request for your quantity and city.' },
+      { q: 'Do you publish prices?', a: 'Retail pack prices (25 g to 10 kg) are on our Products page. For wholesale, cardamom prices change with grade, size and season, so we quote on request for your quantity and city.' },
       { q: 'How is the order delivered?', a: 'By road, rail or courier depending on quantity and location. We confirm packing and delivery details with each order.' },
       { q: 'Do you supply small quantities?', a: 'Tell us the quantity you have in mind and we will say what is practical. Wholesale and bulk buyers are our main focus.' },
     ],
@@ -81,7 +81,7 @@ const cityPage = (c) => ({
     { h: c.h2a, p: c.pa },
     { h: 'Choose by size, see the price today', p: [
       'We sell whole green cardamom by pod size: 8 mm for premium use, 7 mm for everyday cooking and chai, 6 mm for blends and 5 mm for grinding. Larger pods look and smell better and cost more per kilo.',
-      'Retail packs run from 1 kg to 10 kg and the rate per kilo falls a little on larger packs. See today’s rates on the {link:products/green-cardamom-price-list/|price list}, then pick a size and weight in our {link:products/|shop} and order on WhatsApp.' ] },
+      'Retail packs run from 25 g to 10 kg and the rate per kilo falls a little on larger packs. See today’s rates on the {link:products/green-cardamom-price-list/|price list}, then pick a size and weight in our {link:products/|shop} and order on WhatsApp.' ] },
     { h: c.h2b, p: c.pb },
     { h: 'Delivery and samples', p: [
       `Tell us your PIN code in ${c.crumb} when you order. We confirm availability, the delivery charge and the expected time on WhatsApp before you pay. We have not fixed a delivery promise for every pin code, so we confirm each order.`,
@@ -94,7 +94,7 @@ const cityPage = (c) => ({
 
 const cityFaq = (city) => [
   { q: `Can I buy green cardamom in ${city} from Heritage Spices?`, a: `Yes. Choose a size and weight on our site and order on WhatsApp. We confirm delivery to your ${city} address before you pay.` },
-  { q: 'What pack sizes do you sell?', a: 'Retail packs from 1 kg to 10 kg. For larger quantities, wholesale rates apply from 25 kg.' },
+  { q: 'What pack sizes do you sell?', a: 'Retail packs from 25 g to 10 kg. For larger quantities, wholesale rates apply from 25 kg.' },
   { q: 'Where does the cardamom come from?', a: 'It is grown on our own farm in Idukki, Kerala.' },
   { q: 'How do I know the price?', a: 'Prices follow the daily Spices Board of India cardamom auction and change every day. See the price list for today’s rate by size.' },
 ];
