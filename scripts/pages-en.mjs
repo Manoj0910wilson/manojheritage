@@ -2,7 +2,7 @@ import { marketsAr } from '../content/markets-ar.mjs';
 import { guidePage } from '../content/guide.mjs';
 import { indiaPages, cityPages } from '../content/india.mjs';
 import { shop, priceUpdated } from '../content/shop.mjs';
-import { grades, retailPerKg, wholesalePerKg, settings } from '../content/pricing.mjs';
+import { grades, retailPerKg, wholesalePerKg, settings, updatedLabel } from '../content/pricing.mjs';
 import {
   site, articles, markets, href, inline, plainText, esc, pageHero, ctaBand, faqList, stepsList, specTable,
   articleBody, enquiryForm, contactDetails, breadcrumbs, organizationLd, websiteLd, breadcrumbLd, faqLd,
@@ -19,31 +19,45 @@ function homeMain(ctx) {
   const pod = href(ctx, 'assets/heritage-cardamom-pod.webp');
   const img = (name) => href(ctx, `assets/img/${name}`);
   const stage = (name) => href(ctx, `assets/stages/${name}`);
+  const ugc = (name) => href(ctx, `assets/ugc/${name}`);
+  const heroGrade = grades.find((g) => g.id === '7mm');
+  const heroFrom = grades.map((g) => retailPerKg(g, 1)).reduce((a, b) => Math.min(a, b));
+  const heroPrice = retailPerKg(heroGrade, 1).toLocaleString('en-IN');
   return `
     <div id="top"></div>
     <canvas class="float-pod" data-float-pod data-frames="${href(ctx, 'assets/pod/f')}" data-count="62" width="560" height="273" aria-hidden="true"></canvas>
-    <section class="hero" aria-labelledby="hero-title" data-pod="0.78,0.52,340,-4,1" data-pod-m="0.74,0.87,300,-4,1">
-      <div class="hero-bg" aria-hidden="true">
-        <img src="${img('hills-1600.webp')}" srcset="${img('hills-900.webp')} 900w, ${img('hills-1600.webp')} 1600w" sizes="100vw" alt="" width="1600" height="907" fetchpriority="high" decoding="async" />
+    <section class="hero" aria-labelledby="hero-title" data-pod="0.78,0.52,340,-4,0" data-pod-m="0.74,0.87,300,-4,0">
+      <div class="hero-bg">
+        <picture>
+          <source media="(max-width: 720px)" srcset="${ugc('hero-m-750.webp')}" />
+          <img src="${ugc('hero-1600.webp')}" srcset="${ugc('hero-900.webp')} 900w, ${ugc('hero-1600.webp')} 1600w" sizes="70vw" alt="Heritage Spices green cardamom pouch held in a sunlit Kerala kitchen with loose green pods on the table" width="1600" height="900" fetchpriority="high" decoding="async" />
+        </picture>
+        <a class="price-chip" href="${href(ctx, 'products/')}" aria-label="Open the cardamom shop">
+          <span>Fresh green cardamom · 7mm</span>
+          <b>₹${heroPrice}<small>/kg</small></b>
+          <em>Updated ${updatedLabel}</em>
+        </a>
       </div>
       <div class="hero-haze"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow">Premium cardamom · Idukki, Kerala</p>
         <h1 id="hero-title">Pure Cardamom.<br /><em>Rooted in Heritage.</em></h1>
-        <p class="hero-lede">A bright, aromatic harvest grown on our own farm in the hills of Idukki and prepared for discerning kitchens around the world.</p>
+        <p class="hero-lede">Green cardamom (elaichi) grown on our own farm in Idukki, Kerala. Order 1 kg to 10 kg packs on WhatsApp, or ask for wholesale and export rates.</p>
         <p class="hero-markets">Supplying buyers across <a href="${href(ctx, 'india/')}">India</a> and importers in the <a href="${href(ctx, 'markets/uae/')}">UAE</a>, <a href="${href(ctx, 'markets/saudi-arabia/')}">Saudi Arabia</a>, <a href="${href(ctx, 'markets/qatar/')}">Qatar</a> and the <a href="${href(ctx, 'markets/')}">Gulf</a>.</p>
         <div class="hero-actions">
-          <a class="solid-button" href="${href(ctx, 'products/green-cardamom/')}">Explore our cardamom <span aria-hidden="true">↗</span></a>
-          <a class="text-button" href="${href(ctx, 'request-a-sample/')}"><span class="phone-dot">✦</span> Request a sample</a>
+          <a class="solid-button" href="${href(ctx, 'products/')}">Shop cardamom <span aria-hidden="true">↗</span></a>
+          <a class="text-button" href="${waHello}" target="_blank" rel="noopener" data-track="whatsapp"><span class="phone-dot">✦</span> Order on WhatsApp</a>
         </div>
         <div class="hero-proof"><span>Grown on our own farm</span><i></i><span>Carefully selected</span><i></i><span>Export-ready quality</span></div>
       </div>
-      <div class="hero-stage" data-stage aria-label="Animated cardamom pod">
-        <img class="pod-image" src="${pod}" alt="A fresh green cardamom pod from Idukki" width="993" height="1000" fetchpriority="high" />
-        <p class="stage-note">Scroll to explore <span>↓</span></p>
-      </div>
       <div class="hero-origin"><span class="origin-pin"></span><span>Idukki, Kerala<br />India</span></div>
       <div class="hero-bottom-line"></div>
+    </section>
+
+    <section class="ugc-strip" aria-label="Heritage cardamom in everyday kitchens">
+      <figure><img src="${ugc('pods-hand.webp')}" alt="Fresh green cardamom pods in an open palm" width="700" height="700" loading="lazy" decoding="async" /><figcaption>Fresh, plump pods</figcaption></figure>
+      <figure><img src="${ugc('chai.webp')}" alt="Cardamom pods being added to a pot of chai" width="700" height="875" loading="lazy" decoding="async" /><figcaption>For chai, kahwa and sweets</figcaption></figure>
+      <figure><img src="${ugc('dewy.webp')}" alt="Dewy green cardamom pods growing on the plant in Idukki" width="900" height="507" loading="lazy" decoding="async" /><figcaption>Picked in Idukki</figcaption></figure>
     </section>
 
     <section class="intro-section" id="story" aria-labelledby="story-title" data-pod="0.5,0.62,230,10,1">
