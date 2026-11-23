@@ -34,9 +34,9 @@ export const shop = [
     alt: 'Heritage Spices tea powder pouch',
     grades: [{
       id: 'tea', label: '', variants: [
-        { id: '250g', label: '250 g', price: 169, perKg: 680, img: 'tea-250g.webp' },
-        { id: '500g', label: '500 g', price: 329, perKg: 660, img: 'tea-500g.webp' },
-        { id: '1kg', label: '1 kg', price: 639, perKg: 640, img: 'tea-1kg.webp' },
+        { id: '250g', label: '250 g', price: 169, perKg: 679, img: 'tea-250g.webp' },
+        { id: '500g', label: '500 g', price: 329, perKg: 659, img: 'tea-500g.webp' },
+        { id: '1kg', label: '1 kg', price: 639, perKg: 639, img: 'tea-1kg.webp' },
       ],
     }],
   },
