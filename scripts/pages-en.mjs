@@ -40,7 +40,7 @@ function homeMain(ctx) {
       </div>
       <div class="hero-haze"></div>
       <div class="hero-copy reveal">
-        <p class="eyebrow">Premium cardamom · Idukki, Kerala</p>
+        <p class="eyebrow">Buy cardamom (elaichi) · Idukki, Kerala</p>
         <h1 id="hero-title">Pure Cardamom.<br /><em>Rooted in Heritage.</em></h1>
         <p class="hero-lede">Green cardamom (elaichi) grown on our own farm in Idukki, Kerala. Order 1 kg to 10 kg packs on WhatsApp, or ask for wholesale and export rates.</p>
         <p class="hero-markets">Supplying buyers across <a href="${href(ctx, 'india/')}">India</a> and importers in the <a href="${href(ctx, 'markets/uae/')}">UAE</a>, <a href="${href(ctx, 'markets/saudi-arabia/')}">Saudi Arabia</a>, <a href="${href(ctx, 'markets/qatar/')}">Qatar</a> and the <a href="${href(ctx, 'markets/')}">Gulf</a>.</p>
@@ -707,17 +707,17 @@ export function englishPages() {
 
   add({
     path: '',
-    title: 'Heritage Spices | Buy Green Cardamom (Elaichi), Idukki',
-    description: 'Buy premium green cardamom (elaichi) direct from Idukki, Kerala: 8 mm, 7 mm and 6 mm pods. Retail 1 to 10 kg, bulk wholesale, India and Gulf. See prices.',
+    title: 'Buy Cardamom (Elaichi) Online, Idukki',
+    description: 'Buy cardamom (elaichi) direct from our Idukki farm: 8, 7 and 6 mm green pods, 1 to 10 kg packs, bulk wholesale. Live prices, India and Gulf.',
     bodyClass: 'is-home',
     alternates: { en: '', ar: 'ar/' }, alt: 'ar/',
     jsonld: () => [organizationLd(), websiteLd()],
     render: homeMain,
   });
   add({ path: 'about/', title: 'About Heritage Spices Idukki, Kerala', description: 'Heritage Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
-  add({ path: 'products/', title: 'Buy Green Cardamom Online, 1 kg to 10 kg', description: 'Buy green cardamom (elaichi) online from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 1 kg to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
+  add({ path: 'products/', title: 'Buy Cardamom Online, Green Elaichi 1 to 10 kg', description: 'Buy green cardamom (elaichi) online from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 1 kg to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
   add({
-    path: 'products/green-cardamom/', title: 'Buy Green Cardamom (Elaichi) Online, Idukki',
+    path: 'products/green-cardamom/', title: 'Green Cardamom (Elaichi) Price & Buy Online',
     description: 'Whole green cardamom (elaichi) from Idukki, Kerala: 8 mm bold, 7 mm and small pods. Retail packs, bulk wholesale and Gulf supply. Specification, uses and FAQs.',
     alternates: { en: 'products/green-cardamom/', ar: 'ar/green-cardamom/' }, alt: 'ar/green-cardamom/',
     crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Whole green cardamom' }], faq: greenFaq,
