@@ -19,10 +19,10 @@ export const shop = [
       sub: g.size,
       variants: [...smalls.map((x) => {
         const perKg = retailPerKg(g, x.kg);
-        return { id: x.id, label: x.label, price: Math.round(perKg * x.kg / 5) * 5, perKg, img: `cardamom-${x.id}.webp` };
+        return { id: x.id, label: x.label, price: Math.round(perKg * x.kg / 10) * 10 - 1, perKg: perKg - 1, img: `cardamom-${x.id}.webp` };
       }), ...kgs.map((n) => {
         const perKg = retailPerKg(g, n);
-        return { id: `${n}kg`, label: `${n} kg`, price: perKg * n, perKg, img: `cardamom-${n}kg.webp` };
+        return { id: `${n}kg`, label: `${n} kg`, price: perKg * n - 1, perKg: perKg - 1, img: `cardamom-${n}kg.webp` };
       })],
     })),
   },
@@ -34,9 +34,9 @@ export const shop = [
     alt: 'Heritage Spices tea powder pouch',
     grades: [{
       id: 'tea', label: '', variants: [
-        { id: '250g', label: '250 g', price: 170, perKg: 680, img: 'tea-250g.webp' },
-        { id: '500g', label: '500 g', price: 330, perKg: 660, img: 'tea-500g.webp' },
-        { id: '1kg', label: '1 kg', price: 640, perKg: 640, img: 'tea-1kg.webp' },
+        { id: '250g', label: '250 g', price: 169, perKg: 680, img: 'tea-250g.webp' },
+        { id: '500g', label: '500 g', price: 329, perKg: 660, img: 'tea-500g.webp' },
+        { id: '1kg', label: '1 kg', price: 639, perKg: 640, img: 'tea-1kg.webp' },
       ],
     }],
   },

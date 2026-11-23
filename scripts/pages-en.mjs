@@ -22,7 +22,7 @@ function homeMain(ctx) {
   const ugc = (name) => href(ctx, `assets/ugc/${name}`);
   const heroGrade = grades.find((g) => g.id === '7mm');
   const heroFrom = grades.map((g) => retailPerKg(g, 1)).reduce((a, b) => Math.min(a, b));
-  const heroPrice = retailPerKg(heroGrade, 1).toLocaleString('en-IN');
+  const heroPrice = (retailPerKg(heroGrade, 1) - 1).toLocaleString('en-IN');
   return `
     <div id="top"></div>
     <canvas class="float-pod" data-float-pod data-frames="${href(ctx, 'assets/pod/f')}" data-count="62" width="560" height="273" aria-hidden="true"></canvas>
@@ -255,7 +255,7 @@ function priceListMain(ctx) {
     <tr>
       <th scope="row"><strong>${g.code}</strong> ${g.name}<small>${g.size}</small></th>
       <td>${g.use}</td>
-      <td>${inrk(retailPerKg(g, 1))}</td>
+      <td>${inrk(retailPerKg(g, 1) - 1)}</td>
       <td>${inrk(wholesalePerKg(g))}</td>
       <td><a class="arrow-link" href="${whatsappLink(`Hello Heritage Spices, please send me a wholesale quotation for green cardamom ${g.code} ${g.name}.\n\nQuantity (kg):\nCity / country:`)}" target="_blank" rel="noopener">Quote <span>↗</span></a></td>
     </tr>`).join('');
