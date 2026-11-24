@@ -187,7 +187,7 @@ function aboutMain(ctx) {
         <li><strong>Where we supply:</strong> India, and the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.</li>
         <li><strong>Languages:</strong> English and Arabic.</li>
         <li><strong>How to order:</strong> choose a size and weight in the {link:products/|shop}, or send your requirements for a sample and quotation. See the {link:products/green-cardamom-price-list/|grade-wise price list}.</li>
-        <li><strong>Contact:</strong> WhatsApp +91 89395 35151, heritagespices01@gmail.com.</li>
+        <li><strong>Contact:</strong> WhatsApp +91 89395 35151, senvoraspices@gmail.com.</li>
         <li><strong>Learn more:</strong> {link:green-cardamom-guide/|green cardamom buyer’s guide} · {link:faq/|frequently asked questions} · {link:india/|buying in India} · {link:markets/|Gulf markets}.</li>
       </ul>
     </section>

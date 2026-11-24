@@ -9,7 +9,7 @@ export const site = {
   // (or build with SITE_URL=https://yourdomain.com) and add a CNAME file in /public.
   url: (process.env.SITE_URL || 'https://senvoraspice.com').replace(/\/$/, ''),
 
-  email: 'heritagespices01@gmail.com',
+  email: 'senvoraspices@gmail.com',
   phoneDisplay: '+91 89395 35151',
   phoneTel: '+918939535151',
   whatsapp: '918939535151', // country code + number, no "+" or spaces
@@ -18,8 +18,8 @@ export const site = {
   // Extra profile URLs for Organization sameAs only (not shown as footer icons)
   sameAsExtra: ['https://share.google/FvcUB2EEHsjBq1ntA'],
   social: [
-    { label: 'Instagram', url: 'https://www.instagram.com/heri.tagespice/' },
-    { label: 'LinkedIn', url: 'https://www.linkedin.com/company/heritage-spicesidukki/' },
+    { label: 'Instagram', url: 'https://www.instagram.com/senvora_spices/' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/company/senvoraspices/' },
     { label: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61596794153649' },
   ],
 
