@@ -166,7 +166,7 @@ const paintHeader = () => {
     if (!r.width) return;
     const hit = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2)
       .find((n) => !header.contains(n) && !n.classList?.contains('float-pod') && n.closest(DARK));
-    el.classList.toggle('on-dark', Boolean(hit) && !menuOpen);
+    el.classList.toggle('on-dark', Boolean(hit) && !menuOpen && !header.classList.contains('is-scrolled'));
   });
 };
 const onScroll = () => {

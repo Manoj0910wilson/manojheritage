@@ -69,7 +69,7 @@ function header(ctx, page) {
   <a class="skip-link" href="#main">${isAr ? 'تخطَّ إلى المحتوى' : 'Skip to content'}</a>
   <header class="site-header" data-header>
     <a class="brand" href="${href(ctx, isAr ? 'ar/' : '')}" aria-label="Senvora Spices home">
-      <img src="${href(ctx, 'assets/senvora-spices-logo.webp')}" alt="Senvora Spices" width="164" height="55" />
+      <img src="${href(ctx, 'assets/senvora-spices-logo.svg')}" alt="Senvora Spices" width="164" height="44" />
     </a>
     <nav class="desktop-nav" aria-label="${isAr ? 'التنقل الرئيسي' : 'Primary navigation'}">${links}</nav>
     <div class="header-actions">
@@ -108,7 +108,7 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo.webp')}" alt="Senvora Spices" width="145" height="49" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="145" height="39" loading="lazy" /></a>
         <p>هيل نقي. جذوره في إدوكي.</p>
       </div>
       <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/markets/qatar/')}">الهيل في قطر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
@@ -122,7 +122,7 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/senvora-spices-logo.webp')}" alt="Senvora Spices" width="145" height="49" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="145" height="39" loading="lazy" /></a>
         <p>Pure cardamom. Rooted in Idukki.</p>
         <p class="footer-small">Premium green cardamom from Idukki, Kerala, India, for buyers in India and importers in the Gulf.</p>
       </div>
@@ -360,8 +360,8 @@ export function layout(ctx, page, mainHtml) {
   const placename = page.geo?.placename ? `<meta name="geo.placename" content="${esc(page.geo.placename)}" />` : '';
   const isAr = ctx.lang === 'ar';
   const fonts = isAr
-    ? 'family=Noto+Naskh+Arabic:wght@500;600;700&family=Tajawal:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=DM+Sans:wght@400;500;600;700'
-    : 'family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700';
+    ? 'family=Noto+Naskh+Arabic:wght@500;600;700&family=Tajawal:wght@400;500;700&family=Source+Serif+4:wght@400;500;600;700&family=Inter:wght@400;500;600;700'
+    : 'family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700';
   const alternates = page.alternates
     ? Object.entries(page.alternates).map(([lang, path]) => `<link rel="alternate" hreflang="${lang}" href="${absUrl(path)}" />`).join('\n    ')
       + `\n    <link rel="alternate" hreflang="x-default" href="${absUrl(page.alternates.en)}" />`
