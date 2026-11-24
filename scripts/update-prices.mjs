@@ -41,15 +41,20 @@ async function fetchText() {
   const { chromium } = await import('playwright');
   const browser = await chromium.launch();
   try {
-    for (const url of URLS) {
-      const page = await browser.newPage();
-      try {
-        await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-        await page.waitForTimeout(3000);
-        const text = await page.evaluate(() => document.body.innerText);
-        if (/Date of Auction/i.test(text)) return text;
-      } catch (e) { console.error(url, e.message); }
-      await page.close();
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      for (const url of URLS) {
+        const ctx = await browser.newContext({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36' });
+        const page = await ctx.newPage();
+        try {
+          await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+          await page.waitForFunction(() => /Date of Auction/i.test(document.body.innerText), null, { timeout: 25000 }).catch(() => {});
+          const text = await page.evaluate(() => document.body.innerText);
+          if (/Date of Auction/i.test(text)) return text;
+          console.error(`attempt ${attempt}: ticker not found on`, url);
+        } catch (e) { console.error(`attempt ${attempt}`, url, e.message.split('\n')[0]); }
+        await ctx.close();
+      }
+      await new Promise((r) => setTimeout(r, 15000));
     }
   } finally { await browser.close(); }
   return '';

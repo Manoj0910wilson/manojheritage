@@ -2,11 +2,13 @@ name: Update cardamom prices
 on:
   schedule:
     - cron: '30 6 * * *'   # daily, about 12:00 IST
+    - cron: '30 12 * * *'  # second try, about 18:00 IST (in case the first run failed)
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
   update:
+    timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
