@@ -40,7 +40,7 @@ const articleLd = (ctx, a) => ({
   mainEntityOfPage: absUrl(ctx.path),
   image: absUrl('og-image.jpg'),
   author: { '@type': 'Organization', name: site.name, url: `${site.url}/` },
-  publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: absUrl('assets/heritage-spices-logo.png') } },
+  publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: absUrl('assets/senvora-spices-logo.png') } },
 });
 // No Product markup on purpose: Google requires a price, review or rating for Product rich results,
 // and we do not publish prices or reviews. WebPage + about keeps the entity information without that claim.

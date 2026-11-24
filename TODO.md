@@ -1,7 +1,7 @@
-# Heritage Spices — implementation checklist
+# Senvora Spices — implementation checklist
 
 ## Approved homepage experience
-- [x] Build a responsive homepage using the Heritage Spices logo and the approved light ivory, greenery, and warm gold visual direction.
+- [x] Build a responsive homepage using the Senvora Spices logo and the approved light ivory, greenery, and warm gold visual direction.
 - [x] Provide clean, traditional-but-readable typography and uncluttered navigation for international buyers.
 - [x] Include hero messaging for premium cardamom from Idukki, Kerala, direct farmer sourcing, and export-ready quality.
 - [x] Include buyer actions: Explore our cardamom, Request a quote, Talk to our export team, and Call now.

@@ -1,6 +1,6 @@
-# Heritage Spices
+# Senvora Spices
 
-Multi-page, search-engine-friendly website for Heritage Spices (premium green cardamom from Idukki, Kerala), built for importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. English and Arabic.
+Multi-page, search-engine-friendly website for Senvora Spices (premium green cardamom from Idukki, Kerala), built for importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. English and Arabic.
 
 ## How it works
 

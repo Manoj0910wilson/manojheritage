@@ -27,7 +27,7 @@ export const guidePage = {
       'For importers, see {link:journal/how-to-import-cardamom-from-india/|how to import cardamom from India}, the {link:journal/cardamom-export-documents-checklist-india/|export documents checklist} and {link:journal/cardamom-packing-for-export-what-to-specify/|what to specify for packing}.' ] },
     { h: 'How to store it', p: [
       'Keep whole pods airtight, cool, dry and away from light and strong smells, and grind only what you need. See {link:journal/how-to-store-green-cardamom-keep-aroma/|how to store green cardamom}.' ] },
-    { h: 'Buy from Idukki with Heritage Spices', p: [
+    { h: 'Buy from Idukki with Senvora Spices', p: [
       'We supply whole green cardamom from Idukki, Kerala to buyers in {link:india/|India} and importers across the {link:markets/|Gulf}. See our {link:products/green-cardamom/|product page}, then {link:request-a-sample/|request a sample}.' ] },
   ],
   faq: [
@@ -36,6 +36,6 @@ export const guidePage = {
     { q: 'What is the difference between green and black cardamom?', a: 'Green cardamom is small, sweet and floral. Black cardamom is larger, smoky and used mainly in savoury dishes. They are different spices.' },
     { q: 'How is green cardamom graded?', a: 'Mainly by pod size and colour, from extra bold to bold and smaller grades. Size ranges vary by trader, so ask for millimetres and a sample.' },
     { q: 'How should I store green cardamom?', a: 'Whole pods in an airtight container in a cool, dry, dark place, away from strong smells. Grind only what you need.' },
-    { q: 'Where does Heritage Spices source its cardamom?', a: 'We grow it on our own farm in Idukki, Kerala, India. We supply buyers in India and importers in the Gulf. Grades and packing are confirmed on enquiry.' },
+    { q: 'Where does Senvora Spices source its cardamom?', a: 'We grow it on our own farm in Idukki, Kerala, India. We supply buyers in India and importers in the Gulf. Grades and packing are confirmed on enquiry.' },
   ],
 };

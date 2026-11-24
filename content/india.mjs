@@ -4,7 +4,7 @@ export const indiaPages = [
     path: 'india/',
     crumbName: 'India',
     metaTitle: 'Green Cardamom Supplier in India',
-    metaDescription: 'Buy whole green cardamom (elaichi) from Idukki, Kerala for Indian wholesalers, masala makers, hotels and food businesses. Request a sample from Heritage Spices.',
+    metaDescription: 'Buy whole green cardamom (elaichi) from Idukki, Kerala for Indian wholesalers, masala makers, hotels and food businesses. Request a sample from Senvora Spices.',
     keywords: ['green cardamom supplier India', 'bulk elaichi wholesale India', 'Idukki cardamom', 'Kerala cardamom wholesaler', 'cardamom supplier for hotels'],
     geo: { region: 'IN', placename: 'India' },
     kicker: 'Market · India',
@@ -93,7 +93,7 @@ const cityPage = (c) => ({
 });
 
 const cityFaq = (city) => [
-  { q: `Can I buy green cardamom in ${city} from Heritage Spices?`, a: `Yes. Choose a size and weight on our site and order on WhatsApp. We confirm delivery to your ${city} address before you pay.` },
+  { q: `Can I buy green cardamom in ${city} from Senvora Spices?`, a: `Yes. Choose a size and weight on our site and order on WhatsApp. We confirm delivery to your ${city} address before you pay.` },
   { q: 'What pack sizes do you sell?', a: 'Retail packs from 25 g to 10 kg. For larger quantities, wholesale rates apply from 25 kg.' },
   { q: 'Where does the cardamom come from?', a: 'It is grown on our own farm in Idukki, Kerala.' },
   { q: 'How do I know the price?', a: 'Prices follow the daily Spices Board of India cardamom auction and change every day. See the price list for today’s rate by size.' },

@@ -30,7 +30,7 @@ export const articles = [
       '## A harvest that comes in rounds',
       'Cardamom pods do not ripen all at once. A plant flowers and fruits over an extended period, so pickers return to the same plants several times in a season and choose pods at the right stage of maturity by hand. Picking at the right moment matters because it affects colour, aroma and how well a pod holds its character after drying.',
       '## Why origin matters to a buyer',
-      'For a buyer, origin is more than a place name. Knowing where a pod was grown, and who grew it, makes it easier to talk about consistency, to trace a lot, and to understand why one harvest smells and tastes the way it does. That is the idea behind Heritage Spices: staying close to the farmers of Idukki and keeping the conversation clear from the first sample to the final shipment.',
+      'For a buyer, origin is more than a place name. Knowing where a pod was grown, and who grew it, makes it easier to talk about consistency, to trace a lot, and to understand why one harvest smells and tastes the way it does. That is the idea behind Senvora Spices: staying close to the farmers of Idukki and keeping the conversation clear from the first sample to the final shipment.',
     ],
   },
   {
@@ -70,7 +70,7 @@ export const articles = [
       '## Raise paperwork early',
       'Documents and requirements differ by destination country. Buyers should share any import rules, testing or labelling needs at the start, and suppliers should confirm what they can provide, so there are no surprises close to the shipping date.',
       '## Keep communication simple',
-      'Quick, direct answers, a single point of contact and honest updates on harvest and availability go a long way. Heritage Spices welcomes enquiries from importers, distributors and food and beverage makers, and is happy to talk through requirements before anything is committed.',
+      'Quick, direct answers, a single point of contact and honest updates on harvest and availability go a long way. Senvora Spices welcomes enquiries from importers, distributors and food and beverage makers, and is happy to talk through requirements before anything is committed.',
     ],
   },
 ];

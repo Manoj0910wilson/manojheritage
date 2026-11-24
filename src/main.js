@@ -148,7 +148,7 @@ document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
   emailButton?.addEventListener('click', () => {
     if (!form.reportValidity()) return;
     track('generate_lead', { method: 'email', source: form.dataset.source });
-    const subject = encodeURIComponent('Cardamom enquiry from the Heritage Spices website');
+    const subject = encodeURIComponent('Cardamom enquiry from the Senvora Spices website');
     window.location.href = `mailto:${form.dataset.email}?subject=${subject}&body=${encodeURIComponent(buildText())}`;
     status.textContent = messages.mail;
   });
@@ -237,7 +237,7 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
     per.textContent = qty > 1 ? `${qty} x ${fmt(v.price)} · ${fmt(v.perKg)} / kg` : `${fmt(v.perKg)} / kg`;
     if (img.getAttribute('src') !== v.img) img.setAttribute('src', v.img);
     const gl = cfg.multi ? ` (${g.label})` : '';
-    const text = `Hello Heritage Spices, I would like to order:\n\n${cfg.name}${gl} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
+    const text = `Hello Senvora Spices, I would like to order:\n\n${cfg.name}${gl} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
     btn.setAttribute('href', `https://wa.me/${cfg.wa}?text=${encodeURIComponent(text)}`);
     return { g, v };
   };

@@ -22,8 +22,8 @@ export function plainText(text) {
 }
 
 export const whatsappLink = (text) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
-export const waHello = whatsappLink('Hello Heritage Spices, I would like to enquire about your green cardamom.');
-export const waHelloAr = whatsappLink('Hello Heritage Spices, I would like to enquire about green cardamom. / مرحباً، أود الاستفسار عن الهيل الأخضر.');
+export const waHello = whatsappLink('Hello Senvora Spices, I would like to enquire about your green cardamom.');
+export const waHelloAr = whatsappLink('Hello Senvora Spices, I would like to enquire about green cardamom. / مرحباً، أود الاستفسار عن الهيل الأخضر.');
 export const tel = `tel:${site.phoneTel}`;
 
 /* ---------- UI strings ---------- */
@@ -68,8 +68,8 @@ function header(ctx, page) {
   return `
   <a class="skip-link" href="#main">${isAr ? 'تخطَّ إلى المحتوى' : 'Skip to content'}</a>
   <header class="site-header" data-header>
-    <a class="brand" href="${href(ctx, isAr ? 'ar/' : '')}" aria-label="Heritage Spices home">
-      <img src="${href(ctx, 'assets/heritage-spices-logo.webp')}" alt="Heritage Spices" width="164" height="109" />
+    <a class="brand" href="${href(ctx, isAr ? 'ar/' : '')}" aria-label="Senvora Spices home">
+      <img src="${href(ctx, 'assets/senvora-spices-logo.webp')}" alt="Senvora Spices" width="164" height="55" />
     </a>
     <nav class="desktop-nav" aria-label="${isAr ? 'التنقل الرئيسي' : 'Primary navigation'}">${links}</nav>
     <div class="header-actions">
@@ -98,7 +98,7 @@ function footer(ctx) {
   const icons = SOCIAL_ICONS;
   const socialLink = (s) => {
     const icon = icons[String(s.label).toLowerCase()];
-    return `<a class="${icon ? 'social-icon' : ''}" href="${esc(s.url)}" target="_blank" rel="noopener me" aria-label="Heritage Spices on ${esc(s.label)}" title="${esc(s.label)}">${icon || esc(s.label)}</a>`;
+    return `<a class="${icon ? 'social-icon' : ''}" href="${esc(s.url)}" target="_blank" rel="noopener me" aria-label="Senvora Spices on ${esc(s.label)}" title="${esc(s.label)}">${icon || esc(s.label)}</a>`;
   };
   const social = site.social.length
     ? `<div class="footer-social"><span class="footer-social-title">${isAr ? 'تابعنا' : 'Follow us'}</span><span class="footer-social-links">${site.social.map(socialLink).join('')}</span></div>`
@@ -108,22 +108,22 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/heritage-spices-logo.webp')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
-        <p>هيل نقي. جذوره في التراث.</p>
+        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo.webp')}" alt="Senvora Spices" width="145" height="49" loading="lazy" /></a>
+        <p>هيل نقي. جذوره في إدوكي.</p>
       </div>
       <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/markets/qatar/')}">الهيل في قطر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
       <div><h3>تواصل معنا</h3><a href="mailto:${site.email}">${site.email}</a><a href="${tel}" dir="ltr">${site.phoneDisplay}</a><a href="${waHelloAr}" target="_blank" rel="noopener">واتساب</a></div>
     </div>
     ${social}
-    <div class="footer-bottom"><span>© ${year} Heritage Spices</span></div>
+    <div class="footer-bottom"><span>© ${year} Senvora Spices</span></div>
   </footer>`;
   }
   return `
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/heritage-spices-logo.webp')}" alt="Heritage Spices" width="145" height="97" loading="lazy" /></a>
-        <p>Pure cardamom. Rooted in heritage.</p>
+        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/senvora-spices-logo.webp')}" alt="Senvora Spices" width="145" height="49" loading="lazy" /></a>
+        <p>Pure cardamom. Rooted in Idukki.</p>
         <p class="footer-small">Premium green cardamom from Idukki, Kerala, India, for buyers in India and importers in the Gulf.</p>
       </div>
       <div><h3>Products</h3>
@@ -168,7 +168,7 @@ function footer(ctx) {
       </div>
     </div>
     ${social}
-    <div class="footer-bottom"><span>© ${year} Heritage Spices. All rights reserved.</span><span>Idukki, Kerala, India</span></div>
+    <div class="footer-bottom"><span>© ${year} Senvora Spices. All rights reserved.</span><span>Idukki, Kerala, India</span></div>
   </footer>`;
 }
 
@@ -177,12 +177,12 @@ function socialDial(ctx) {
   if (!site.social.length) return '';
   const items = site.social.map((s, i) => {
     const icon = SOCIAL_ICONS[String(s.label).toLowerCase()];
-    return `<a class="dial-item" style="--i:${i}" href="${esc(s.url)}" target="_blank" rel="noopener me" aria-label="Heritage Spices on ${esc(s.label)}" title="${esc(s.label)}">${icon || esc(s.label)}</a>`;
+    return `<a class="dial-item" style="--i:${i}" href="${esc(s.url)}" target="_blank" rel="noopener me" aria-label="Senvora Spices on ${esc(s.label)}" title="${esc(s.label)}">${icon || esc(s.label)}</a>`;
   }).join('');
   return `
   <div class="social-dial" data-social-dial>
     <div class="dial-items" id="social-dial-items">${items}</div>
-    <button class="dial-toggle" type="button" aria-expanded="false" aria-controls="social-dial-items" aria-label="${isAr ? 'تابعنا على وسائل التواصل' : 'Follow Heritage Spices on social media'}">
+    <button class="dial-toggle" type="button" aria-expanded="false" aria-controls="social-dial-items" aria-label="${isAr ? 'تابعنا على وسائل التواصل' : 'Follow Senvora Spices on social media'}">
       <span class="dial-pulse" aria-hidden="true"></span>
       <span class="dial-core"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 21.2l-1.4-1.3C5.4 15.2 2 12.1 2 8.3 2 5.2 4.4 3 7.4 3c1.7 0 3.4.8 4.6 2.1C13.2 3.8 14.9 3 16.6 3 19.6 3 22 5.2 22 8.3c0 3.8-3.4 6.9-8.6 11.6z"/></svg><span class="dial-label">${isAr ? 'تابعنا' : 'Follow'}</span></span>
     </button>
@@ -192,7 +192,7 @@ function socialDial(ctx) {
 function floatingWhatsApp(ctx) {
   const isAr = ctx.lang === 'ar';
   return `
-  <a class="wa-float" href="${isAr ? waHelloAr : waHello}" target="_blank" rel="noopener" data-track="whatsapp" aria-label="${isAr ? 'تحدث معنا عبر واتساب' : 'Chat with Heritage Spices on WhatsApp'}">
+  <a class="wa-float" href="${isAr ? waHelloAr : waHello}" target="_blank" rel="noopener" data-track="whatsapp" aria-label="${isAr ? 'تحدث معنا عبر واتساب' : 'Chat with Senvora Spices on WhatsApp'}">
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.2 3.6c-.4.3-1-.0-1-.5V16A2.5 2.5 0 0 1 4 13.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
     <span>${isAr ? 'واتساب' : 'WhatsApp'}</span>
   </a>`;
@@ -202,7 +202,7 @@ function searchPanel() {
   return `
   <div class="search-panel" data-search-panel aria-hidden="true" inert>
     <button data-close-search aria-label="Close search">×</button>
-    <p class="eyebrow">Search Heritage Spices</p>
+    <p class="eyebrow">Search Senvora Spices</p>
     <input type="search" placeholder="Try “Dubai”, “sizes”, or “export”" data-search-input autocomplete="off" aria-label="Search the site" />
     <div class="search-results" data-search-results></div>
   </div>`;
@@ -270,13 +270,13 @@ const formText = {
     name: 'Your name', company: 'Company', optional: '(optional)', country: 'Country', reach: 'Email or phone',
     message: 'What are you looking for?', placeholder: 'Product, size or grade, approximate quantity, packing, delivery port, timeline…',
     wa: 'Send on WhatsApp', email: 'Send by email',
-    intro: 'Hello Heritage Spices, I would like to request a quote and a sample of cardamom.',
+    intro: 'Hello Senvora Spices, I would like to request a quote and a sample of cardamom.',
   },
   ar: {
     name: 'الاسم', company: 'الشركة', optional: '(اختياري)', country: 'الدولة', reach: 'البريد الإلكتروني أو الهاتف',
     message: 'ما الذي تبحث عنه؟', placeholder: 'المنتج، الحجم أو الدرجة، الكمية التقريبية، التعبئة، ميناء التسليم، الموعد المطلوب…',
     wa: 'أرسل عبر واتساب', email: 'أرسل بالبريد الإلكتروني',
-    intro: 'Hello Heritage Spices, I would like to request a quote and a sample of cardamom. / مرحباً، أود طلب عرض سعر وعيّنة من الهيل.',
+    intro: 'Hello Senvora Spices, I would like to request a quote and a sample of cardamom. / مرحباً، أود طلب عرض سعر وعيّنة من الهيل.',
   },
 };
 
@@ -319,12 +319,12 @@ export function organizationLd() {
     '@type': 'Organization',
     '@id': `${site.url}/#organization`,
     name: site.name,
-    alternateName: ['Heritage Spices Idukki', 'Heritage Spices Kerala'],
+    alternateName: ['Senvora Spices Idukki', 'Senvora Spices Kerala'],
     url: `${site.url}/`,
     address: { '@type': 'PostalAddress', addressLocality: 'Idukki', addressRegion: 'Kerala', addressCountry: 'IN' },
-    logo: absUrl('assets/heritage-spices-logo.png'),
+    logo: absUrl('assets/senvora-spices-logo.png'),
     image: absUrl('og-image.jpg'),
-    description: 'Heritage Spices sources premium green cardamom from Idukki, Kerala, India for buyers in India and importers in the Gulf.',
+    description: 'Senvora Spices sources premium green cardamom from Idukki, Kerala, India for buyers in India and importers in the Gulf.',
     email: site.email,
     telephone: site.phoneTel,
     areaServed: [{ '@type': 'Country', name: 'India' }, ...markets.map((m) => ({ '@type': 'Country', name: m.name }))],
@@ -399,12 +399,12 @@ export function layout(ctx, page, mainHtml) {
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="${locale}" />
     ${alternateLocales.map((value) => `<meta property="og:locale:alternate" content="${esc(value)}" />`).join('\n    ')}
-    <meta property="og:image:alt" content="${esc(page.imageAlt || 'Heritage Spices green cardamom from Idukki, Kerala')}" />
+    <meta property="og:image:alt" content="${esc(page.imageAlt || 'Senvora Spices green cardamom from Idukki, Kerala')}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(title)}" />
     <meta name="twitter:description" content="${desc}" />
     <meta name="twitter:image" content="${ogImage}" />
-    <meta name="twitter:image:alt" content="${esc(page.imageAlt || 'Heritage Spices green cardamom from Idukki, Kerala')}" />
+    <meta name="twitter:image:alt" content="${esc(page.imageAlt || 'Senvora Spices green cardamom from Idukki, Kerala')}" />
     ${gsc}
     <link rel="icon" type="image/png" href="${href(ctx, 'favicon.png')}" />
     <link rel="apple-touch-icon" href="${href(ctx, 'apple-touch-icon.png')}" />

@@ -18,13 +18,13 @@ const arFaqHome = [
 ];
 
 function homeMain(ctx) {
-  const pod = href(ctx, 'assets/heritage-cardamom-pod.webp');
+  const pod = href(ctx, 'assets/senvora-cardamom-pod.webp');
   const img = (n) => href(ctx, `assets/img/${n}`);
   const stage = (n) => href(ctx, `assets/stages/${n}`);
   return `
   <section class="inner-hero ar-hero">
     <p class="section-kicker">الهيل الأخضر من إدوكي، كيرالا</p>
-    <h1 class="page-title">هيل أخضر نقي.<br /><em>جذوره في التراث.</em></h1>
+    <h1 class="page-title">هيل أخضر نقي.<br /><em>جذوره في إدوكي.</em></h1>
     <p class="page-lede">نوفّر الهيل الأخضر الكامل من تلال إدوكي في كيرالا بالهند، للمستوردين وتجار الجملة وشركات القهوة والأغذية في الإمارات والسعودية وقطر والكويت وعُمان والبحرين.</p>
     <div class="hero-actions">
       <a class="solid-button" href="#enquiry">اطلب عيّنة وعرض سعر <span aria-hidden="true">↖</span></a>
@@ -164,7 +164,7 @@ function greenMain(ctx) {
   <div class="content-wrap">
     <section><h2 class="h2-small">أسئلة شائعة</h2>${faqList(arGreenFaq, ctx)}</section>
   </div>
-  ${ctaBand(ctx, { kicker: 'الخطوة التالية', title: 'انظر إليه وشمّه، ثم قرّر.', text: 'اطلب عيّنة وقارنها بمواصفاتك.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'تواصل عبر واتساب', path: whatsappLink('Hello Heritage Spices, I would like a cardamom sample. / مرحباً، أود طلب عيّنة هيل.'), external: true } })}`;
+  ${ctaBand(ctx, { kicker: 'الخطوة التالية', title: 'انظر إليه وشمّه، ثم قرّر.', text: 'اطلب عيّنة وقارنها بمواصفاتك.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'تواصل عبر واتساب', path: whatsappLink('Hello Senvora Spices, I would like a cardamom sample. / مرحباً، أود طلب عيّنة هيل.'), external: true } })}`;
 }
 
 function guideMain(ctx) {
@@ -261,7 +261,7 @@ export function arabicPages() {
   const pages = [];
   pages.push({
     lang: 'ar', path: 'ar/',
-    title: 'هيريتج سبايسز | هيل أخضر فاخر من إدوكي، كيرالا',
+    title: 'سينفورا سبايسز | هيل أخضر فاخر من إدوكي، كيرالا',
     description: 'هيل أخضر كامل فاخر من إدوكي في كيرالا للمستوردين في الإمارات والسعودية وقطر والكويت وعُمان والبحرين. مصدر مباشر من المزارعين. اطلب عيّنة.',
     bodyClass: 'on-page is-ar',
     alternates: { en: '', ar: 'ar/' }, alt: '',
@@ -272,7 +272,7 @@ export function arabicPages() {
   pages.push({
     lang: 'ar', path: 'ar/green-cardamom/',
     title: 'الهيل الأخضر الكامل من إدوكي، كيرالا',
-    description: 'هيل أخضر كامل من إدوكي في كيرالا: المواصفات والاستخدامات والتعبئة وأسئلة شائعة للمستوردين وشركات الأغذية. اطلب عيّنة من هيريتج سبايسز.',
+    description: 'هيل أخضر كامل من إدوكي في كيرالا: المواصفات والاستخدامات والتعبئة وأسئلة شائعة للمستوردين وشركات الأغذية. اطلب عيّنة من سينفورا سبايسز.',
     bodyClass: 'on-page is-ar',
     alternates: { en: 'products/green-cardamom/', ar: 'ar/green-cardamom/' }, alt: 'products/green-cardamom/',
     crumbs: [{ name: 'الهيل الأخضر' }], faq: arGreenFaq,

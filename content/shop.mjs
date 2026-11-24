@@ -11,7 +11,7 @@ export const shop = [
     name: 'Green Cardamom',
     short: 'Premium whole pods from Idukki, Kerala. Choose a size and weight.',
     link: 'products/green-cardamom/',
-    alt: 'Heritage Spices green cardamom pouch',
+    alt: 'Senvora Spices green cardamom pouch',
     defaultGrade: defaultGradeId,
     grades: grades.map((g) => ({
       id: g.id,
@@ -31,7 +31,7 @@ export const shop = [
     name: 'Tea Powder',
     short: 'Premium tea powder for daily chai. Wholesale on request.',
     link: 'products/tea-powder/',
-    alt: 'Heritage Spices tea powder pouch',
+    alt: 'Senvora Spices tea powder pouch',
     grades: [{
       id: 'tea', label: '', variants: [
         { id: '250g', label: '250 g', price: 169, perKg: 679, img: 'tea-250g.webp' },

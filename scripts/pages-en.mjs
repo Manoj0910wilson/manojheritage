@@ -10,13 +10,13 @@ import {
 } from './templates.mjs';
 
 const journalClasses = ['one', 'two', 'three'];
-const sampleWa = whatsappLink('Hello Heritage Spices, I would like to request a cardamom sample.');
+const sampleWa = whatsappLink('Hello Senvora Spices, I would like to request a cardamom sample.');
 
 /* =========================================================
    HOME (keeps the approved animated design, now pre-rendered)
    ========================================================= */
 function homeMain(ctx) {
-  const pod = href(ctx, 'assets/heritage-cardamom-pod.webp');
+  const pod = href(ctx, 'assets/senvora-cardamom-pod.webp');
   const img = (name) => href(ctx, `assets/img/${name}`);
   const stage = (name) => href(ctx, `assets/stages/${name}`);
   const ugc = (name) => href(ctx, `assets/ugc/${name}`);
@@ -30,7 +30,7 @@ function homeMain(ctx) {
       <div class="hero-bg">
         <picture>
           <source media="(max-width: 720px)" srcset="${ugc('hero-m-750.webp')}" />
-          <img src="${ugc('hero-1600.webp')}" srcset="${ugc('hero-900.webp')} 900w, ${ugc('hero-1600.webp')} 1600w" sizes="70vw" alt="Heritage Spices green cardamom pouch held in a sunlit Kerala kitchen with loose green pods on the table" width="1600" height="900" fetchpriority="high" decoding="async" />
+          <img src="${ugc('hero-1600.webp')}" srcset="${ugc('hero-900.webp')} 900w, ${ugc('hero-1600.webp')} 1600w" sizes="70vw" alt="Senvora Spices green cardamom pouch held in a sunlit Kerala kitchen with loose green pods on the table" width="1600" height="900" fetchpriority="high" decoding="async" />
         </picture>
         <a class="price-chip" href="${href(ctx, 'products/')}" aria-label="Open the cardamom shop">
           <span>Fresh green cardamom · 7mm</span>
@@ -41,7 +41,7 @@ function homeMain(ctx) {
       <div class="hero-haze"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow">Buy cardamom (elaichi) · Idukki, Kerala</p>
-        <h1 id="hero-title">Pure Cardamom.<br /><em>Rooted in Heritage.</em></h1>
+        <h1 id="hero-title">Pure Cardamom.<br /><em>Rooted in Idukki.</em></h1>
         <p class="hero-lede">Green cardamom (elaichi) grown on our own farm in Idukki, Kerala. Order 25 g to 10 kg packs on WhatsApp, or ask for wholesale and export rates.</p>
         <p class="hero-markets">Supplying buyers across <a href="${href(ctx, 'india/')}">India</a> and importers in the <a href="${href(ctx, 'markets/uae/')}">UAE</a>, <a href="${href(ctx, 'markets/saudi-arabia/')}">Saudi Arabia</a>, <a href="${href(ctx, 'markets/qatar/')}">Qatar</a> and the <a href="${href(ctx, 'markets/')}">Gulf</a>.</p>
         <div class="hero-actions">
@@ -54,14 +54,14 @@ function homeMain(ctx) {
       <div class="hero-bottom-line"></div>
     </section>
 
-    <section class="ugc-strip" aria-label="Heritage cardamom in everyday kitchens">
+    <section class="ugc-strip" aria-label="Senvora cardamom in everyday kitchens">
       <figure><img src="${ugc('pods-hand.webp')}" alt="Fresh green cardamom pods in an open palm" width="700" height="700" loading="lazy" decoding="async" /><figcaption>Fresh, plump pods</figcaption></figure>
       <figure><img src="${ugc('chai.webp')}" alt="Cardamom pods being added to a pot of chai" width="700" height="875" loading="lazy" decoding="async" /><figcaption>For chai, kahwa and sweets</figcaption></figure>
       <figure><img src="${ugc('dewy.webp')}" alt="Dewy green cardamom pods growing on the plant in Idukki" width="900" height="507" loading="lazy" decoding="async" /><figcaption>Picked in Idukki</figcaption></figure>
     </section>
 
     <section class="intro-section" id="story" aria-labelledby="story-title" data-pod="0.5,0.62,230,10,1">
-      <div class="section-kicker">01 / The heritage</div>
+      <div class="section-kicker">01 / The farm</div>
       <div class="intro-grid">
         <h2 id="story-title">A small pod.<br /><em>A lasting impression.</em></h2>
         <div class="intro-text">
@@ -131,7 +131,7 @@ function homeMain(ctx) {
 
     <section class="markets-section" id="markets" aria-labelledby="markets-title" data-pod="0.455,0.62,230,8,1">
       <div class="markets-visual"><img class="markets-photo" src="${img('hills-1600.webp')}" alt="Misty plantation hills at sunrise in Kerala" width="1600" height="907" loading="lazy" decoding="async" /><span class="map-pin pin-origin">Idukki, Kerala</span></div>
-      <div class="markets-copy"><div class="section-kicker">04 / From our hills</div><h2 id="markets-title">From Idukki<br /><em>to Gulf kitchens.</em></h2><p>Rooted in Kerala. Prepared for the world. Heritage Spices is building thoughtful supply relationships with buyers who value a traceable beginning and a distinctive finish, starting with the Gulf.</p>
+      <div class="markets-copy"><div class="section-kicker">04 / From our hills</div><h2 id="markets-title">From Idukki<br /><em>to Gulf kitchens.</em></h2><p>Rooted in Kerala. Prepared for the world. Senvora Spices is building thoughtful supply relationships with buyers who value a traceable beginning and a distinctive finish, starting with the Gulf.</p>
         <div class="market-list">${markets.map((m) => `<a href="${href(ctx, `markets/${m.slug}/`)}">${m.short}</a>`).join('')}</div>
         <a class="solid-button" href="${href(ctx, 'markets/')}">Explore our markets <span>↗</span></a></div>
     </section>
@@ -167,21 +167,21 @@ function homeMain(ctx) {
 function aboutMain(ctx) {
   return `
   ${pageHero(ctx, {
-    kicker: 'About Heritage Spices',
+    kicker: 'About Senvora Spices',
     h1: 'Rooted in Idukki.<br /><em>Built for global kitchens.</em>',
-    lede: 'Heritage Spices is an export business built around one ingredient we care deeply about: green cardamom from the hills of Idukki, Kerala.',
+    lede: 'Senvora Spices is an export business built around one ingredient we care deeply about: green cardamom from the hills of Idukki, Kerala.',
     crumbs: [{ name: 'About' }],
   })}
   <div class="content-wrap">
     <section class="prose">
       <h2>Our story</h2>
-      <p>Cardamom is often called the queen of spices, and Kerala’s Idukki district is one of the places it has long been grown. We started Heritage Spices to bring that harvest to buyers who care about where their ingredients begin, and who want a supplier that communicates clearly.</p>
+      <p>Cardamom is often called the queen of spices, and Kerala’s Idukki district is one of the places it has long been grown. We started Senvora Spices to bring that harvest to buyers who care about where their ingredients begin, and who want a supplier that communicates clearly.</p>
       <p>We grow our cardamom on our own farm in Idukki, and we select pods carefully for colour, aroma and condition before they are prepared for export. Our focus today is on importers, wholesalers and food and beverage businesses in the Gulf, where cardamom is part of everyday hospitality.</p>
     </section>
     <section class="prose">
-      <h2>Heritage Spices at a glance</h2>
+      <h2>Senvora Spices at a glance</h2>
       <ul>
-        <li><strong>What we are:</strong> Heritage Spices, also written Heritage Spices Idukki, a green cardamom (elaichi) grower and supplier based in Pallivasal, Idukki, Kerala, India, selling cardamom grown on its own farm. We are not affiliated with other businesses that use a similar name.</li>
+        <li><strong>What we are:</strong> Senvora Spices, also written Senvora Spices Idukki, a green cardamom (elaichi) grower and supplier based in Pallivasal, Idukki, Kerala, India, selling cardamom grown on its own farm. We are not affiliated with other businesses that use a similar name.</li>
         <li><strong>What we supply:</strong> whole green cardamom pods; cardamom seeds on request.</li>
         <li><strong>Who we supply:</strong> wholesalers, traders, masala and chai blenders, coffee blenders, restaurants, retail packers and importers.</li>
         <li><strong>Where we supply:</strong> India, and the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.</li>
@@ -219,7 +219,7 @@ function orderPanel(ctx, prod, { link = true } = {}) {
   const g0 = prod.grades.find((g) => g.id === prod.defaultGrade) || prod.grades[0];
   const v0 = g0.variants.find((x) => x.id === '1kg') || g0.variants[0];
   const gl = (g) => (multi ? ` (${g.label})` : '');
-  const msg = (g, v) => `Hello Heritage Spices, I would like to order:\n\n${prod.name}${gl(g)} - ${v.label} x 1\nPrice: ${inr(v.price)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
+  const msg = (g, v) => `Hello Senvora Spices, I would like to order:\n\n${prod.name}${gl(g)} - ${v.label} x 1\nPrice: ${inr(v.price)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
   const data = JSON.stringify({
     name: prod.name, wa: site.whatsapp, multi,
     grades: prod.grades.map((g) => ({ id: g.id, label: g.label, variants: g.variants.map((v) => ({ id: v.id, label: v.label, price: v.price, perKg: v.perKg, img: href(ctx, `assets/packs/${v.img}`) })) })),
@@ -257,7 +257,7 @@ function priceListMain(ctx) {
       <td>${g.use}</td>
       <td>${inrk(retailPerKg(g, 1) - 1)}</td>
       <td>${inrk(wholesalePerKg(g))}</td>
-      <td><a class="arrow-link" href="${whatsappLink(`Hello Heritage Spices, please send me a wholesale quotation for green cardamom ${g.code} ${g.name}.\n\nQuantity (kg):\nCity / country:`)}" target="_blank" rel="noopener">Quote <span>↗</span></a></td>
+      <td><a class="arrow-link" href="${whatsappLink(`Hello Senvora Spices, please send me a wholesale quotation for green cardamom ${g.code} ${g.name}.\n\nQuantity (kg):\nCity / country:`)}" target="_blank" rel="noopener">Quote <span>↗</span></a></td>
     </tr>`).join('');
   return `
   <section class="inner-hero compact">
@@ -293,7 +293,7 @@ function productsIndexMain(ctx) {
   return `
   <section class="inner-hero compact">
     ${breadcrumbs(ctx, [{ name: 'Products' }])}
-    <h1 class="page-title">Shop <em>Heritage Spices.</em></h1>
+    <h1 class="page-title">Shop <em>Senvora Spices.</em></h1>
     <p class="page-lede">Choose a weight and order on WhatsApp. Retail packs from Idukki, Kerala.</p>
   </section>
   <div class="content-wrap">
@@ -324,7 +324,7 @@ export const greenFaq = [
   { q: 'Which countries do you supply?', a: 'We supply buyers across India and importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.' },
   { q: 'Can I get a sample before ordering?', a: 'Yes. Send your requirements on the sample request page and we will explain how a sample can reach you.' },
   { q: 'Do you sell retail packs?', a: 'Yes. Along with wholesale quantities, we offer retail packs from 1 kg up to 10 kg (1, 2, 3, 4, 5, 6, 7, 8, 9 and 10 kg). Tell us the pack size and quantity you need and we will send a quotation.' },
-  { q: 'Where can I buy 8 mm green cardamom?', a: 'You can buy 8 mm bold green cardamom (AGEB grade) directly from Heritage Spices in Idukki, Kerala. Choose the size and a 1 kg to 10 kg pack in our shop and order on WhatsApp, or ask for a bulk quotation.' },
+  { q: 'Where can I buy 8 mm green cardamom?', a: 'You can buy 8 mm bold green cardamom (AGEB grade) directly from Senvora Spices in Idukki, Kerala. Choose the size and a 1 kg to 10 kg pack in our shop and order on WhatsApp, or ask for a bulk quotation.' },
   { q: 'What is the price of 1 kg green cardamom today?', a: 'It changes every day with the Spices Board of India auction and depends on the grade. See today\u2019s retail and wholesale rate for each grade on our {link:products/green-cardamom-price-list/|price list}.' },
   { q: 'Is Idukki cardamom good quality?', a: 'Idukki is one of India\u2019s main cardamom-growing districts and is known for aromatic, well-coloured pods. Quality still depends on the lot, so check size, colour and aroma, or request a sample.' },
   { q: 'Do you show prices on the website?', a: 'Yes for retail packs from 25 g to 10 kg, which you can order on WhatsApp. Wholesale, export and delivery terms depend on size, quantity, packing and destination, so we quote those on request.' },
@@ -432,7 +432,7 @@ function marketsIndexMain(ctx) {
   ${pageHero(ctx, {
     kicker: 'Markets',
     h1: 'From Idukki<br /><em>to Gulf kitchens.</em>',
-    lede: 'Heritage Spices welcomes importers, wholesalers and food businesses across the Gulf. Choose your market to see what matters there.',
+    lede: 'Senvora Spices welcomes importers, wholesalers and food businesses across the Gulf. Choose your market to see what matters there.',
     crumbs: [{ name: 'Markets' }],
   })}
   <div class="content-wrap">
@@ -570,7 +570,7 @@ export const generalFaq = [
   { q: 'Are cardamom pods, seeds and powder the same?', a: 'They come from the same spice, but whole pods keep aroma longest while seeds and powder fade faster. See {link:journal/cardamom-pods-vs-seeds-vs-powder/|pods vs seeds vs powder}.' },
   { q: 'How long does green cardamom last?', a: 'Whole pods stored sealed in a cool, dry place keep their aroma for many months. See {link:journal/how-long-does-green-cardamom-last/|how long green cardamom lasts}.' },
   { q: 'When is cardamom harvested in Kerala?', a: 'Pods are picked by hand in rounds over several months, mainly in the later part of the year. See {link:journal/cardamom-harvest-season-kerala/|the Kerala harvest season}.' },
-  { q: 'What is elaichi?', a: 'Elaichi is the Hindi and Urdu name for cardamom. Heritage Spices supplies whole green elaichi from Idukki, Kerala. Read the {link:green-cardamom-guide/|complete guide}.' },
+  { q: 'What is elaichi?', a: 'Elaichi is the Hindi and Urdu name for cardamom. Senvora Spices supplies whole green elaichi from Idukki, Kerala. Read the {link:green-cardamom-guide/|complete guide}.' },
   { q: 'How can I check cardamom quality at home?', a: 'Check colour, size, dryness, cleanliness, aroma and the seeds inside. See {link:journal/how-to-check-cardamom-quality-at-home/|6 simple quality tests}.' },
   { q: 'What is cardamom called in Malayalam and Arabic?', a: 'It is elakka in Malayalam, elaichi in Hindi and hail (هيل) in Arabic. See {link:journal/cardamom-names-elaichi-elakka-hail/|cardamom names in other languages}.' },
   { q: 'How do I place an order?', a: 'Send us your requirements, approve a sample, receive a quotation and confirm the order. The full process is on the {link:export/|export process page}.' },
@@ -685,7 +685,7 @@ function articleMain(ctx, a) {
       <div class="chip-row"><a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a><a href="${href(ctx, 'products/')}">Shop retail packs</a><a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a><a href="${href(ctx, 'markets/')}">Gulf markets</a></div>
     </section>
   </div>
-  ${ctaBand(ctx, { kicker: 'Talk to Heritage Spices', title: 'Have questions about Idukki cardamom?', primary: { label: 'Request a sample', path: 'request-a-sample/' }, secondary: { label: 'Chat on WhatsApp', path: waHello, external: true } })}`;
+  ${ctaBand(ctx, { kicker: 'Talk to Senvora Spices', title: 'Have questions about Idukki cardamom?', primary: { label: 'Request a sample', path: 'request-a-sample/' }, secondary: { label: 'Chat on WhatsApp', path: waHello, external: true } })}`;
 }
 
 function notFoundMain(ctx) {
@@ -714,7 +714,7 @@ export function englishPages() {
     jsonld: () => [organizationLd(), websiteLd()],
     render: homeMain,
   });
-  add({ path: 'about/', title: 'About Heritage Spices Idukki, Kerala', description: 'Heritage Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
+  add({ path: 'about/', title: 'About Senvora Spices Idukki, Kerala', description: 'Senvora Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
   add({ path: 'products/', title: 'Buy Cardamom Online, Green Elaichi 1 to 10 kg', description: 'Buy green cardamom (elaichi) online from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 1 kg to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
   add({
     path: 'products/green-cardamom/', title: 'Green Cardamom (Elaichi) Price & Buy Online',
@@ -725,12 +725,12 @@ export function englishPages() {
     render: greenMain,
   });
   add({ path: 'products/green-cardamom-price-list/', title: 'Green Cardamom Price per Kg by Grade, Idukki', description: 'Green cardamom (elaichi) price per kg today by size and grade: 8 mm AGEB, 7 mm AGB/AGS, 6 mm, 5 mm. Retail and wholesale from Idukki, updated daily.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
-  add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Heritage Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
+  add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Senvora Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }
   for (const d of indiaPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, keywords: d.keywords, geo: d.geo, locale: 'en_IN', crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
   for (const d of cityPages) add({ path: d.path, title: d.metaTitle, description: d.metaDescription, keywords: d.keywords, geo: d.geo, locale: 'en_IN', crumbs: d.path === 'india/' ? [{ name: 'India' }] : [{ name: 'India', path: 'india/' }, { name: d.crumbName }], faq: d.faq, render: (ctx) => indiaMain(ctx, d) });
-  add({ path: 'markets/', title: 'Markets: Cardamom for the Gulf', description: 'Heritage Spices supplies whole green cardamom to importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. Choose your market to learn more.', crumbs: [{ name: 'Markets' }], render: marketsIndexMain });
+  add({ path: 'markets/', title: 'Markets: Cardamom for the Gulf', description: 'Senvora Spices supplies whole green cardamom to importers in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. Choose your market to learn more.', crumbs: [{ name: 'Markets' }], render: marketsIndexMain });
   for (const m of markets) {
     add({
       path: `markets/${m.slug}/`, title: m.metaTitle, description: m.metaDescription, keywords: m.keywords, geo: m.geo, locale: m.locale,
@@ -739,11 +739,11 @@ export function englishPages() {
       render: (ctx) => marketMain(ctx, m),
     });
   }
-  add({ path: 'export/', title: 'Export Process: Order Cardamom from India', description: 'How Heritage Spices works with importers: requirements, samples, quotation, packing, documents and shipment, with FOB, CFR and CIF delivery terms explained.', crumbs: [{ name: 'Export process' }], render: exportMain });
-  add({ path: 'faq/', alternates: { en: 'faq/', ar: 'ar/faq/' }, alt: 'ar/faq/', title: 'FAQ: Buying Cardamom from India', description: 'Answers to common questions from importers about Heritage Spices’ green cardamom: samples, minimum orders, prices, delivery terms, documents and storage.', crumbs: [{ name: 'FAQ' }], faq: generalFaq, render: faqMain });
-  add({ path: 'contact/', title: 'Contact', description: 'Contact Heritage Spices by email, phone or WhatsApp, or send your cardamom requirements through our enquiry form.', crumbs: [{ name: 'Contact' }], render: contactMain });
-  add({ path: 'request-a-sample/', title: 'Request a Cardamom Sample', description: 'Request a sample of green cardamom from Idukki, Kerala. Tell Heritage Spices your requirements and destination and we will reply with next steps.', crumbs: [{ name: 'Request a sample' }], render: sampleMain });
-  add({ path: 'journal/', title: 'Journal: Notes from the Spice Trail', description: 'Practical articles on Idukki cardamom, quality, sizes, Arabic coffee and importing spices from India, from Heritage Spices.', crumbs: [{ name: 'Journal' }], render: journalIndexMain });
+  add({ path: 'export/', title: 'Export Process: Order Cardamom from India', description: 'How Senvora Spices works with importers: requirements, samples, quotation, packing, documents and shipment, with FOB, CFR and CIF delivery terms explained.', crumbs: [{ name: 'Export process' }], render: exportMain });
+  add({ path: 'faq/', alternates: { en: 'faq/', ar: 'ar/faq/' }, alt: 'ar/faq/', title: 'FAQ: Buying Cardamom from India', description: 'Answers to common questions from importers about Senvora Spices’ green cardamom: samples, minimum orders, prices, delivery terms, documents and storage.', crumbs: [{ name: 'FAQ' }], faq: generalFaq, render: faqMain });
+  add({ path: 'contact/', title: 'Contact', description: 'Contact Senvora Spices by email, phone or WhatsApp, or send your cardamom requirements through our enquiry form.', crumbs: [{ name: 'Contact' }], render: contactMain });
+  add({ path: 'request-a-sample/', title: 'Request a Cardamom Sample', description: 'Request a sample of green cardamom from Idukki, Kerala. Tell Senvora Spices your requirements and destination and we will reply with next steps.', crumbs: [{ name: 'Request a sample' }], render: sampleMain });
+  add({ path: 'journal/', title: 'Journal: Notes from the Spice Trail', description: 'Practical articles on Idukki cardamom, quality, sizes, Arabic coffee and importing spices from India, from Senvora Spices.', crumbs: [{ name: 'Journal' }], render: journalIndexMain });
   for (const a of articles) {
     add({
       path: `journal/${a.slug}/`, title: a.metaTitle || a.title, description: a.summary, ogType: 'article',

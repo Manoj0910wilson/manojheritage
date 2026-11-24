@@ -1,13 +1,13 @@
 // Central settings for the whole website. Edit here, then run `npm run build`.
 
 export const site = {
-  name: 'Heritage Spices',
-  tagline: 'Pure Cardamom. Rooted in Heritage.',
+  name: 'Senvora Spices',
+  tagline: 'Pure Cardamom. Rooted in Idukki.',
 
   // The public address of the site WITHOUT a trailing slash.
   // Today it is the free GitHub address. When you buy a custom domain, change this
   // (or build with SITE_URL=https://yourdomain.com) and add a CNAME file in /public.
-  url: (process.env.SITE_URL || 'https://heritagespices.in').replace(/\/$/, ''),
+  url: (process.env.SITE_URL || 'https://senvoraspice.com').replace(/\/$/, ''),
 
   email: 'heritagespices01@gmail.com',
   phoneDisplay: '+91 89395 35151',
