@@ -17,12 +17,14 @@ const sampleWa = whatsappLink('Hello Senvora Spices, I would like to request a c
    ========================================================= */
 function homeMain(ctx) {
   const img = (name) => href(ctx, `assets/img/${name}`);
+  const stage = (name) => href(ctx, `assets/stages/${name}`);
   const ugc = (name) => href(ctx, `assets/ugc/${name}`);
   const heroGrade = grades.find((g) => g.id === '7mm');
   const heroFrom = grades.map((g) => retailPerKg(g, 1)).reduce((a, b) => Math.min(a, b));
   const heroPrice = (retailPerKg(heroGrade, 1) - 1).toLocaleString('en-IN');
   return `
     <div id="top"></div>
+    <canvas class="float-pod" data-float-pod data-frames="${href(ctx, 'assets/pod/f')}" data-count="62" width="560" height="273" aria-hidden="true"></canvas>
     <section class="hero" aria-labelledby="hero-title" data-pod="0.78,0.52,340,-4,0" data-pod-m="0.74,0.87,300,-4,0">
       <div class="hero-bg">
         <picture>
@@ -76,7 +78,23 @@ function homeMain(ctx) {
       <div class="explode-head">
         <div class="section-kicker">02 / The product</div>
         <h2 id="explode-title">Discover<br /><em>what is inside.</em></h2>
-        <p>The whole pod, the husk that protects it, and the seeds that carry the aroma.</p>
+        <p>Keep scrolling and the pod opens up: the whole pod, the pod split open, and the seeds that carry the aroma.</p>
+      </div>
+      <div class="explode-track" data-explode-track>
+        <div class="explode-sticky">
+          <div class="explode-glow"></div>
+          <div class="explode-stage" data-explode-stage>
+            <div class="ex ex-seeds"><img src="${stage('seeds.webp')}" alt="Cardamom seeds" width="380" height="237" loading="lazy" decoding="async" /></div>
+            <img class="ex ex-seed es1" src="${stage('seed-1.webp')}" alt="" width="184" height="114" loading="lazy" />
+            <img class="ex ex-seed es2" src="${stage('seed-1.webp')}" alt="" width="184" height="114" loading="lazy" />
+            <img class="ex ex-seed es3" src="${stage('seed-1.webp')}" alt="" width="184" height="114" loading="lazy" />
+            <div class="ex ex-open"><img src="${stage('open.webp')}" alt="A green cardamom pod split open to show the seeds" width="900" height="527" loading="lazy" decoding="async" /></div>
+            <div class="ex ex-whole"><img src="${stage('whole.webp')}" alt="A whole green cardamom pod" width="690" height="310" loading="lazy" decoding="async" /></div>
+            <span class="ex-label ex-label-whole">01 · Whole pod</span>
+            <span class="ex-label ex-label-open">02 · Inside the pod</span>
+            <span class="ex-label ex-label-seeds">03 · The seeds</span>
+          </div>
+        </div>
       </div>
       <div class="stage-cards">
         <article class="info-card"><span class="card-index">01 · WHOLE POD</span><h3>What buyers judge first</h3><p>Colour, size, aroma and cleanliness are what we select for, and what we invite you to check against your own specification in a sample.</p></article>
