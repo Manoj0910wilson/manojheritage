@@ -108,7 +108,7 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="180" height="43" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="320" height="77" loading="lazy" /></a>
         <p>هيل نقي. جذوره في إدوكي.</p>
       </div>
       <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/markets/qatar/')}">الهيل في قطر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
@@ -122,7 +122,7 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="180" height="43" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="320" height="77" loading="lazy" /></a>
         <p>Pure cardamom. Rooted in Idukki.</p>
         <p class="footer-small">Premium green cardamom from Idukki, Kerala, India, for buyers in India and importers in the Gulf.</p>
       </div>
