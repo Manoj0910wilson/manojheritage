@@ -128,7 +128,7 @@ function footer(ctx) {
       </div>
       <div><h3>Products</h3>
         <a href="${href(ctx, 'products/green-cardamom/')}">Whole green cardamom</a>
-        <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a>
+        <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Cardamom price today</a>
         <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a>
         <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a>
       

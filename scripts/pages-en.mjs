@@ -31,7 +31,7 @@ function homeMain(ctx) {
           <source media="(max-width: 720px)" srcset="${ugc('hero-m-750.webp')}" />
           <img src="${ugc('hero-1600.webp')}" srcset="${ugc('hero-900.webp')} 900w, ${ugc('hero-1600.webp')} 1600w" sizes="70vw" alt="A sack full of fresh green cardamom pods from Idukki, Kerala" width="1600" height="900" fetchpriority="high" decoding="async" />
         </picture>
-        <a class="price-chip" href="${href(ctx, 'products/')}" aria-label="Open the cardamom shop">
+        <a class="price-chip" href="${href(ctx, 'products/green-cardamom-price-list/')}" aria-label="See today's cardamom price list">
           <span>Fresh green cardamom · 7mm</span>
           <b>₹${heroPrice}<small>/kg</small></b>
           <em>Updated ${updatedLabel}</em>
@@ -109,7 +109,7 @@ function homeMain(ctx) {
         </dl>
         <a class="solid-button" href="${href(ctx, 'products/green-cardamom/')}">See specifications <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="pack-line">Retail packs <strong>25 g to 10 kg</strong> · Wholesale on request · Now also <a href="${href(ctx, 'products/tea-powder/')}">tea powder</a></p>
+      <p class="pack-line">Retail packs <strong>25 g to 10 kg</strong> · Wholesale on request · <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Cardamom price today</a> · Now also <a href="${href(ctx, 'products/tea-powder/')}">tea powder</a></p>
     </section>
 
     <section class="markets-section" id="markets" aria-labelledby="markets-title" data-pod="0.455,0.62,230,8,1">
@@ -235,8 +235,8 @@ function priceListMain(ctx) {
   return `
   <section class="inner-hero compact">
     ${breadcrumbs(ctx, [{ name: 'Products', path: 'products/' }, { name: 'Price list' }])}
-    <h1 class="page-title">Green cardamom <em>price list.</em></h1>
-    <p class="page-lede">Size and grade-wise prices from Idukki, Kerala. Updated ${priceUpdated}, following the daily Spices Board of India cardamom auction.</p>
+    <h1 class="page-title">Cardamom price <em>today.</em></h1>
+    <p class="page-lede">Today’s green cardamom (elaichi) rate per kg, by size and grade, from Idukki, Kerala. Updated ${priceUpdated}, following the daily Spices Board of India cardamom auction.</p>
   </section>
   <div class="content-wrap">
     <div class="price-table-wrap">
@@ -247,6 +247,10 @@ function priceListMain(ctx) {
     </div>
     <p class="price-updated">Retail packs from 25 g to 10 kg get a small per-kg saving on larger packs. Prices change with the daily market. Delivery extra. Final price confirmed on WhatsApp.</p>
     <p class="shop-more"><a class="solid-button" href="${href(ctx, 'products/')}">Order retail packs <span aria-hidden="true">↗</span></a></p>
+    <section>
+      <h2 class="h2-small">Read before you buy</h2>
+      <div class="chip-row"><a href="${href(ctx, 'journal/green-cardamom-price-per-kg-idukki/')}">What decides the price per kg</a><a href="${href(ctx, 'journal/which-cardamom-grade-should-i-buy/')}">Which grade should you buy?</a><a href="${href(ctx, 'journal/indian-cardamom-grades-agb-ageb-explained/')}">AGEB, AGB and AGS explained</a><a href="${href(ctx, 'journal/why-is-cardamom-so-expensive/')}">Why cardamom is expensive</a><a href="${href(ctx, 'products/tea-powder/')}">Tea powder</a><a href="${href(ctx, 'markets/')}">Gulf wholesale</a></div>
+    </section>
     <section>
       <h2 class="h2-small">Frequently asked questions</h2>
       ${faqList(priceFaq, ctx)}
@@ -282,7 +286,7 @@ function productsIndexMain(ctx) {
       </ol>
       <ul class="trust-row"><li>Direct from Idukki, Kerala</li><li>Size-wise daily prices</li><li>Sample on request</li></ul>
     </section>
-    <p class="shop-more">Buying in bulk? <a href="${waHello}" target="_blank" rel="noopener">WhatsApp us</a> for wholesale quotes · <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a> · <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a> · <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a></p>
+    <p class="shop-more">Buying in bulk? <a href="${waHello}" target="_blank" rel="noopener">WhatsApp us</a> for wholesale quotes · <a href="${href(ctx, 'products/green-cardamom-price-list/')}">Cardamom price today</a> · <a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a> · <a href="${href(ctx, 'request-a-sample/')}">Request a sample</a></p>
   </div>`;
 }
 
@@ -655,7 +659,7 @@ function articleMain(ctx, a) {
       <div class="journal-list compact">
         ${related.map((r) => `<a class="journal-row" href="${href(ctx, `journal/${r.slug}/`)}"><span class="journal-row-body"><span class="journal-meta">${r.tag} · ${r.readTime}</span><strong>${r.title}</strong></span><span class="journal-row-arrow" aria-hidden="true">↗</span></a>`).join('')}
       </div>
-      <div class="chip-row"><a href="${href(ctx, 'products/green-cardamom-price-list/')}">Grade-wise price list</a><a href="${href(ctx, 'products/')}">Shop retail packs</a><a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a><a href="${href(ctx, 'markets/')}">Gulf markets</a></div>
+      <div class="chip-row"><a href="${href(ctx, 'products/green-cardamom-price-list/')}">Cardamom price today</a><a href="${href(ctx, 'products/')}">Shop retail packs</a><a href="${href(ctx, 'products/cardamom-seeds/')}">Cardamom seeds</a><a href="${href(ctx, 'markets/')}">Gulf markets</a></div>
     </section>
   </div>
   ${ctaBand(ctx, { kicker: 'Talk to Senvora Spices', title: 'Have questions about Idukki cardamom?', primary: { label: 'Request a sample', path: 'request-a-sample/' }, secondary: { label: 'Chat on WhatsApp', path: waHello, external: true } })}`;
@@ -688,16 +692,16 @@ export function englishPages() {
     render: homeMain,
   });
   add({ path: 'about/', title: 'About Senvora Spices Idukki, Kerala', description: 'Senvora Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
-  add({ path: 'products/', title: 'Buy Cardamom Online, Green Elaichi 1 to 10 kg', description: 'Buy green cardamom (elaichi) online from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 1 kg to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
+  add({ path: 'products/', title: 'Shop Green Cardamom: 25 g to 10 kg Packs, Idukki', description: 'Shop green cardamom (elaichi) from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 25 g to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
   add({
-    path: 'products/green-cardamom/', title: 'Green Cardamom (Elaichi) Price & Buy Online',
+    path: 'products/green-cardamom/', title: 'Green Cardamom Grades and Specification',
     description: 'Whole green cardamom (elaichi) from Idukki, Kerala: 8 mm bold, 7 mm and small pods. Retail packs, bulk wholesale and Gulf supply. Specification, uses and FAQs.',
     alternates: { en: 'products/green-cardamom/', ar: 'ar/green-cardamom/' }, alt: 'ar/green-cardamom/',
     crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Whole green cardamom' }], faq: greenFaq,
     product: { name: 'Whole green cardamom', description: 'Whole dried green cardamom pods (Elettaria cardamomum) from Idukki, Kerala, India, selected for colour and aroma and prepared for export.', category: 'Spices' },
     render: greenMain,
   });
-  add({ path: 'products/green-cardamom-price-list/', title: 'Green Cardamom Price per Kg by Grade, Idukki', description: 'Green cardamom (elaichi) price per kg today by size and grade: 8 mm AGEB, 7 mm AGB/AGS, 6 mm, 5 mm. Retail and wholesale from Idukki, updated daily.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
+  add({ path: 'products/green-cardamom-price-list/', title: 'Cardamom Price Today: Elaichi Rate per Kg', description: 'Cardamom price today: green elaichi rate per kg by size and grade (8 mm, 7 mm, 6 mm). Retail and wholesale from Idukki, following the Spices Board auction.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
   add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Senvora Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }
