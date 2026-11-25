@@ -51,12 +51,6 @@ function homeMain(ctx) {
       <div class="hero-bottom-line"></div>
     </section>
 
-    <section class="ugc-strip" aria-label="Senvora cardamom in everyday kitchens">
-      <figure><img src="${ugc('pods-hand.webp')}" alt="Fresh green cardamom pods heaped in a bucket" width="900" height="900" loading="lazy" decoding="async" /><figcaption>Fresh, plump pods</figcaption></figure>
-      <figure><img src="${ugc('chai.webp')}" alt="Green cardamom pods in a wooden spoon on jute cloth" width="1000" height="1250" loading="lazy" decoding="async" /><figcaption>For chai, kahwa and sweets</figcaption></figure>
-      <figure><img src="${ugc('dewy.webp')}" alt="Young green cardamom pods and a white-and-pink flower on the plant in Idukki" width="1600" height="900" loading="lazy" decoding="async" /><figcaption>Picked in Idukki</figcaption></figure>
-    </section>
-
     <section class="intro-section" id="story" aria-labelledby="story-title" data-pod="0.5,0.62,230,10,1">
       <div class="section-kicker">01 / The farm</div>
       <div class="intro-grid">
@@ -67,11 +61,11 @@ function homeMain(ctx) {
         </div>
       </div>
       <div class="intro-photos">
-        <figure class="photo photo-tall" data-parallax>
+        <figure class="photo photo-tall">
           <img src="${img('plant.webp')}" alt="Cardamom plants growing in the shade of tall trees on our farm in Idukki" width="1000" height="1500" loading="lazy" decoding="async" />
           <figcaption>Grown in the shade of the hills</figcaption>
         </figure>
-        <figure class="photo photo-wide" data-parallax>
+        <figure class="photo photo-wide">
           <img src="${img('farmers.webp')}" alt="A handful of freshly picked green cardamom pods from our farm" width="900" height="1158" loading="lazy" decoding="async" />
           <figcaption>Picked and sorted by hand</figcaption>
         </figure>
@@ -97,39 +91,18 @@ function homeMain(ctx) {
         </dl>
         <a class="solid-button" href="${href(ctx, 'products/green-cardamom/')}">See specifications <span aria-hidden="true">↗</span></a>
       </div>
-    </section>
-
-    <section class="products-section" aria-labelledby="range-title" data-pod="0.94,0.1,150,-12,1">
-      <div class="section-kicker">03 / The range</div>
-      <div class="section-heading-row"><h2 id="range-title">The character<br /><em>of the harvest.</em></h2><p>Built for buyers who care where every flavour begins.</p></div>
-      <div class="range-grid">
-        <article class="range-card range-card-photo"><div class="card-number">01</div><img class="range-bg" src="${img('range-1.webp')}" alt="" width="900" height="1100" loading="lazy" decoding="async" /><h3>Whole green cardamom</h3><p>Fresh, fragrant pods with a naturally clean finish.</p><a href="${href(ctx, 'products/green-cardamom/')}">View the product <span>↗</span></a></article>
-        <article class="range-card range-card-photo"><div class="card-number">02</div><img class="range-bg" src="${img('range-2.webp')}" alt="" width="900" height="1100" loading="lazy" decoding="async" /><h3>Selected seed profile</h3><p>Consistent selection for aroma-led food and beverage applications.</p><a href="${href(ctx, 'products/cardamom-seeds/')}">View the product <span>↗</span></a></article>
-        <article class="range-card range-card-photo"><div class="card-number">03</div><img class="range-bg" src="${img('range-3.webp')}" alt="" width="1000" height="1500" loading="lazy" decoding="async" /><h3>Made for global buyers</h3><p>Origin-led conversations, clear communication, and flexible enquiries.</p><a href="${href(ctx, 'markets/')}">See our markets <span>↗</span></a></article>
-      </div>
       <p class="pack-line">Retail packs <strong>25 g to 10 kg</strong> · Wholesale on request · Now also <a href="${href(ctx, 'products/tea-powder/')}">tea powder</a></p>
     </section>
 
     <section class="markets-section" id="markets" aria-labelledby="markets-title" data-pod="0.455,0.62,230,8,1">
-      <div class="markets-visual"><img class="markets-photo" src="${img('hills-1600.webp')}" alt="Lush cardamom plantation under forest shade in Kerala" width="1600" height="907" loading="lazy" decoding="async" /><span class="map-pin pin-origin">Idukki, Kerala</span></div>
-      <div class="markets-copy"><div class="section-kicker">04 / From our hills</div><h2 id="markets-title">From Idukki<br /><em>to Gulf kitchens.</em></h2><p>Rooted in Kerala. Prepared for the world. Senvora Spices is building thoughtful supply relationships with buyers who value a traceable beginning and a distinctive finish, starting with the Gulf.</p>
+      <div class="markets-visual"><img class="markets-photo" src="${img('markets.webp')}" alt="Green cardamom pods in a wooden spoon on jute cloth, the way they are used in chai and Arabic coffee" width="1400" height="1102" loading="lazy" decoding="async" /></div>
+      <div class="markets-copy"><div class="section-kicker">03 / From our hills</div><h2 id="markets-title">From Idukki<br /><em>to Gulf kitchens.</em></h2><p>Rooted in Kerala. Prepared for the world. Senvora Spices is building thoughtful supply relationships with buyers who value a traceable beginning and a distinctive finish, starting with the Gulf.</p>
         <div class="market-list">${markets.map((m) => `<a href="${href(ctx, `markets/${m.slug}/`)}">${m.short}</a>`).join('')}</div>
         <a class="solid-button" href="${href(ctx, 'markets/')}">Explore our markets <span>↗</span></a></div>
     </section>
 
-    <section class="process-section" aria-labelledby="process-title" data-pod="0.95,0.5,170,-8,1">
-      <div class="section-kicker">05 / How it works</div>
-      <div class="section-heading-row"><h2 id="process-title">From first message<br /><em>to your port.</em></h2><a class="arrow-link" href="${href(ctx, 'export/')}">The full export process <span>↗</span></a></div>
-      <ol class="process-grid">
-        <li><span class="step-num">01</span><h3>Tell us what you need</h3><p>Share size, quantity, packing and destination.</p></li>
-        <li><span class="step-num">02</span><h3>Approve a sample</h3><p>Check the pods against your specification.</p></li>
-        <li><span class="step-num">03</span><h3>Confirm your order</h3><p>Agree quantity, packing and delivery terms.</p></li>
-        <li><span class="step-num">04</span><h3>We prepare and ship</h3><p>Packing, documents and shipment, step by step.</p></li>
-      </ol>
-    </section>
-
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="contact-pattern" aria-hidden="true"></div><div class="section-kicker">06 / Let’s talk</div>
+      <div class="contact-pattern" aria-hidden="true"></div><div class="section-kicker">04 / Let’s talk</div>
       <div class="contact-grid" data-pod="0.86,0.42,250,-10,1" data-pod-m="0.84,0.12,300,-10,1">
         <div><h2 id="contact-title">A better conversation<br /><em>starts with one pod.</em></h2><p>Tell us what you are looking for, where you are sourcing from, and how we can help you bring Kerala cardamom to your market.</p></div>
         <div class="contact-actions">
@@ -156,6 +129,7 @@ function aboutMain(ctx) {
   <div class="content-wrap">
     <section class="prose">
       <h2>Our story</h2>
+      <figure class="about-photo"><img src="${href(ctx, 'assets/ugc/dewy.webp')}" alt="Young green cardamom pods and a white-and-pink flower on the plant on our farm in Idukki" width="1600" height="900" loading="lazy" decoding="async" /><figcaption>Young pods and a cardamom flower on our farm in Idukki</figcaption></figure>
       <p>Cardamom is often called the queen of spices, and Kerala’s Idukki district is one of the places it has long been grown. We started Senvora Spices to bring that harvest to buyers who care about where their ingredients begin, and who want a supplier that communicates clearly.</p>
       <p>We grow our cardamom on our own farm in Idukki, and we select pods carefully for colour, aroma and condition before they are prepared for export. Our focus today is on importers, wholesalers and food and beverage businesses in the Gulf, where cardamom is part of everyday hospitality.</p>
     </section>

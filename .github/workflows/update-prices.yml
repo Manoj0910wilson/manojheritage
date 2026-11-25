@@ -1,8 +1,7 @@
 name: Update cardamom prices
 on:
   schedule:
-    - cron: '30 6 * * *'   # daily, about 12:00 IST
-    - cron: '30 12 * * *'  # second try, about 18:00 IST (in case the first run failed)
+    - cron: '20 */3 * * *'  # every 3 hours; GitHub often delays scheduled runs, so several tries a day keep the price date fresh
   workflow_dispatch:
 permissions:
   contents: write

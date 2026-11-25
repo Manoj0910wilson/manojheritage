@@ -19,7 +19,6 @@ const arFaqHome = [
 
 function homeMain(ctx) {
   const img = (n) => href(ctx, `assets/img/${n}`);
-  const ugc = (n) => href(ctx, `assets/ugc/${n}`);
   return `
   <section class="inner-hero ar-hero">
     <p class="section-kicker">الهيل الأخضر من إدوكي، كيرالا</p>
@@ -46,9 +45,9 @@ function homeMain(ctx) {
     <div class="content-wrap">
       <h2 class="h2-small">من الحبة الكاملة إلى البذور</h2>
       <div class="card-grid three">
-        <article class="info-card"><img class="stage-img" src="${ugc('pods-hand.webp')}" alt="حبات هيل أخضر طازجة من إدوكي" width="900" height="900" loading="lazy" decoding="async" /><span class="card-index">١ · الحبة الكاملة</span><h3>أول ما ينظر إليه المشتري</h3><p>اللون والحجم والرائحة والنظافة هي ما ننتقيه، وما ندعوك إلى مقارنته بمواصفاتك في العيّنة.</p></article>
-        <article class="info-card"><img class="stage-img" src="${ugc('dewy.webp')}" alt="حبات هيل خضراء وزهرة على النبتة في إدوكي" width="1600" height="900" loading="lazy" decoding="async" /><span class="card-index">٢ · داخل الحبة</span><h3>حيث تسكن الرائحة</h3><p>يحمي القشر بذوراً صغيرة داكنة إلى أن تُفتح الحبة، ولهذا تحتفظ الحبوب الكاملة بعطرها جيداً في التخزين والنقل.</p></article>
-        <article class="info-card"><img class="stage-img" src="${ugc('chai.webp')}" alt="حبات هيل في ملعقة خشبية" width="1000" height="1250" loading="lazy" decoding="async" /><span class="card-index">٣ · البذور</span><h3>أين تُستخدم</h3><p>القهوة العربية، والشاي والكرك، والحلويات، وأطباق الأرز، وخلطات البهارات.</p></article>
+        <article class="info-card"><span class="card-index">١ · الحبة الكاملة</span><h3>أول ما ينظر إليه المشتري</h3><p>اللون والحجم والرائحة والنظافة هي ما ننتقيه، وما ندعوك إلى مقارنته بمواصفاتك في العيّنة.</p></article>
+        <article class="info-card"><span class="card-index">٢ · داخل الحبة</span><h3>حيث تسكن الرائحة</h3><p>يحمي القشر بذوراً صغيرة داكنة إلى أن تُفتح الحبة، ولهذا تحتفظ الحبوب الكاملة بعطرها جيداً في التخزين والنقل.</p></article>
+        <article class="info-card"><span class="card-index">٣ · البذور</span><h3>أين تُستخدم</h3><p>القهوة العربية، والشاي والكرك، والحلويات، وأطباق الأرز، وخلطات البهارات.</p></article>
       </div>
     </div>
   </section>

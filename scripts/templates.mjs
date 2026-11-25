@@ -414,7 +414,6 @@ export function layout(ctx, page, mainHtml) {
     <noscript><style>.hero-stage .pod-image{opacity:1!important}</style></noscript>
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?${fonts}&display=swap" /></noscript>
     ${page.preload ? `<link rel="preload" as="image" href="${href(ctx, page.preload)}" type="image/webp" />` : ''}
-    ${page.bodyClass && page.bodyClass.includes('is-home') ? '' : `<link rel="preload" as="image" href="${href(ctx, 'assets/img/hills-900.webp')}" media="(max-width: 900px)" fetchpriority="high" />\n    <link rel="preload" as="image" href="${href(ctx, 'assets/img/hills-1600.webp')}" media="(min-width: 901px)" fetchpriority="high" />`}
     <link rel="stylesheet" href="${href(ctx, 'assets/site.css')}?v=${ctx.version}" />
     ${ld}
     ${analytics}

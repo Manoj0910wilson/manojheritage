@@ -278,11 +278,12 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .hero-origin { text-shadow: 0 1px 12px rgba(246,241,231,.9); }
 
 /* Story photographs */
-.intro-photos { margin-top: 90px; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(18px, 3vw, 40px); align-items: end; }
+.intro-photos { margin-top: 90px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 3vw, 40px); align-items: start; }
 .photo { position: relative; margin: 0; overflow: hidden; border-radius: 22px; background: #cfdcc6; box-shadow: 0 30px 60px rgba(23,60,43,.14); }
 .photo img { display: block; width: 100%; height: 100%; object-fit: cover; transform: translate3d(0, calc(var(--py, 0) * -22px), 0) scale(1.12); }
 .photo-tall { aspect-ratio: 4 / 5; }
-.photo-wide { aspect-ratio: 4 / 5; margin-bottom: clamp(30px, 6vw, 90px); }
+.photo-wide { aspect-ratio: 4 / 5; margin-bottom: 0; }
+.photo[data-parallax], .photo-tall, .photo-wide { transform: none !important; }
 .photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 26px 22px; color: var(--ivory); font-family: var(--serif); font-size: 22px; line-height: 1.1; background: linear-gradient(transparent, rgba(12,34,22,.72)); }
 
 /* Exploded product view */
@@ -340,12 +341,12 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 
 /* Greenery on inner pages and calls to action */
 .inner-hero { background: var(--ivory); isolation: isolate; }
-.inner-hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: url('./img/hills-1600.webp') 60% 40% / cover no-repeat; opacity: .55; }
+.inner-hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: radial-gradient(ellipse at 80% 0%, rgba(219,228,210,.8), transparent 60%), radial-gradient(ellipse at 0% 100%, rgba(214,184,91,.14), transparent 55%); }
 .inner-hero::after { z-index: -1; inset: 0; width: auto; height: auto; border: 0; border-radius: 0; right: 0; bottom: 0; transform: none; background: linear-gradient(90deg, rgba(246,241,231,.96) 0%, rgba(246,241,231,.88) 45%, rgba(246,241,231,.4) 100%), linear-gradient(180deg, transparent 70%, rgba(246,241,231,.95)); }
 .cta-band { isolation: isolate; background: var(--leaf); }
-.cta-band::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(15,45,32,.96), rgba(15,45,32,.78)), url('./img/hills-900.webp') center / cover no-repeat; }
+.cta-band::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(15,45,32,1), rgba(23,60,43,.94)); }
 .cta-band::after { display: none; }
-.contact-section { background: linear-gradient(rgba(15,45,32,.93), rgba(15,45,32,.9)), url('./img/hills-1600.webp') center / cover no-repeat fixed; }
+.contact-section { background: linear-gradient(rgba(15,45,32,1), rgba(15,45,32,.96)); }
 
 @media (max-width: 1020px) {
   .stage-cards { grid-template-columns: 1fr; }
@@ -410,7 +411,7 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 .site-footer.v2 .footer-sub { margin-top: 22px; }
 
 /* Performance and accessibility */
-@media (max-width: 900px) { .inner-hero::before { background-image: url('./img/hills-900.webp'); } }
+
 .eyebrow, .section-kicker, .journal-meta { color: var(--gold-text); }
 .enquiry-intro .eyebrow, .cta-band .eyebrow, .site-footer .eyebrow, .contact-section .eyebrow { color: var(--gold-light); }
 .site-footer.v2 .footer-sub { margin-top: 22px; }
@@ -581,3 +582,13 @@ h2 { line-height: 1.12; }
 .hero h1, .page-title, h2, .h2-small, .cta-band h2 { font-weight: 500; }
 .hero-proof { display: none; }
 .hero h1 em, h1 em, h2 em, .page-title em { font-style: normal !important; font-weight: 500 !important; }
+
+/* Hero: keep the copy readable, photo sits clear of the text */
+.hero-bg img { width: 60%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%); mask-image: linear-gradient(90deg, transparent 0, #000 34%); }
+.hero-bg::after { background: linear-gradient(90deg, rgba(246,241,231,.97) 0, rgba(246,241,231,.9) 34%, rgba(246,241,231,0) 52%), linear-gradient(180deg, rgba(246,241,231,.9) 0%, rgba(246,241,231,.5) 9%, transparent 20%, transparent 80%, var(--ivory) 100%); }
+.hero-copy { position: relative; z-index: 3; }
+.about-photo { margin: 0 0 26px; } .about-photo img { width: 100%; height: auto; border-radius: 16px; display: block; } .about-photo figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.markets-photo { object-fit: cover; }
+@media (max-width: 900px) { .hero-bg::after { background: none; } }
+@media (max-width: 720px) { .hero-bg img { width: 100%; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%); mask-image: linear-gradient(180deg, transparent 0, #000 14%); } }
+.hero-copy { width: min(500px, 41vw); } @media (max-width: 720px) { .hero-copy { width: 100%; } }
