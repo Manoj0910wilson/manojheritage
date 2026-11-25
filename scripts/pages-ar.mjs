@@ -18,9 +18,8 @@ const arFaqHome = [
 ];
 
 function homeMain(ctx) {
-  const pod = href(ctx, 'assets/senvora-cardamom-pod.webp');
   const img = (n) => href(ctx, `assets/img/${n}`);
-  const stage = (n) => href(ctx, `assets/stages/${n}`);
+  const ugc = (n) => href(ctx, `assets/ugc/${n}`);
   return `
   <section class="inner-hero ar-hero">
     <p class="section-kicker">الهيل الأخضر من إدوكي، كيرالا</p>
@@ -30,16 +29,15 @@ function homeMain(ctx) {
       <a class="solid-button" href="#enquiry">اطلب عيّنة وعرض سعر <span aria-hidden="true">↖</span></a>
       <a class="outline-button" href="${waHelloAr}" target="_blank" rel="noopener" data-track="whatsapp">تواصل عبر واتساب <span aria-hidden="true">↖</span></a>
     </div>
-    <img class="ar-pod" src="${pod}" alt="حبة هيل أخضر طازجة من إدوكي" width="320" height="322" fetchpriority="high" />
   </section>
   <div class="content-wrap">
     <div class="intro-photos">
       <figure class="photo photo-tall">
-        <img src="${img('plant.webp')}" alt="نبتة هيل بعناقيد من الحبوب الخضراء قرب سطح الأرض" width="736" height="1104" loading="lazy" decoding="async" />
+        <img src="${img('plant.webp')}" alt="نباتات هيل تنمو في ظل الأشجار العالية في مزرعتنا في إدوكي" width="1000" height="1500" loading="lazy" decoding="async" />
         <figcaption>تنمو في ظلال التلال</figcaption>
       </figure>
       <figure class="photo photo-wide">
-        <img src="${img('farmers.webp')}" alt="عاملتان تحملان سلالاً من الحبوب الخضراء المقطوفة حديثاً في المزرعة" width="900" height="1158" loading="lazy" decoding="async" />
+        <img src="${img('farmers.webp')}" alt="حفنة من حبوب الهيل الخضراء المقطوفة حديثاً من مزرعتنا" width="900" height="1158" loading="lazy" decoding="async" />
         <figcaption>قطاف يدوي، موسماً بعد موسم</figcaption>
       </figure>
     </div>
@@ -48,9 +46,9 @@ function homeMain(ctx) {
     <div class="content-wrap">
       <h2 class="h2-small">من الحبة الكاملة إلى البذور</h2>
       <div class="card-grid three">
-        <article class="info-card"><img class="stage-img" src="${stage('whole.webp')}" alt="حبة هيل أخضر كاملة" width="690" height="310" loading="lazy" decoding="async" /><span class="card-index">١ · الحبة الكاملة</span><h3>أول ما ينظر إليه المشتري</h3><p>اللون والحجم والرائحة والنظافة هي ما ننتقيه، وما ندعوك إلى مقارنته بمواصفاتك في العيّنة.</p></article>
-        <article class="info-card"><img class="stage-img" src="${stage('open.webp')}" alt="حبة هيل مفتوحة تُظهر البذور" width="900" height="527" loading="lazy" decoding="async" /><span class="card-index">٢ · داخل الحبة</span><h3>حيث تسكن الرائحة</h3><p>يحمي القشر بذوراً صغيرة داكنة إلى أن تُفتح الحبة، ولهذا تحتفظ الحبوب الكاملة بعطرها جيداً في التخزين والنقل.</p></article>
-        <article class="info-card"><img class="stage-img" src="${stage('seeds.webp')}" alt="بذور الهيل" width="380" height="237" loading="lazy" decoding="async" /><span class="card-index">٣ · البذور</span><h3>أين تُستخدم</h3><p>القهوة العربية، والشاي والكرك، والحلويات، وأطباق الأرز، وخلطات البهارات.</p></article>
+        <article class="info-card"><img class="stage-img" src="${ugc('pods-hand.webp')}" alt="حبات هيل أخضر طازجة من إدوكي" width="900" height="900" loading="lazy" decoding="async" /><span class="card-index">١ · الحبة الكاملة</span><h3>أول ما ينظر إليه المشتري</h3><p>اللون والحجم والرائحة والنظافة هي ما ننتقيه، وما ندعوك إلى مقارنته بمواصفاتك في العيّنة.</p></article>
+        <article class="info-card"><img class="stage-img" src="${ugc('dewy.webp')}" alt="حبات هيل خضراء وزهرة على النبتة في إدوكي" width="1600" height="900" loading="lazy" decoding="async" /><span class="card-index">٢ · داخل الحبة</span><h3>حيث تسكن الرائحة</h3><p>يحمي القشر بذوراً صغيرة داكنة إلى أن تُفتح الحبة، ولهذا تحتفظ الحبوب الكاملة بعطرها جيداً في التخزين والنقل.</p></article>
+        <article class="info-card"><img class="stage-img" src="${ugc('chai.webp')}" alt="حبات هيل في ملعقة خشبية" width="1000" height="1250" loading="lazy" decoding="async" /><span class="card-index">٣ · البذور</span><h3>أين تُستخدم</h3><p>القهوة العربية، والشاي والكرك، والحلويات، وأطباق الأرز، وخلطات البهارات.</p></article>
       </div>
     </div>
   </section>

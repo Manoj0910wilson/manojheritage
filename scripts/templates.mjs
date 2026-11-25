@@ -69,7 +69,7 @@ function header(ctx, page) {
   <a class="skip-link" href="#main">${isAr ? 'تخطَّ إلى المحتوى' : 'Skip to content'}</a>
   <header class="site-header" data-header>
     <a class="brand" href="${href(ctx, isAr ? 'ar/' : '')}" aria-label="Senvora Spices home">
-      <img src="${href(ctx, 'assets/senvora-spices-logo.svg')}" alt="Senvora Spices" width="164" height="44" />
+      <img src="${href(ctx, 'assets/senvora-spices-logo.svg')}" alt="Senvora Spices" width="196" height="47" />
     </a>
     <nav class="desktop-nav" aria-label="${isAr ? 'التنقل الرئيسي' : 'Primary navigation'}">${links}</nav>
     <div class="header-actions">
@@ -108,7 +108,7 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="145" height="39" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="180" height="43" loading="lazy" /></a>
         <p>هيل نقي. جذوره في إدوكي.</p>
       </div>
       <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/markets/qatar/')}">الهيل في قطر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
@@ -122,7 +122,7 @@ function footer(ctx) {
   <footer class="site-footer v2">
     <div class="footer-grid">
       <div class="footer-about">
-        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="145" height="39" loading="lazy" /></a>
+        <a class="brand footer-brand" href="${href(ctx, '')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="180" height="43" loading="lazy" /></a>
         <p>Pure cardamom. Rooted in Idukki.</p>
         <p class="footer-small">Premium green cardamom from Idukki, Kerala, India, for buyers in India and importers in the Gulf.</p>
       </div>
@@ -322,7 +322,7 @@ export function organizationLd() {
     alternateName: ['Senvora Spices Idukki', 'Senvora Spices Kerala'],
     url: `${site.url}/`,
     address: { '@type': 'PostalAddress', addressLocality: 'Idukki', addressRegion: 'Kerala', addressCountry: 'IN' },
-    logo: absUrl('assets/senvora-spices-logo.png'),
+    logo: absUrl('assets/senvora-logo-square.png'),
     image: absUrl('og-image.jpg'),
     description: 'Senvora Spices sources premium green cardamom from Idukki, Kerala, India for buyers in India and importers in the Gulf.',
     email: site.email,

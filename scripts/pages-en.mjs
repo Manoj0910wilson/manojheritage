@@ -16,21 +16,18 @@ const sampleWa = whatsappLink('Hello Senvora Spices, I would like to request a c
    HOME (keeps the approved animated design, now pre-rendered)
    ========================================================= */
 function homeMain(ctx) {
-  const pod = href(ctx, 'assets/senvora-cardamom-pod.webp');
   const img = (name) => href(ctx, `assets/img/${name}`);
-  const stage = (name) => href(ctx, `assets/stages/${name}`);
   const ugc = (name) => href(ctx, `assets/ugc/${name}`);
   const heroGrade = grades.find((g) => g.id === '7mm');
   const heroFrom = grades.map((g) => retailPerKg(g, 1)).reduce((a, b) => Math.min(a, b));
   const heroPrice = (retailPerKg(heroGrade, 1) - 1).toLocaleString('en-IN');
   return `
     <div id="top"></div>
-    <canvas class="float-pod" data-float-pod data-frames="${href(ctx, 'assets/pod/f')}" data-count="62" width="560" height="273" aria-hidden="true"></canvas>
     <section class="hero" aria-labelledby="hero-title" data-pod="0.78,0.52,340,-4,0" data-pod-m="0.74,0.87,300,-4,0">
       <div class="hero-bg">
         <picture>
           <source media="(max-width: 720px)" srcset="${ugc('hero-m-750.webp')}" />
-          <img src="${ugc('hero-1600.webp')}" srcset="${ugc('hero-900.webp')} 900w, ${ugc('hero-1600.webp')} 1600w" sizes="70vw" alt="Senvora Spices green cardamom pouch held in a sunlit Kerala kitchen with loose green pods on the table" width="1600" height="900" fetchpriority="high" decoding="async" />
+          <img src="${ugc('hero-1600.webp')}" srcset="${ugc('hero-900.webp')} 900w, ${ugc('hero-1600.webp')} 1600w" sizes="70vw" alt="A sack full of fresh green cardamom pods from Idukki, Kerala" width="1600" height="900" fetchpriority="high" decoding="async" />
         </picture>
         <a class="price-chip" href="${href(ctx, 'products/')}" aria-label="Open the cardamom shop">
           <span>Fresh green cardamom · 7mm</span>
@@ -55,9 +52,9 @@ function homeMain(ctx) {
     </section>
 
     <section class="ugc-strip" aria-label="Senvora cardamom in everyday kitchens">
-      <figure><img src="${ugc('pods-hand.webp')}" alt="Fresh green cardamom pods in an open palm" width="700" height="700" loading="lazy" decoding="async" /><figcaption>Fresh, plump pods</figcaption></figure>
-      <figure><img src="${ugc('chai.webp')}" alt="Cardamom pods being added to a pot of chai" width="700" height="875" loading="lazy" decoding="async" /><figcaption>For chai, kahwa and sweets</figcaption></figure>
-      <figure><img src="${ugc('dewy.webp')}" alt="Dewy green cardamom pods growing on the plant in Idukki" width="900" height="507" loading="lazy" decoding="async" /><figcaption>Picked in Idukki</figcaption></figure>
+      <figure><img src="${ugc('pods-hand.webp')}" alt="Fresh green cardamom pods heaped in a bucket" width="900" height="900" loading="lazy" decoding="async" /><figcaption>Fresh, plump pods</figcaption></figure>
+      <figure><img src="${ugc('chai.webp')}" alt="Green cardamom pods in a wooden spoon on jute cloth" width="1000" height="1250" loading="lazy" decoding="async" /><figcaption>For chai, kahwa and sweets</figcaption></figure>
+      <figure><img src="${ugc('dewy.webp')}" alt="Young green cardamom pods and a white-and-pink flower on the plant in Idukki" width="1600" height="900" loading="lazy" decoding="async" /><figcaption>Picked in Idukki</figcaption></figure>
     </section>
 
     <section class="intro-section" id="story" aria-labelledby="story-title" data-pod="0.5,0.62,230,10,1">
@@ -71,12 +68,12 @@ function homeMain(ctx) {
       </div>
       <div class="intro-photos">
         <figure class="photo photo-tall" data-parallax>
-          <img src="${img('plant.webp')}" alt="Cardamom plant with clusters of green pods growing close to the ground" width="736" height="1104" loading="lazy" decoding="async" />
+          <img src="${img('plant.webp')}" alt="Cardamom plants growing in the shade of tall trees on our farm in Idukki" width="1000" height="1500" loading="lazy" decoding="async" />
           <figcaption>Grown in the shade of the hills</figcaption>
         </figure>
         <figure class="photo photo-wide" data-parallax>
-          <img src="${img('farmers.webp')}" alt="Two harvesters holding baskets of freshly picked green pods in a plantation" width="900" height="1158" loading="lazy" decoding="async" />
-          <figcaption>Hand harvesting, season by season</figcaption>
+          <img src="${img('farmers.webp')}" alt="A handful of freshly picked green cardamom pods from our farm" width="900" height="1158" loading="lazy" decoding="async" />
+          <figcaption>Picked and sorted by hand</figcaption>
         </figure>
       </div>
     </section>
@@ -85,23 +82,7 @@ function homeMain(ctx) {
       <div class="explode-head">
         <div class="section-kicker">02 / The product</div>
         <h2 id="explode-title">Discover<br /><em>what is inside.</em></h2>
-        <p>Keep scrolling and the pod opens up: the whole pod, the pod split open, and the seeds that carry the aroma.</p>
-      </div>
-      <div class="explode-track" data-explode-track>
-        <div class="explode-sticky">
-          <div class="explode-glow"></div>
-          <div class="explode-stage" data-explode-stage>
-            <div class="ex ex-seeds"><img src="${stage('seeds.webp')}" alt="Cardamom seeds" width="380" height="237" loading="lazy" decoding="async" /></div>
-            <img class="ex ex-seed es1" src="${stage('seed-1.webp')}" alt="" width="184" height="114" loading="lazy" />
-            <img class="ex ex-seed es2" src="${stage('seed-1.webp')}" alt="" width="184" height="114" loading="lazy" />
-            <img class="ex ex-seed es3" src="${stage('seed-1.webp')}" alt="" width="184" height="114" loading="lazy" />
-            <div class="ex ex-open"><img src="${stage('open.webp')}" alt="A green cardamom pod split open to show the seeds" width="900" height="527" loading="lazy" decoding="async" /></div>
-            <div class="ex ex-whole"><img src="${stage('whole.webp')}" alt="A whole green cardamom pod" width="690" height="310" loading="lazy" decoding="async" /></div>
-            <span class="ex-label ex-label-whole">01 · Whole pod</span>
-            <span class="ex-label ex-label-open">02 · Inside the pod</span>
-            <span class="ex-label ex-label-seeds">03 · The seeds</span>
-          </div>
-        </div>
+        <p>The whole pod, the husk that protects it, and the seeds that carry the aroma.</p>
       </div>
       <div class="stage-cards">
         <article class="info-card"><span class="card-index">01 · WHOLE POD</span><h3>What buyers judge first</h3><p>Colour, size, aroma and cleanliness are what we select for, and what we invite you to check against your own specification in a sample.</p></article>
@@ -122,15 +103,15 @@ function homeMain(ctx) {
       <div class="section-kicker">03 / The range</div>
       <div class="section-heading-row"><h2 id="range-title">The character<br /><em>of the harvest.</em></h2><p>Built for buyers who care where every flavour begins.</p></div>
       <div class="range-grid">
-        <article class="range-card range-card-main"><div class="card-number">01</div><img class="range-img" src="${stage('whole.webp')}" alt="Whole green cardamom pod" width="690" height="310" loading="lazy" decoding="async" /><h3>Whole green cardamom</h3><p>Fresh, fragrant pods with a naturally clean finish.</p><a href="${href(ctx, 'products/green-cardamom/')}">View the product <span>↗</span></a></article>
-        <article class="range-card range-card-light"><div class="card-number">02</div><img class="range-img range-img-seeds" src="${stage('seeds.webp')}" alt="Cardamom seeds" width="380" height="237" loading="lazy" decoding="async" /><h3>Selected seed profile</h3><p>Consistent selection for aroma-led food and beverage applications.</p><a href="${href(ctx, 'products/cardamom-seeds/')}">View the product <span>↗</span></a></article>
-        <article class="range-card range-card-photo"><div class="card-number">03</div><img class="range-bg" src="${img('plant.webp')}" alt="" width="736" height="1104" loading="lazy" decoding="async" /><h3>Made for global buyers</h3><p>Origin-led conversations, clear communication, and flexible enquiries.</p><a href="${href(ctx, 'markets/')}">See our markets <span>↗</span></a></article>
+        <article class="range-card range-card-photo"><div class="card-number">01</div><img class="range-bg" src="${img('range-1.webp')}" alt="" width="900" height="1100" loading="lazy" decoding="async" /><h3>Whole green cardamom</h3><p>Fresh, fragrant pods with a naturally clean finish.</p><a href="${href(ctx, 'products/green-cardamom/')}">View the product <span>↗</span></a></article>
+        <article class="range-card range-card-photo"><div class="card-number">02</div><img class="range-bg" src="${img('range-2.webp')}" alt="" width="900" height="1100" loading="lazy" decoding="async" /><h3>Selected seed profile</h3><p>Consistent selection for aroma-led food and beverage applications.</p><a href="${href(ctx, 'products/cardamom-seeds/')}">View the product <span>↗</span></a></article>
+        <article class="range-card range-card-photo"><div class="card-number">03</div><img class="range-bg" src="${img('range-3.webp')}" alt="" width="1000" height="1500" loading="lazy" decoding="async" /><h3>Made for global buyers</h3><p>Origin-led conversations, clear communication, and flexible enquiries.</p><a href="${href(ctx, 'markets/')}">See our markets <span>↗</span></a></article>
       </div>
       <p class="pack-line">Retail packs <strong>25 g to 10 kg</strong> · Wholesale on request · Now also <a href="${href(ctx, 'products/tea-powder/')}">tea powder</a></p>
     </section>
 
     <section class="markets-section" id="markets" aria-labelledby="markets-title" data-pod="0.455,0.62,230,8,1">
-      <div class="markets-visual"><img class="markets-photo" src="${img('hills-1600.webp')}" alt="Misty plantation hills at sunrise in Kerala" width="1600" height="907" loading="lazy" decoding="async" /><span class="map-pin pin-origin">Idukki, Kerala</span></div>
+      <div class="markets-visual"><img class="markets-photo" src="${img('hills-1600.webp')}" alt="Lush cardamom plantation under forest shade in Kerala" width="1600" height="907" loading="lazy" decoding="async" /><span class="map-pin pin-origin">Idukki, Kerala</span></div>
       <div class="markets-copy"><div class="section-kicker">04 / From our hills</div><h2 id="markets-title">From Idukki<br /><em>to Gulf kitchens.</em></h2><p>Rooted in Kerala. Prepared for the world. Senvora Spices is building thoughtful supply relationships with buyers who value a traceable beginning and a distinctive finish, starting with the Gulf.</p>
         <div class="market-list">${markets.map((m) => `<a href="${href(ctx, `markets/${m.slug}/`)}">${m.short}</a>`).join('')}</div>
         <a class="solid-button" href="${href(ctx, 'markets/')}">Explore our markets <span>↗</span></a></div>

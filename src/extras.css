@@ -377,7 +377,7 @@ html:not(.js) .float-pod, .float-pod[hidden] { display: none; }
 
 /* Arabic: gallery, stage cards, mirrored hero veil */
 .is-ar .inner-hero::after { background: linear-gradient(270deg, rgba(246,241,231,.96) 0%, rgba(246,241,231,.88) 45%, rgba(246,241,231,.4) 100%), linear-gradient(180deg, transparent 70%, rgba(246,241,231,.95)); }
-.stage-img { width: 70%; max-width: 260px; height: 130px; object-fit: contain; margin: 4px auto 14px; display: block; filter: drop-shadow(0 16px 12px rgba(45,56,25,.25)); }
+.stage-img { width: 100%; height: 200px; object-fit: cover; margin: -6px 0 14px; display: block; border-radius: 12px; }
 .ar-stages { background: radial-gradient(ellipse at 50% 40%, #fffdf7, var(--ivory) 70%); }
 .is-ar .info-card h3 { font-size: 26px; }
 .is-ar .photo figcaption { font-family: 'Noto Naskh Arabic', serif; font-size: 20px; }
@@ -576,8 +576,8 @@ h2 { line-height: 1.12; }
 .journal-row-body strong { line-height: 1.15; }
 .faq summary { line-height: 1.3; font-size: 22px; }
 .price-chip b { font-size: 30px; }
-.site-header .brand { width: 168px; }
-@media (max-width: 720px) { .hero h1 { font-size: clamp(38px, 11vw, 56px); } .site-header .brand { width: 140px; } }
+.site-header .brand { width: 196px; }
+@media (max-width: 720px) { .hero h1 { font-size: clamp(38px, 11vw, 56px); } .site-header .brand { width: 156px; } }
 .hero h1, .page-title, h2, .h2-small, .cta-band h2 { font-weight: 500; }
 .hero-proof { display: none; }
 .hero h1 em, h1 em, h2 em, .page-title em { font-style: normal !important; font-weight: 500 !important; }
