@@ -228,8 +228,8 @@ function priceListMain(ctx) {
     <tr>
       <th scope="row"><strong>${g.code}</strong> ${g.name}<small>${g.size}</small></th>
       <td>${g.use}</td>
-      <td>${inrk(retailPerKg(g, 1) - 1)}</td>
-      <td>${inrk(wholesalePerKg(g))}</td>
+      <td data-label="Retail, 1 kg pack">${inrk(retailPerKg(g, 1) - 1)}</td>
+      <td data-label="Wholesale, ${settings.wholesaleMinKg} kg and above">${inrk(wholesalePerKg(g))}</td>
       <td><a class="arrow-link" href="${whatsappLink(`Hello Senvora Spices, please send me a wholesale quotation for green cardamom ${g.code} ${g.name}.\n\nQuantity (kg):\nCity / country:`)}" target="_blank" rel="noopener">Quote <span>↗</span></a></td>
     </tr>`).join('');
   return `
