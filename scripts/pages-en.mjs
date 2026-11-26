@@ -249,7 +249,7 @@ function priceListMain(ctx) {
     <p class="shop-more"><a class="solid-button" href="${href(ctx, 'products/')}">Order retail packs <span aria-hidden="true">↗</span></a></p>
     <section>
       <h2 class="h2-small">Read before you buy</h2>
-      <div class="chip-row"><a href="${href(ctx, 'journal/green-cardamom-price-per-kg-idukki/')}">What decides the price per kg</a><a href="${href(ctx, 'journal/which-cardamom-grade-should-i-buy/')}">Which grade should you buy?</a><a href="${href(ctx, 'journal/indian-cardamom-grades-agb-ageb-explained/')}">AGEB, AGB and AGS explained</a><a href="${href(ctx, 'journal/why-is-cardamom-so-expensive/')}">Why cardamom is expensive</a><a href="${href(ctx, 'products/tea-powder/')}">Tea powder</a><a href="${href(ctx, 'markets/')}">Gulf wholesale</a></div>
+      <div class="chip-row"><a href="${href(ctx, 'journal/elaichi-price-today-kerala-auction-rate/')}">How to read the auction rate</a><a href="${href(ctx, 'journal/green-cardamom-price-per-kg-idukki/')}">What decides the price per kg</a><a href="${href(ctx, 'journal/which-cardamom-grade-should-i-buy/')}">Which grade should you buy?</a><a href="${href(ctx, 'journal/indian-cardamom-grades-agb-ageb-explained/')}">AGEB, AGB and AGS explained</a><a href="${href(ctx, 'journal/why-is-cardamom-so-expensive/')}">Why cardamom is expensive</a><a href="${href(ctx, 'products/tea-powder/')}">Tea powder</a><a href="${href(ctx, 'markets/')}">Gulf wholesale</a></div>
     </section>
     <section>
       <h2 class="h2-small">Frequently asked questions</h2>
