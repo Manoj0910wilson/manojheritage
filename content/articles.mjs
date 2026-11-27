@@ -566,6 +566,12 @@ export const articles = [
     readTime: '4 min read',
     title: 'Elaichi price today: how to read the Kerala auction rate',
     metaTitle: 'Elaichi Price Today: Kerala Auction Rate',
+    faq: [
+      { q: 'What is the elaichi price today?', a: 'Green cardamom is priced per kg and moves with the daily Spices Board auction in Idukki. Senvora Spices publishes retail and wholesale rates by grade (8 mm, 7 mm, 6 mm) on the cardamom price today page, refreshed every few hours.' },
+      { q: 'Why is the auction price different from the shop price?', a: 'The auction price is a wholesale rate for lots sold that day. A retail price adds grading, packing, handling and a margin, and small packs carry a higher per-kg cost than bulk.' },
+      { q: 'Which size costs more, 8 mm or 7 mm?', a: 'Bolder 8 mm pods are priced higher than 7 mm and 6 mm because of colour, size and aroma. Check the live table for the current gap.' },
+      { q: 'Can I buy cardamom in bulk at the wholesale rate?', a: 'Yes. Wholesale starts from 25 kg. Message Senvora Spices on WhatsApp at +91 89395 35151 with your grade and quantity.' },
+    ],
     summary: 'Quick answer: the elaichi price you see today comes from the Spices Board auction in Idukki, and your price depends on grade, pack size and delivery on top of it.',
     body: [
       'Quick answer: the price of green cardamom (elaichi) moves with the daily Spices Board e-auction in Kerala. The auction gives a per-kg rate for the lots sold that day. The price you pay is that market rate adjusted for grade, pack size, packing and delivery. Our own rates for each grade are on the {link:products/green-cardamom-price-list/|cardamom price today} page.',

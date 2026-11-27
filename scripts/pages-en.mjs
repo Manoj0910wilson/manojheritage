@@ -9,6 +9,35 @@ import {
   waHello, whatsappLink, tel, absUrl,
 } from './templates.mjs';
 
+
+/* ---------- commerce schema (real prices from the price engine) ---------- */
+function validUntil() { const d = new Date(); d.setUTCDate(d.getUTCDate() + 2); return d.toISOString().slice(0, 10); }
+function shopLd() {
+  const g0 = shop[0];
+  const offers = [];
+  for (const g of g0.grades) for (const v of g.variants) {
+    if (!['25g', '50g', '100g', '500g', '1kg'].includes(v.id)) continue;
+    offers.push({
+      '@type': 'Product', name: `Senvora green cardamom ${g.sub || g.label}, ${v.label} pouch`,
+      description: `Whole green cardamom (elaichi) pods, ${g.label} ${g.sub || ''}, from Idukki, Kerala. ${v.label} pack.`.replace(/\s+/g, ' '),
+      brand: { '@type': 'Brand', name: site.name }, category: 'Spices',
+      image: absUrl(`assets/packs/${v.img}`),
+      offers: { '@type': 'Offer', priceCurrency: 'INR', price: String(v.price), availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', priceValidUntil: validUntil(), url: absUrl('products/'), seller: { '@id': `${site.url}/#organization` } },
+    });
+  }
+  return [{ '@context': 'https://schema.org', '@type': 'ItemList', name: 'Senvora green cardamom retail packs', itemListElement: offers.map((o, i) => ({ '@type': 'ListItem', position: i + 1, item: o })) }];
+}
+function priceLd() {
+  const kg = grades.map((g) => retailPerKg(g, 1) - 1);
+  const wh = grades.map((g) => wholesalePerKg(g));
+  return [{
+    '@context': 'https://schema.org', '@type': 'Product', name: 'Green cardamom (elaichi), whole pods, Idukki',
+    description: `Green cardamom price per kg by grade, updated ${updatedLabel} from the Spices Board auction.`,
+    brand: { '@type': 'Brand', name: site.name }, category: 'Spices', image: absUrl('og-image.jpg'),
+    offers: { '@type': 'AggregateOffer', priceCurrency: 'INR', lowPrice: String(Math.min(...wh)), highPrice: String(Math.max(...kg)), offerCount: grades.length * 2, availability: 'https://schema.org/InStock', priceValidUntil: validUntil(), url: absUrl('products/green-cardamom-price-list/') },
+  }];
+}
+
 const journalClasses = ['one', 'two', 'three'];
 const sampleWa = whatsappLink('Hello Senvora Spices, I would like to request a cardamom sample.');
 
@@ -662,6 +691,7 @@ function articleMain(ctx, a) {
   <div class="content-wrap narrow article-body">${articleBody(a.body, ctx)}</div>
   </article>
   <div class="content-wrap">
+    ${a.faq ? `<section><h2 class="h2-small">Quick answers</h2>${faqList(a.faq, ctx)}</section>` : ''}
     <section>
       <h2 class="h2-small">Keep reading</h2>
       <div class="journal-list compact">
@@ -700,7 +730,7 @@ export function englishPages() {
     render: homeMain,
   });
   add({ path: 'about/', title: 'About Senvora Spices Idukki, Kerala', description: 'Senvora Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
-  add({ path: 'products/', title: 'Shop Green Cardamom: 25 g to 10 kg Packs, Idukki', description: 'Shop green cardamom (elaichi) from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 25 g to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], render: productsIndexMain });
+  add({ path: 'products/', title: 'Shop Green Cardamom: 25 g to 10 kg Packs, Idukki', description: 'Shop green cardamom (elaichi) from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 25 g to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], jsonld: shopLd, render: productsIndexMain });
   add({
     path: 'products/green-cardamom/', title: 'Green Cardamom Grades and Specification',
     description: 'Whole green cardamom (elaichi) from Idukki, Kerala: 8 mm bold, 7 mm and small pods. Retail packs, bulk wholesale and Gulf supply. Specification, uses and FAQs.',
@@ -709,7 +739,7 @@ export function englishPages() {
     product: { name: 'Whole green cardamom', description: 'Whole dried green cardamom pods (Elettaria cardamomum) from Idukki, Kerala, India, selected for colour and aroma and prepared for export.', category: 'Spices' },
     render: greenMain,
   });
-  add({ path: 'products/green-cardamom-price-list/', title: 'Cardamom Price Today: Elaichi Rate per Kg', description: 'Cardamom price today: green elaichi rate per kg by size and grade (8 mm, 7 mm, 6 mm). Retail and wholesale from Idukki, following the Spices Board auction.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, render: priceListMain });
+  add({ path: 'products/green-cardamom-price-list/', title: 'Cardamom Price Today: Elaichi Rate per Kg', description: 'Cardamom price today: green elaichi rate per kg by size and grade (8 mm, 7 mm, 6 mm). Retail and wholesale from Idukki, following the Spices Board auction.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Price list' }], faq: priceFaq, jsonld: priceLd, render: priceListMain });
   add({ path: 'products/tea-powder/', title: 'Tea Powder: Wholesale and Retail', description: 'Tea powder from Senvora Spices for wholesale and retail buyers, supplied alongside green cardamom from Idukki, Kerala. Request a quote.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Tea powder' }], faq: teaFaq, render: teaMain });
   add({ path: 'products/cardamom-seeds/', title: 'Cardamom Seeds from Idukki, Kerala', description: 'Selected cardamom seeds from Idukki, Kerala for aroma-led food and beverage applications. Availability and specification confirmed on enquiry.', crumbs: [{ name: 'Products', path: 'products/' }, { name: 'Cardamom seeds' }], faq: seedsFaq, render: seedsMain });
   { const g = { ...guidePage, crumbs: [{ name: 'Green cardamom guide' }] }; add({ path: g.path, alternates: { en: g.path, ar: `ar/${g.path}` }, alt: `ar/${g.path}`, title: g.metaTitle, description: g.metaDescription, crumbs: g.crumbs, faq: g.faq, render: (ctx) => indiaMain(ctx, g) }); }
@@ -732,7 +762,7 @@ export function englishPages() {
   for (const a of articles) {
     add({
       path: `journal/${a.slug}/`, title: a.metaTitle || a.title, description: a.summary, ogType: 'article',
-      crumbs: [{ name: 'Journal', path: 'journal/' }, { name: a.title }], article: a,
+      crumbs: [{ name: 'Journal', path: 'journal/' }, { name: a.title }], article: a, ...(a.faq ? { faq: a.faq } : {}),
       render: (ctx) => articleMain(ctx, a),
     });
   }
