@@ -111,7 +111,7 @@ function footer(ctx) {
         <a class="brand footer-brand" href="${href(ctx, 'ar/')}"><img src="${href(ctx, 'assets/senvora-spices-logo-light.svg')}" alt="Senvora Spices" width="320" height="77" loading="lazy" /></a>
         <p>هيل نقي. جذوره في إدوكي.</p>
       </div>
-      <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/markets/qatar/')}">الهيل في قطر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
+      <div><h3>روابط</h3><a href="${href(ctx, 'ar/')}">الرئيسية</a><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر</a><a href="${href(ctx, 'ar/green-cardamom-price/')}">سعر الهيل اليوم</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/markets/qatar/')}">الهيل في قطر</a><a href="${href(ctx, '')}" hreflang="en" lang="en">English</a></div>
       <div><h3>تواصل معنا</h3><a href="mailto:${site.email}">${site.email}</a><a href="${tel}" dir="ltr">${site.phoneDisplay}</a><a href="${waHelloAr}" target="_blank" rel="noopener">واتساب</a></div>
     </div>
     ${social}

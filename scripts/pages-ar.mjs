@@ -5,6 +5,7 @@ import {
 import { guideAr } from '../content/guide-ar.mjs';
 import { faqAr } from '../content/faq-ar.mjs';
 import { marketsAr } from '../content/markets-ar.mjs';
+import { grades, retailPerKg, wholesalePerKg, settings, updatedLabel } from '../content/pricing.mjs';
 
 const hasAr = (slug) => Boolean(marketsAr[slug]);
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
@@ -257,6 +258,50 @@ function faqMain(ctx) {
   </div>`;
 }
 
+
+/* ---------- Arabic price page ---------- */
+const arGradeNames = { '8mm': 'ممتاز كبير (AGEB)', '7mm': 'كبير (AGB / AGS)', '6mm': 'قياسي', '5mm': 'حبوب صغيرة', rej: 'مكسّر وخفيف' };
+const arGradeUse = { '8mm': 'قهوة عربية وهدايا وبيع بالتجزئة الفاخر', '7mm': 'استخدام يومي فاخر، شاي وحلويات ومطاعم', '6mm': 'خلطات البهارات والتصنيع بالجملة', '5mm': 'خلطات التوابل والطحن', rej: 'مسحوق ومستخلصات وتصنيع' };
+const arPriceFaq = [
+  { q: 'كم سعر الهيل الأخضر اليوم؟', a: 'يتغير سعر الهيل يومياً مع مزاد هيئة التوابل الهندية في إدوكي. يعرض الجدول أعلاه سعر الكيلو بالروبية الهندية لكل حجم ودرجة، ويُحدَّث عدة مرات في اليوم.' },
+  { q: 'ما أقل كمية للجملة؟', a: 'تبدأ أسعار الجملة من 25 كجم. للتصدير والكميات الكبيرة راسلنا على واتساب لنرسل عرض سعر بشروط FOB أو CFR أو CIF.' },
+  { q: 'هل الأسعار المعروضة شاملة الشحن؟', a: 'لا. الأسعار بالروبية الهندية للكيلو من المزرعة وبدون شحن أو رسوم. نحسب الشحن إلى ميناء الوجهة في عرض السعر.' },
+  { q: 'ما الفرق بين 8 مم و7 مم و6 مم؟', a: 'كلما كبرت الحبة واخضرّت وتجانست ارتفعت الدرجة والسعر. 8 مم مناسب للقهوة العربية والهدايا، و7 مم للاستخدام اليومي، و6 مم لخلطات التوابل.' },
+  { q: 'هل يمكن طلب عيّنة قبل الشراء؟', a: 'نعم. العيّنات متاحة عند الطلب. أرسل لنا الحجم والكمية والوجهة على واتساب +91 89395 35151.' },
+];
+const arInr = (n) => '₹' + n.toLocaleString('en-IN');
+function priceMain(ctx) {
+  const rows = grades.map((g) => `
+    <tr>
+      <th scope="row"><strong>${g.code === 'Rejects' ? 'مكسّر' : g.code.replace('mm', 'مم')}</strong> ${arGradeNames[g.id]}</th>
+      <td>${arGradeUse[g.id]}</td>
+      <td data-label="تجزئة، عبوة 1 كجم" dir="ltr">${arInr(retailPerKg(g, 1) - 1)} / kg</td>
+      <td data-label="جملة، من ${settings.wholesaleMinKg} كجم" dir="ltr">${arInr(wholesalePerKg(g))} / kg</td>
+      <td><a class="arrow-link" href="${whatsappLink(`مرحباً سينفورا سبايسز، أرجو عرض سعر للهيل الأخضر ${g.code}.\n\nالكمية (كجم):\nالدولة / الميناء:`)}" target="_blank" rel="noopener">اطلب عرض سعر <span aria-hidden="true">↖</span></a></td>
+    </tr>`).join('');
+  return `
+  <section class="inner-hero compact">
+    ${breadcrumbs(ctx, [{ name: 'سعر الهيل الأخضر اليوم' }])}
+    <h1 class="page-title">سعر الهيل الأخضر <em>اليوم.</em></h1>
+    <p class="page-lede">سعر الكيلو من الهيل الأخضر (إيلايتشي) حسب الحجم والدرجة من إدوكي، كيرالا. آخر تحديث: ${updatedLabel}، تبعاً لمزاد هيئة التوابل الهندية اليومي.</p>
+  </section>
+  <div class="content-wrap">
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead><tr><th scope="col">الحجم والدرجة</th><th scope="col">الأنسب لـ</th><th scope="col">تجزئة (عبوة 1 كجم)</th><th scope="col">جملة (من ${settings.wholesaleMinKg} كجم)</th><th scope="col"><span class="sr-only">عرض سعر</span></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <p class="price-updated">الأسعار بالروبية الهندية للكيلو من المزرعة، دون شحن أو رسوم. يؤكَّد السعر النهائي والشحن (FOB أو CFR أو CIF) على واتساب.</p>
+    <section>
+      <h2 class="h2-small">اقرأ قبل الشراء</h2>
+      <div class="chip-row"><a href="${href(ctx, 'ar/green-cardamom/')}">الهيل الأخضر الكامل</a><a href="${href(ctx, 'ar/green-cardamom-guide/')}">دليل الهيل الأخضر</a><a href="${href(ctx, 'ar/faq/')}">أسئلة شائعة</a><a href="${href(ctx, 'products/green-cardamom-price-list/')}">English price page</a></div>
+    </section>
+    <section><h2 class="h2-small">أسئلة شائعة</h2>${faqList(arPriceFaq, ctx)}</section>
+  </div>
+  ${ctaBand(ctx, { kicker: 'الخطوة التالية', title: 'اطلب عيّنة وعرض سعر.', text: 'أخبرنا بالدرجة والكمية والميناء.', primary: { label: 'اطلب عيّنة', path: 'ar/#enquiry' }, secondary: { label: 'واتساب', path: waHelloAr, external: true } })}`;
+}
+
 export function arabicPages() {
   const pages = [];
   pages.push({
@@ -277,6 +322,15 @@ export function arabicPages() {
     alternates: { en: 'products/green-cardamom/', ar: 'ar/green-cardamom/' }, alt: 'products/green-cardamom/',
     crumbs: [{ name: 'الهيل الأخضر' }], faq: arGreenFaq,
     render: greenMain,
+  });
+  pages.push({
+    lang: 'ar', path: 'ar/green-cardamom-price/',
+    title: 'سعر الهيل الأخضر اليوم: سعر الكيلو من إدوكي',
+    description: 'سعر الهيل الأخضر اليوم للكيلو حسب الحجم والدرجة (8 مم، 7 مم، 6 مم) من إدوكي، كيرالا. أسعار الجملة والتجزئة وفق مزاد هيئة التوابل.',
+    keywords: ['سعر الهيل الأخضر اليوم', 'سعر الهيل الهندي', 'هيل أخضر بالجملة', 'سعر الهيل من الهند'], locale: 'ar_AE', bodyClass: 'on-page is-ar',
+    alternates: { en: 'products/green-cardamom-price-list/', ar: 'ar/green-cardamom-price/' }, alt: 'products/green-cardamom-price-list/',
+    crumbs: [{ name: 'سعر الهيل الأخضر اليوم' }], faq: arPriceFaq,
+    render: priceMain,
   });
   pages.push({ lang: 'ar', path: 'ar/faq/', title: faqAr.metaTitle, description: faqAr.metaDescription, keywords: faqAr.keywords, locale: 'ar_AE', bodyClass: 'on-page is-ar',
     alternates: { en: 'faq/', ar: 'ar/faq/' }, alt: 'faq/',
