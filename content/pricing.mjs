@@ -8,6 +8,7 @@ export const settings = {
   retailMargin: 0.15,      // retail packs (1-10 kg): 15% over the market-based price
   wholesaleMargin: 0.00,   // wholesale (wholesaleMinKg and above) is priced at the market-based rate, ~Rs 50-100 under comparable Idukki sellers
   wholesaleMinKg: 25,
+  minProfitPerPack: 50,    // every retail pack must earn at least this many rupees over the market-based cost
   smoothDays: 3,           // average the last N auction days so the price does not jump daily
   roundTo: 10,             // round prices to the nearest Rs 10
   // per-kg discount for bigger retail packs (applies from this weight upward)
