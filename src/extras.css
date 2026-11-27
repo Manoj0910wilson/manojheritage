@@ -641,3 +641,11 @@ h2 { line-height: 1.12; }
   .price-table tbody td:last-child { grid-column: 1 / -1; }
   .price-table tbody td:last-child a { display: flex; justify-content: center; min-height: 46px; align-items: center; border: 1px solid rgba(23,60,43,.3); border-radius: 99px; }
 }
+
+/* Order panel: customer details */
+.op-details { margin: 4px 0 14px; display: grid; gap: 10px; }
+.op-field input { width: 100%; min-height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid rgba(20,45,32,.3); background: #fff; font: 500 15px/1 inherit; color: #143b2a; }
+.op-field input:focus { outline: 2px solid var(--gold, #ba8c2b); outline-offset: 1px; }
+.op-field input.is-invalid { border-color: #b3382a; background: #fff6f4; }
+.op-error { margin: 0; font-size: 13px; color: #b3382a; }
+.op-details .op-row { grid-template-columns: 1fr 1fr; }

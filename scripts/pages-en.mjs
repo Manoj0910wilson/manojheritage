@@ -214,6 +214,14 @@ function orderPanel(ctx, prod, { link = true } = {}) {
           <div class="op-qty"><button type="button" data-op-minus aria-label="Decrease quantity">−</button><output data-op-qty>1</output><button type="button" data-op-plus aria-label="Increase quantity">+</button></div>
         </div>
       </div>
+      <div class="op-details">
+        <label class="op-field"><span>Your name</span><input type="text" data-op-name autocomplete="name" placeholder="Full name" aria-label="Your name" /></label>
+        <div class="op-row">
+          <label class="op-field"><span>City</span><input type="text" data-op-city autocomplete="address-level2" placeholder="e.g. Chennai" aria-label="City" /></label>
+          <label class="op-field"><span>PIN code</span><input type="text" data-op-pin inputmode="numeric" maxlength="6" autocomplete="postal-code" placeholder="6 digits" aria-label="PIN code" /></label>
+        </div>
+        <p class="op-error" data-op-error role="alert" hidden>Please add your name, city and a 6-digit PIN code so we can confirm delivery.</p>
+      </div>
       <div class="op-price"><strong data-op-total>${inr(v0.price)}</strong><small data-op-per>${inr(v0.perKg)} / kg</small></div>
       <a class="solid-button op-order" data-op-order href="${whatsappLink(msg(g0, v0))}" target="_blank" rel="noopener">Order on WhatsApp <span aria-hidden="true">↗</span></a>
       <p class="op-note">Prices follow the daily market. Delivery extra. Final price confirmed on WhatsApp.</p>

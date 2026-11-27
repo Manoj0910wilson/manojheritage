@@ -220,6 +220,10 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   const per = panel.querySelector('[data-op-per]');
   const img = panel.querySelector('[data-op-img]');
   const btn = panel.querySelector('[data-op-order]');
+  const nameIn = panel.querySelector('[data-op-name]');
+  const cityIn = panel.querySelector('[data-op-city]');
+  const pinIn = panel.querySelector('[data-op-pin]');
+  const errEl = panel.querySelector('[data-op-error]');
   let qty = 1;
   const fmt = (n) => '₹' + n.toLocaleString('en-IN');
   const grade = () => cfg.grades.find((g) => g.id === (gSel ? gSel.value : cfg.grades[0].id)) || cfg.grades[0];
@@ -237,7 +241,7 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
     per.textContent = qty > 1 ? `${qty} x ${fmt(v.price)} · ${fmt(v.perKg)} / kg` : `${fmt(v.perKg)} / kg`;
     if (img.getAttribute('src') !== v.img) img.setAttribute('src', v.img);
     const gl = cfg.multi ? ` (${g.label})` : '';
-    const text = `Hello Senvora Spices, I would like to order:\n\n${cfg.name}${gl} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
+    const text = `Hello Senvora Spices, I would like to order:\n\n${cfg.name}${gl} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName: ${nameIn ? nameIn.value.trim() : ''}\nCity: ${cityIn ? cityIn.value.trim() : ''}\nPIN code: ${pinIn ? pinIn.value.trim() : ''}\n\nPlease confirm availability and delivery.`;
     btn.setAttribute('href', `https://wa.me/${cfg.wa}?text=${encodeURIComponent(text)}`);
     return { g, v };
   };
@@ -245,7 +249,23 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   sel.addEventListener('change', render);
   panel.querySelector('[data-op-minus]').addEventListener('click', () => { qty = Math.max(1, qty - 1); render(); });
   panel.querySelector('[data-op-plus]').addEventListener('click', () => { qty = Math.min(20, qty + 1); render(); });
-  btn.addEventListener('click', () => { const { g, v } = render(); track('order_click', { product: cfg.name, grade: g.label, weight: v.label, quantity: qty, value: v.price * qty }); });
+  const detailsOk = () => {
+    const bad = [];
+    if (nameIn && nameIn.value.trim().length < 2) bad.push(nameIn);
+    if (cityIn && cityIn.value.trim().length < 2) bad.push(cityIn);
+    if (pinIn && !/^\d{6}$/.test(pinIn.value.trim())) bad.push(pinIn);
+    [nameIn, cityIn, pinIn].forEach((el) => el && el.classList.toggle('is-invalid', bad.includes(el)));
+    if (errEl) errEl.hidden = bad.length === 0;
+    if (bad.length) bad[0].focus();
+    return bad.length === 0;
+  };
+  [nameIn, cityIn, pinIn].forEach((el) => el && el.addEventListener('input', () => {
+    if (el === pinIn) el.value = el.value.replace(/\D/g, '').slice(0, 6);
+    el.classList.remove('is-invalid'); render();
+    try { localStorage.setItem('hs-cust', JSON.stringify({ n: nameIn.value, c: cityIn.value, p: pinIn.value })); } catch { /* storage unavailable */ }
+  }));
+  try { const c = JSON.parse(localStorage.getItem('hs-cust') || 'null'); if (c && nameIn) { nameIn.value = c.n || ''; cityIn.value = c.c || ''; pinIn.value = c.p || ''; } } catch { /* ignore */ }
+  btn.addEventListener('click', (e) => { if (!detailsOk()) { e.preventDefault(); return; } const { g, v } = render(); track('order_click', { product: cfg.name, grade: g.label, weight: v.label, quantity: qty, value: v.price * qty }); });
   // Remember the chosen size, weight and quantity across refreshes (and allow ?size=8mm&weight=5kg links)
   const key = 'hs-order-' + (cfg.name || 'p');
   const store = {
