@@ -223,7 +223,7 @@ function orderPanel(ctx, prod, { link = true } = {}) {
   const gl = (g) => (multi ? ` (${g.label})` : '');
   const msg = (g, v) => `Hello Senvora Spices, I would like to order:\n\n${prod.name}${gl(g)} - ${v.label} x 1\nPrice: ${inr(v.price)}\n\nName:\nCity and PIN code:\n\nPlease confirm availability and delivery.`;
   const data = JSON.stringify({
-    name: prod.name, wa: site.whatsapp, multi,
+    name: prod.name, id: prod.id, wa: site.whatsapp, multi,
     grades: prod.grades.map((g) => ({ id: g.id, label: g.label, variants: g.variants.map((v) => ({ id: v.id, label: v.label, price: v.price, perKg: v.perKg, img: href(ctx, `assets/packs/${v.img}`) })) })),
   });
   return `
@@ -243,20 +243,52 @@ function orderPanel(ctx, prod, { link = true } = {}) {
           <div class="op-qty"><button type="button" data-op-minus aria-label="Decrease quantity">−</button><output data-op-qty>1</output><button type="button" data-op-plus aria-label="Increase quantity">+</button></div>
         </div>
       </div>
-      <div class="op-details">
-        <label class="op-field"><span>Your name</span><input type="text" data-op-name autocomplete="name" placeholder="Full name" aria-label="Your name" /></label>
-        <div class="op-row">
-          <label class="op-field"><span>City</span><input type="text" data-op-city autocomplete="address-level2" placeholder="e.g. Chennai" aria-label="City" /></label>
-          <label class="op-field"><span>PIN code</span><input type="text" data-op-pin inputmode="numeric" maxlength="6" autocomplete="postal-code" placeholder="6 digits" aria-label="PIN code" /></label>
-        </div>
-        <p class="op-error" data-op-error role="alert" hidden>Please add your name, city and a 6-digit PIN code so we can confirm delivery.</p>
-      </div>
       <div class="op-price"><strong data-op-total>${inr(v0.price)}</strong><small data-op-per>${inr(v0.perKg)} / kg</small></div>
-      <a class="solid-button op-order" data-op-order href="${whatsappLink(msg(g0, v0))}" target="_blank" rel="noopener">Order on WhatsApp <span aria-hidden="true">↗</span></a>
+      <button type="button" class="solid-button op-order" data-op-add>Add to cart <span aria-hidden="true">+</span></button>
+      <p class="op-added" data-op-added role="status" hidden>Added to your cart. <a href="${href(ctx, 'cart/')}">View cart and place order</a></p>
       <p class="op-note">Prices follow the daily market. Delivery extra. Final price confirmed on WhatsApp.</p>
       ${link ? `<a class="arrow-link" href="${href(ctx, prod.link)}">Details <span>↗</span></a>` : ''}
     </div>
   </article>`;
+}
+
+
+function cartMain(ctx) {
+  return `
+  <div class="cart-shell" data-cart data-packs="${href(ctx, 'assets/packs/')}" data-wa="${site.whatsapp}">
+    <section class="cart-left">
+      <img class="cart-logo" src="${href(ctx, 'assets/senvora-spices-logo.svg')}" alt="" width="160" height="39" />
+      <h1 class="cart-title">Checkout</h1>
+      <div class="cart-form" data-cart-form>
+        <label class="cart-field"><span>Full name</span><input type="text" data-cart-name autocomplete="name" placeholder="Your name" /></label>
+        <div class="cart-row">
+          <label class="cart-field"><span>City</span><input type="text" data-cart-city autocomplete="address-level2" placeholder="e.g. Chennai" /></label>
+          <label class="cart-field"><span>PIN code</span><input type="text" data-cart-pin inputmode="numeric" maxlength="6" autocomplete="postal-code" placeholder="6 digits" /></label>
+        </div>
+        <label class="cart-field"><span>Full address (optional, we can ask on WhatsApp)</span><input type="text" data-cart-addr autocomplete="street-address" placeholder="House, street, area" /></label>
+        <p class="op-error" data-cart-error role="alert" hidden>Please add your name, city and a 6-digit PIN code so we can confirm delivery.</p>
+        <div class="cart-note"><strong>How it works.</strong> Tap Place Order and we receive your order with your details. We confirm stock, delivery charge and payment with you on WhatsApp before dispatch.</div>
+        <a class="cart-place" data-cart-place href="#" target="_blank" rel="noopener">Place Order · <span data-cart-total>₹0</span></a>
+      </div>
+      <a class="cart-back" href="${href(ctx, 'products/')}">← Continue shopping</a>
+    </section>
+    <aside class="cart-right" aria-label="Your cart">
+      <h2 class="cart-eyebrow">Your cart · <span data-cart-n>0</span> items</h2>
+      <div class="cart-items" data-cart-items></div>
+      <div class="cart-sum" data-cart-sum>
+        <div><span>Subtotal</span><span data-cart-sub>₹0</span></div>
+        <div><span>Delivery</span><span>Confirmed after you order</span></div>
+        <div class="cart-sum-total"><span>Total</span><span data-cart-total2>₹0</span></div>
+      </div>
+      <p class="cart-clear"><button type="button" data-cart-clear>Clear cart</button></p>
+    </aside>
+    <div class="cart-empty" data-cart-empty hidden>
+      <h2>Your cart is empty</h2>
+      <p>Pick a pack size and add it to your cart.</p>
+      <a class="solid-button" href="${href(ctx, 'products/')}">Shop green cardamom <span aria-hidden="true">↗</span></a>
+    </div>
+    <noscript><p class="cart-noscript">The cart needs JavaScript. You can still order by <a href="${waHello}" target="_blank" rel="noopener">WhatsApp</a>.</p></noscript>
+  </div>`;
 }
 
 function priceListMain(ctx) {
@@ -730,6 +762,7 @@ export function englishPages() {
     render: homeMain,
   });
   add({ path: 'about/', title: 'About Senvora Spices Idukki, Kerala', description: 'Senvora Spices (Idukki, Kerala) supplies premium green cardamom from Pallivasal, Idukki to buyers in India and the Gulf. Our story, values and how we work.', crumbs: [{ name: 'About' }], render: aboutMain });
+  add({ path: 'cart/', title: 'Your Cart', description: 'Review your Senvora Spices cart and place your cardamom order.', noindex: true, bodyClass: 'on-page is-cart', render: cartMain });
   add({ path: 'products/', title: 'Shop Green Cardamom: 25 g to 10 kg Packs, Idukki', description: 'Shop green cardamom (elaichi) from Idukki, Kerala. Choose 8 mm, 7 mm or 6 mm pods and a 25 g to 10 kg pack, then order on WhatsApp. Bulk wholesale available.', crumbs: [{ name: 'Products' }], jsonld: shopLd, render: productsIndexMain });
   add({
     path: 'products/green-cardamom/', title: 'Green Cardamom Grades and Specification',

@@ -75,6 +75,7 @@ function header(ctx, page) {
     <div class="header-actions">
       ${langLink}
       ${isAr ? '' : `<button class="icon-button" aria-label="Open search" data-search-button><span class="search-icon"></span></button>`}
+      ${isAr ? '' : `<a class="cart-link" href="${href(ctx, 'cart/')}" aria-label="Cart" data-cart-link><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="cart-count" data-cart-count hidden>0</span></a>`}
       <a class="outline-button header-cta" href="${ctaHref}">${ctaLabel} <span aria-hidden="true">↗</span></a>
       <button class="menu-button" aria-label="${isAr ? 'فتح القائمة' : 'Open navigation'}" aria-expanded="false" data-menu-button><span></span><span></span></button>
     </div>

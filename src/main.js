@@ -209,7 +209,23 @@ if ('IntersectionObserver' in window) {
 })();
 
 
-// Shop order panels: grade + weight dropdowns + quantity -> WhatsApp order message
+// ---------- Cart (saved in this browser, order is sent on WhatsApp) ----------
+const CART_KEY = 'hs-cart';
+const fmtInr = (n) => '₹' + n.toLocaleString('en-IN');
+const cartStore = {
+  get() { try { const c = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); return Array.isArray(c) ? c.filter((i) => i && i.id && i.q > 0) : []; } catch { return []; } },
+  set(c) { try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch { /* storage unavailable */ } updateCartBadge(); },
+};
+function cartCount() { return cartStore.get().reduce((n, i) => n + i.q, 0); }
+function updateCartBadge() {
+  const n = cartCount();
+  document.querySelectorAll('[data-cart-count]').forEach((el) => { el.textContent = String(n); el.hidden = n === 0; });
+  document.querySelectorAll('[data-cart-link]').forEach((el) => el.setAttribute('aria-label', n ? `Cart, ${n} item${n === 1 ? '' : 's'}` : 'Cart'));
+}
+updateCartBadge();
+window.addEventListener('storage', updateCartBadge);
+
+// Shop order panels: size + weight + quantity -> Add to cart
 document.querySelectorAll('[data-order]').forEach((panel) => {
   let cfg;
   try { cfg = JSON.parse(panel.getAttribute('data-config')); } catch { return; }
@@ -219,53 +235,40 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   const total = panel.querySelector('[data-op-total]');
   const per = panel.querySelector('[data-op-per]');
   const img = panel.querySelector('[data-op-img]');
-  const btn = panel.querySelector('[data-op-order]');
-  const nameIn = panel.querySelector('[data-op-name]');
-  const cityIn = panel.querySelector('[data-op-city]');
-  const pinIn = panel.querySelector('[data-op-pin]');
-  const errEl = panel.querySelector('[data-op-error]');
+  const addBtn = panel.querySelector('[data-op-add]');
+  const added = panel.querySelector('[data-op-added]');
   let qty = 1;
-  const fmt = (n) => '₹' + n.toLocaleString('en-IN');
   const grade = () => cfg.grades.find((g) => g.id === (gSel ? gSel.value : cfg.grades[0].id)) || cfg.grades[0];
   const fillWeights = () => {
     const cur = sel.value;
     const g = grade();
-    sel.innerHTML = g.variants.map((v) => `<option value="${v.id}">${v.label} · ${fmt(v.price)}</option>`).join('');
+    sel.innerHTML = g.variants.map((v) => `<option value="${v.id}">${v.label} · ${fmtInr(v.price)}</option>`).join('');
     if (g.variants.some((v) => v.id === cur)) sel.value = cur;
   };
   const render = () => {
     const g = grade();
     const v = g.variants.find((x) => x.id === sel.value) || g.variants[0];
     out.textContent = String(qty);
-    total.textContent = fmt(v.price * qty);
-    per.textContent = qty > 1 ? `${qty} x ${fmt(v.price)} · ${fmt(v.perKg)} / kg` : `${fmt(v.perKg)} / kg`;
+    total.textContent = fmtInr(v.price * qty);
+    per.textContent = qty > 1 ? `${qty} x ${fmtInr(v.price)} · ${fmtInr(v.perKg)} / kg` : `${fmtInr(v.perKg)} / kg`;
     if (img.getAttribute('src') !== v.img) img.setAttribute('src', v.img);
-    const gl = cfg.multi ? ` (${g.label})` : '';
-    const text = `Hello Senvora Spices, I would like to order:\n\n${cfg.name}${gl} - ${v.label} x ${qty}\nTotal: ${fmt(v.price * qty)}\n\nName: ${nameIn ? nameIn.value.trim() : ''}\nCity: ${cityIn ? cityIn.value.trim() : ''}\nPIN code: ${pinIn ? pinIn.value.trim() : ''}\n\nPlease confirm availability and delivery.`;
-    btn.setAttribute('href', `https://wa.me/${cfg.wa}?text=${encodeURIComponent(text)}`);
     return { g, v };
   };
   if (gSel) gSel.addEventListener('change', () => { fillWeights(); render(); });
-  sel.addEventListener('change', render);
+  sel.addEventListener('change', () => { if (added) added.hidden = true; render(); });
   panel.querySelector('[data-op-minus]').addEventListener('click', () => { qty = Math.max(1, qty - 1); render(); });
   panel.querySelector('[data-op-plus]').addEventListener('click', () => { qty = Math.min(20, qty + 1); render(); });
-  const detailsOk = () => {
-    const bad = [];
-    if (nameIn && nameIn.value.trim().length < 2) bad.push(nameIn);
-    if (cityIn && cityIn.value.trim().length < 2) bad.push(cityIn);
-    if (pinIn && !/^\d{6}$/.test(pinIn.value.trim())) bad.push(pinIn);
-    [nameIn, cityIn, pinIn].forEach((el) => el && el.classList.toggle('is-invalid', bad.includes(el)));
-    if (errEl) errEl.hidden = bad.length === 0;
-    if (bad.length) bad[0].focus();
-    return bad.length === 0;
-  };
-  [nameIn, cityIn, pinIn].forEach((el) => el && el.addEventListener('input', () => {
-    if (el === pinIn) el.value = el.value.replace(/\D/g, '').slice(0, 6);
-    el.classList.remove('is-invalid'); render();
-    try { localStorage.setItem('hs-cust', JSON.stringify({ n: nameIn.value, c: cityIn.value, p: pinIn.value })); } catch { /* storage unavailable */ }
-  }));
-  try { const c = JSON.parse(localStorage.getItem('hs-cust') || 'null'); if (c && nameIn) { nameIn.value = c.n || ''; cityIn.value = c.c || ''; pinIn.value = c.p || ''; } } catch { /* ignore */ }
-  btn.addEventListener('click', (e) => { if (!detailsOk()) { e.preventDefault(); return; } const { g, v } = render(); track('order_click', { product: cfg.name, grade: g.label, weight: v.label, quantity: qty, value: v.price * qty }); });
+  addBtn.addEventListener('click', () => {
+    const { g, v } = render();
+    const id = `${cfg.id || cfg.name}|${g.id}|${v.id}`;
+    const cart = cartStore.get();
+    const line = cart.find((i) => i.id === id);
+    if (line) line.q = Math.min(50, line.q + qty);
+    else cart.push({ id, name: cfg.name, gl: cfg.multi ? g.label : '', vl: v.label, price: v.price, perKg: v.perKg, img: v.img.split('/').pop(), q: qty });
+    cartStore.set(cart);
+    if (added) added.hidden = false;
+    track('add_to_cart', { product: cfg.name, grade: g.label, weight: v.label, quantity: qty, value: v.price * qty });
+  });
   // Remember the chosen size, weight and quantity across refreshes (and allow ?size=8mm&weight=5kg links)
   const key = 'hs-order-' + (cfg.name || 'p');
   const store = {
@@ -286,6 +289,78 @@ document.querySelectorAll('[data-order]').forEach((panel) => {
   panel.addEventListener('click', () => setTimeout(save, 0));
   render();
 });
+
+// Cart page: items, details, Place Order -> WhatsApp message with every line
+(() => {
+  const root = document.querySelector('[data-cart]');
+  if (!root) return;
+  const $ = (sel) => root.querySelector(sel);
+  const packs = root.getAttribute('data-packs') || '';
+  const wa = root.getAttribute('data-wa');
+  const nameIn = $('[data-cart-name]'), cityIn = $('[data-cart-city]'), pinIn = $('[data-cart-pin]'), addrIn = $('[data-cart-addr]');
+  const errEl = $('[data-cart-error]'), place = $('[data-cart-place]');
+  const itemsEl = $('[data-cart-items]');
+  const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const sums = () => { const c = cartStore.get(); return { c, n: c.reduce((a, i) => a + i.q, 0), t: c.reduce((a, i) => a + i.q * i.price, 0) }; };
+  const message = () => {
+    const { c, t } = sums();
+    const lines = c.map((i, k) => `${k + 1}. ${i.name}${i.gl ? ` (${i.gl})` : ''} - ${i.vl} x ${i.q} = ${fmtInr(i.q * i.price)}`).join('\n');
+    const addr = addrIn && addrIn.value.trim() ? `\nAddress: ${addrIn.value.trim()}` : '';
+    return `Hello Senvora Spices, I would like to place this order:\n\n${lines}\n\nTotal: ${fmtInr(t)} (delivery to be confirmed)\n\nName: ${nameIn.value.trim()}\nCity: ${cityIn.value.trim()}\nPIN code: ${pinIn.value.trim()}${addr}\n\nPlease confirm availability and delivery.`;
+  };
+  const draw = () => {
+    const { c, n, t } = sums();
+    const empty = c.length === 0;
+    root.classList.toggle('is-empty', empty);
+    $('[data-cart-empty]').hidden = !empty;
+    $('[data-cart-n]').textContent = String(n);
+    $('[data-cart-sub]').textContent = fmtInr(t);
+    $('[data-cart-total2]').textContent = fmtInr(t);
+    $('[data-cart-total]').textContent = fmtInr(t);
+    itemsEl.innerHTML = c.map((i) => `
+      <div class="cart-item" data-id="${esc(i.id)}">
+        <div class="cart-thumb"><img src="${esc(packs + i.img)}" alt="" width="64" height="64" /><span>${i.q}</span></div>
+        <div class="cart-info"><strong>${esc(i.name)}${i.gl ? ` ${esc(i.gl)}` : ''}</strong><small>${esc(i.vl)} pouch · ${fmtInr(i.price)} each</small>
+          <div class="cart-ctl"><button type="button" data-dec aria-label="Decrease quantity">−</button><output>${i.q}</output><button type="button" data-inc aria-label="Increase quantity">+</button><button type="button" class="cart-remove" data-rm>Remove</button></div>
+        </div>
+        <strong class="cart-line">${fmtInr(i.q * i.price)}</strong>
+      </div>`).join('');
+    place.setAttribute('href', `https://wa.me/${wa}?text=${encodeURIComponent(message())}`);
+  };
+  itemsEl.addEventListener('click', (e) => {
+    const row = e.target.closest('.cart-item'); if (!row) return;
+    const cart = cartStore.get(); const line = cart.find((i) => i.id === row.getAttribute('data-id')); if (!line) return;
+    if (e.target.closest('[data-inc]')) line.q = Math.min(50, line.q + 1);
+    else if (e.target.closest('[data-dec]')) line.q = Math.max(1, line.q - 1);
+    else if (e.target.closest('[data-rm]')) line.q = 0;
+    else return;
+    cartStore.set(cart); draw();
+  });
+  $('[data-cart-clear]').addEventListener('click', () => { cartStore.set([]); draw(); });
+  const detailsOk = () => {
+    const bad = [];
+    if (nameIn.value.trim().length < 2) bad.push(nameIn);
+    if (cityIn.value.trim().length < 2) bad.push(cityIn);
+    if (!/^\d{6}$/.test(pinIn.value.trim())) bad.push(pinIn);
+    [nameIn, cityIn, pinIn].forEach((el) => el.classList.toggle('is-invalid', bad.includes(el)));
+    errEl.hidden = bad.length === 0;
+    if (bad.length) bad[0].focus();
+    return bad.length === 0;
+  };
+  [nameIn, cityIn, pinIn, addrIn].forEach((el) => el.addEventListener('input', () => {
+    if (el === pinIn) el.value = el.value.replace(/\D/g, '').slice(0, 6);
+    el.classList.remove('is-invalid'); if (!root.querySelector('.is-invalid')) errEl.hidden = true; draw();
+    try { localStorage.setItem('hs-cust', JSON.stringify({ n: nameIn.value, c: cityIn.value, p: pinIn.value, a: addrIn.value })); } catch { /* storage unavailable */ }
+  }));
+  try { const c = JSON.parse(localStorage.getItem('hs-cust') || 'null'); if (c) { nameIn.value = c.n || ''; cityIn.value = c.c || ''; pinIn.value = c.p || ''; addrIn.value = c.a || ''; } } catch { /* ignore */ }
+  place.addEventListener('click', (e) => {
+    if (!detailsOk()) { e.preventDefault(); return; }
+    const { n, t } = sums();
+    draw();
+    track('place_order', { items: n, value: t });
+  });
+  draw();
+})();
 
 // Header dropdowns: tap to open on touch screens, Escape or outside click to close
 (() => {
