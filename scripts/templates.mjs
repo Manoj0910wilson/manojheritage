@@ -388,6 +388,7 @@ export function layout(ctx, page, mainHtml) {
     <meta name="robots" content="${page.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />
     ${region}${placename}
     <link rel="canonical" href="${canonical}" />
+    <script>if(/github\.io$/.test(location.hostname))location.replace("${canonical}"+location.hash)</script>
     ${alternates}
     <meta name="theme-color" content="#f6f1e7" />
     <meta property="og:site_name" content="${site.name}" />
