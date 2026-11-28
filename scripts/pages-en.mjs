@@ -11,6 +11,7 @@ import {
 
 
 /* ---------- commerce schema (real prices from the price engine) ---------- */
+function validFrom() { return new Date().toISOString().slice(0, 10); }
 function validUntil() { const d = new Date(); d.setUTCDate(d.getUTCDate() + 2); return d.toISOString().slice(0, 10); }
 function shopLd() {
   const g0 = shop[0];
@@ -22,7 +23,7 @@ function shopLd() {
       description: `Whole green cardamom (elaichi) pods, ${g.label} ${g.sub || ''}, from Idukki, Kerala. ${v.label} pack.`.replace(/\s+/g, ' '),
       brand: { '@type': 'Brand', name: site.name }, category: 'Spices',
       image: absUrl(`assets/packs/${v.img}`),
-      offers: { '@type': 'Offer', priceCurrency: 'INR', price: String(v.price), availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', priceValidUntil: validUntil(), url: absUrl('products/'), seller: { '@id': `${site.url}/#organization` } },
+      offers: { '@type': 'Offer', priceCurrency: 'INR', price: String(v.price), availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition', priceValidUntil: validUntil(), validFrom: validFrom(), url: absUrl('products/'), seller: { '@id': `${site.url}/#organization` } },
     });
   }
   return [{ '@context': 'https://schema.org', '@type': 'ItemList', name: 'Senvora green cardamom retail packs', itemListElement: offers.map((o, i) => ({ '@type': 'ListItem', position: i + 1, item: o })) }];
@@ -34,7 +35,7 @@ function priceLd() {
     '@context': 'https://schema.org', '@type': 'Product', name: 'Green cardamom (elaichi), whole pods, Idukki',
     description: `Green cardamom price per kg by grade, updated ${updatedLabel} from the Spices Board auction.`,
     brand: { '@type': 'Brand', name: site.name }, category: 'Spices', image: absUrl('og-image.jpg'),
-    offers: { '@type': 'AggregateOffer', priceCurrency: 'INR', lowPrice: String(Math.min(...wh)), highPrice: String(Math.max(...kg)), offerCount: grades.length * 2, availability: 'https://schema.org/InStock', priceValidUntil: validUntil(), url: absUrl('products/green-cardamom-price-list/') },
+    offers: { '@type': 'AggregateOffer', priceCurrency: 'INR', lowPrice: String(Math.min(...wh)), highPrice: String(Math.max(...kg)), offerCount: grades.length * 2, availability: 'https://schema.org/InStock', priceValidUntil: validUntil(), validFrom: validFrom(), url: absUrl('products/green-cardamom-price-list/') },
   }];
 }
 
